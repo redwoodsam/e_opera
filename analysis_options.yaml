@@ -1,0 +1,2 @@
+
+include: ./lib/core/linter_rules.yaml
