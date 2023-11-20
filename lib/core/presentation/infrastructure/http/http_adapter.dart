@@ -220,6 +220,12 @@ class HttpAdapter implements IHttpClient {
     HttpOptions httpOptions, {
     HttpMultipartOptions? httpMultipartOptions,
   }) async {
+    // TODO: IMPLEMENTAR SQLITE
+    final ConnectionStatusSingleton connection = ConnectionStatusSingleton();
+    if(!await connection.call()){
+      Logger().i('Não há conexão com a internet');
+      return const HttpResponse(status: HttpStatus.networkConnectTimeoutError);
+    }
     if (httpMultipartOptions != null) {
       return _handleMultipartRequest(
         httpOptions: httpOptions,

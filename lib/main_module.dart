@@ -7,9 +7,10 @@ import 'login/login_module.dart';
 class MainModule extends Module {
   ///
   static const BasePath loginModule = BasePath('/');
+
   @override
-  void routes(r) {
-    r.module(loginModule.path, module: LoginModule());
-  }
+  List<ModularRoute> get routes => [
+    ModuleRoute(loginModule.path, module: LoginModule()),
+  ];
  
 }
