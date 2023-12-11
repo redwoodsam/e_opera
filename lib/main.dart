@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'core/core.dart';
 import 'main_module.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     ModularApp(module: MainModule(), child: const MainApp()),

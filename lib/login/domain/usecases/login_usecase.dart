@@ -1,17 +1,24 @@
+import 'package:dartz/dartz.dart';
+
+import '../../../core/core.dart';
 import '../../login.dart';
 
+/// Interface to login
 abstract class ILoginUsecase {
-  Future<void> login();
+  /// Method to get login
+  Future<Either<Failure, Unit>> call(LoginParams params);
 }
 
 
+/// Implementation of [ILoginUsecase]
 class LoginUsecase implements ILoginUsecase{
   final ILoginRepository _repository;
 
+  /// Constructor of [LoginUsecase]
   LoginUsecase(this._repository);
   @override
-  Future<void> login() async {
-    _repository.login();
+  Future<Either<Failure, Unit>> call(LoginParams params) async {
+    return await _repository.login(params);
   }
 
 }
