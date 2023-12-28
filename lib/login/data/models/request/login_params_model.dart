@@ -19,7 +19,8 @@ class LoginParamsModel with _$LoginParamsModel {
   ///
   const factory LoginParamsModel({
     @JsonKey(name: 'usuario') required String user,
-    @JsonKey(name: 'password') required String password,
+    @JsonKey(name: 'senha') required String password,
+    @JsonKey(name: 'aplicacao') required String application,
   }) = _LoginParamsModel;
 
   ///
@@ -31,9 +32,11 @@ class LoginParamsModel with _$LoginParamsModel {
   ///Creates a [LoginParamsModel] from a [LoginParams] entity.
   factory LoginParamsModel.fromEntity(
     LoginParams entity,
-  ) =>
-      LoginParamsModel(
+  ) {
+    return LoginParamsModel(
        user: entity.user,
        password: entity.password,
+       application: 'teste',
       );
+  }
 }

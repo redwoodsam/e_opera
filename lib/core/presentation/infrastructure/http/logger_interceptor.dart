@@ -1,6 +1,5 @@
-import 'dart:async';
 
-import 'package:logger/logger.dart';
+import 'dart:async';
 
 import '../../../core.dart';
 
@@ -14,7 +13,7 @@ class LoggerInterceptor extends HttpInterceptor {
     HttpOptions request,
     HttpResponse response,
   ) {
-    Logger().t(
+    Log.v(
       [
         '${request.method.name.toUpperCase()} ${request.url}',
         if (request.query != null) 'Query: ${prettyJson(request.query)}',
@@ -29,7 +28,7 @@ class LoggerInterceptor extends HttpInterceptor {
   /// Intercept and log request errors.
   @override
   void onError(HttpOptions request, IHttpException exception) {
-    Logger().e(
+    Log.e(
       [
         '${request.method.name.toUpperCase()} ${request.url}',
         if (request.query != null) 'Query: ${prettyJson(request.query)}',
@@ -46,7 +45,7 @@ class LoggerInterceptor extends HttpInterceptor {
   /// Intercept and log the HTTP request being sent.
   @override
   FutureOr<HttpOptions> onRequest(HttpOptions request, IHttpClient client) {
-    Logger().t(
+    Log.i(
       [
         'Request: ${request.method.name.toUpperCase()} ${request.url}',
         if (request.query != null) 'Query: ${prettyJson(request.query)}',

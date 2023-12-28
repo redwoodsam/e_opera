@@ -22,8 +22,10 @@ LoginParamsModel _$LoginParamsModelFromJson(Map<String, dynamic> json) {
 mixin _$LoginParamsModel {
   @JsonKey(name: 'usuario')
   String get user => throw _privateConstructorUsedError;
-  @JsonKey(name: 'password')
+  @JsonKey(name: 'senha')
   String get password => throw _privateConstructorUsedError;
+  @JsonKey(name: 'aplicacao')
+  String get application => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +41,8 @@ abstract class $LoginParamsModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'usuario') String user,
-      @JsonKey(name: 'password') String password});
+      @JsonKey(name: 'senha') String password,
+      @JsonKey(name: 'aplicacao') String application});
 }
 
 /// @nodoc
@@ -57,6 +60,7 @@ class _$LoginParamsModelCopyWithImpl<$Res, $Val extends LoginParamsModel>
   $Res call({
     Object? user = null,
     Object? password = null,
+    Object? application = null,
   }) {
     return _then(_value.copyWith(
       user: null == user
@@ -66,6 +70,10 @@ class _$LoginParamsModelCopyWithImpl<$Res, $Val extends LoginParamsModel>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      application: null == application
+          ? _value.application
+          : application // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -81,7 +89,8 @@ abstract class _$$LoginParamsModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'usuario') String user,
-      @JsonKey(name: 'password') String password});
+      @JsonKey(name: 'senha') String password,
+      @JsonKey(name: 'aplicacao') String application});
 }
 
 /// @nodoc
@@ -97,6 +106,7 @@ class __$$LoginParamsModelImplCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
     Object? password = null,
+    Object? application = null,
   }) {
     return _then(_$LoginParamsModelImpl(
       user: null == user
@@ -107,6 +117,10 @@ class __$$LoginParamsModelImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      application: null == application
+          ? _value.application
+          : application // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,7 +130,8 @@ class __$$LoginParamsModelImplCopyWithImpl<$Res>
 class _$LoginParamsModelImpl extends _LoginParamsModel {
   const _$LoginParamsModelImpl(
       {@JsonKey(name: 'usuario') required this.user,
-      @JsonKey(name: 'password') required this.password})
+      @JsonKey(name: 'senha') required this.password,
+      @JsonKey(name: 'aplicacao') required this.application})
       : super._();
 
   factory _$LoginParamsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -126,12 +141,15 @@ class _$LoginParamsModelImpl extends _LoginParamsModel {
   @JsonKey(name: 'usuario')
   final String user;
   @override
-  @JsonKey(name: 'password')
+  @JsonKey(name: 'senha')
   final String password;
+  @override
+  @JsonKey(name: 'aplicacao')
+  final String application;
 
   @override
   String toString() {
-    return 'LoginParamsModel(user: $user, password: $password)';
+    return 'LoginParamsModel(user: $user, password: $password, application: $application)';
   }
 
   @override
@@ -141,12 +159,14 @@ class _$LoginParamsModelImpl extends _LoginParamsModel {
             other is _$LoginParamsModelImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.application, application) ||
+                other.application == application));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user, password);
+  int get hashCode => Object.hash(runtimeType, user, password, application);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +186,8 @@ class _$LoginParamsModelImpl extends _LoginParamsModel {
 abstract class _LoginParamsModel extends LoginParamsModel {
   const factory _LoginParamsModel(
           {@JsonKey(name: 'usuario') required final String user,
-          @JsonKey(name: 'password') required final String password}) =
+          @JsonKey(name: 'senha') required final String password,
+          @JsonKey(name: 'aplicacao') required final String application}) =
       _$LoginParamsModelImpl;
   const _LoginParamsModel._() : super._();
 
@@ -177,8 +198,11 @@ abstract class _LoginParamsModel extends LoginParamsModel {
   @JsonKey(name: 'usuario')
   String get user;
   @override
-  @JsonKey(name: 'password')
+  @JsonKey(name: 'senha')
   String get password;
+  @override
+  @JsonKey(name: 'aplicacao')
+  String get application;
   @override
   @JsonKey(ignore: true)
   _$$LoginParamsModelImplCopyWith<_$LoginParamsModelImpl> get copyWith =>

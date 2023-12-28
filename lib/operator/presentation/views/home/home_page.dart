@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                     ),
                     IconButton(
                       padding: EdgeInsets.zero,
-                      onPressed: () {},
+                      onPressed: Nav.pop,
                       visualDensity: VisualDensity.compact,
                       icon: Icon(
                         Icons.chevron_right_outlined,

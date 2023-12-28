@@ -30,8 +30,8 @@ class LoginModule extends Module {
         Bind.lazySingleton<IHttpClient>(
           (i) => HttpAdapter(
             client: io.HttpClient(),
-            baseUrl: (() async => '')(),
-          ),
+            baseUrl: (() async => 'http://198.27.117.155:8084/api/')(),
+          )..addInterceptors([LoggerInterceptor()]),
         ),
       ];
   static List<Bind> get _datasources => [
@@ -52,6 +52,7 @@ class LoginModule extends Module {
 
   static List<Bind> get _viewmodel => [
         Bind.lazySingleton<LoginViewModel>(
-            (i) => LoginViewModel(i.get<ILoginUsecase>()),),
+          (i) => LoginViewModel(i.get<ILoginUsecase>()),
+        ),
       ];
 }

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:logger/logger.dart';
+import 'package:mz_rsa_plugin/mz_rsa_plugin.dart';
 
 import '../../../core/core.dart';
 import '../../login.dart';
@@ -14,11 +14,16 @@ class LoginRepository implements ILoginRepository {
   @override
   Future<Either<Failure, Unit>> login(LoginParams params) async {
     try {
-      await _datasource.login(LoginParamsModel.fromEntity(params));
+      final encrypt =
+          await MzRsaPlugin.encryptStringByPublicKey(params.password, rsaKey);
+
+      await _datasource.login(
+        LoginParamsModel.fromEntity(params.copyWith(password: encrypt)),
+      );
 
       return const Right(unit);
     } catch (error) {
-      Logger().e(error);
+      Log.e(error);
       return const Left(Failure.badRequest());
     }
   }

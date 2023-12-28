@@ -14,15 +14,23 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends ViewState<LoginPage, LoginViewModel> {
+class _LoginPageState extends State<LoginPage> {
+  late LoginViewModel viewModel;
   late final TextEditingController _userController;
   late final TextEditingController _passwordController;
   final ValueNotifier<bool> _obscureNotifier = ValueNotifier(true);
   @override
   void initState() {
     super.initState();
+    viewModel = DM.get<LoginViewModel>();
     _userController = TextEditingController();
     _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    viewModel.dispose();
+    super.dispose();
   }
 
   @override
@@ -36,7 +44,7 @@ class _LoginPageState extends ViewState<LoginPage, LoginViewModel> {
         },
         builder: (context, state) {
           return switch (state) {
-            InitialLogin() || LoadingLogin() => Container(
+            InitialLogin() || LoadingLogin() || ErrorLogin() => Container(
                 width: context.screenWidth,
                 height: context.screenHeight,
                 clipBehavior: Clip.antiAlias,
@@ -221,13 +229,13 @@ class _LoginPageState extends ViewState<LoginPage, LoginViewModel> {
                           child: CustomFilledButton(
                             text: 'Entrar',
                             loading: state is LoadingLogin,
-                            onPressed: () async {
+                            onPressed: () {
                               if (_userController.text.isEmpty ||
                                   _passwordController.text.isEmpty) {
                                 // TODO: validar situação de input errado
                                 return;
                               }
-                              await viewModel.login(
+                              viewModel.login(
                                 _userController.text,
                                 _passwordController.text,
                               );

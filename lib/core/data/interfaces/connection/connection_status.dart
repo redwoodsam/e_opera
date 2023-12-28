@@ -5,7 +5,6 @@ import 'dart:io';
 class ConnectionStatusSingleton {
   static final ConnectionStatusSingleton _singleton =
       ConnectionStatusSingleton._internal();
-
   ConnectionStatusSingleton._internal();
 
   /// Factoty to singleton

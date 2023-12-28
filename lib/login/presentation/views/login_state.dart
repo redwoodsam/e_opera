@@ -4,6 +4,7 @@ import '../../../core/core.dart';
 part 'login_state.freezed.dart';
 
 @freezed
+
 /// State of Login
 sealed class LoginState extends ViewModelState with _$LoginState {
   /// The initial [LoginState] state

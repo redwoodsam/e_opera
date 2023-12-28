@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io' as io;
 
 import 'package:http/http.dart' as http;
-import 'package:logger/logger.dart';
 
 import '../../../core.dart';
 
@@ -223,7 +222,7 @@ class HttpAdapter implements IHttpClient {
     // TODO: IMPLEMENTAR SQLITE
     final ConnectionStatusSingleton connection = ConnectionStatusSingleton();
     if(!await connection.call()){
-      Logger().i('Não há conexão com a internet');
+      Log.i('Não há conexão com a internet');
       return const HttpResponse(status: HttpStatus.networkConnectTimeoutError);
     }
     if (httpMultipartOptions != null) {
@@ -253,7 +252,7 @@ class HttpAdapter implements IHttpClient {
       final httpResponse = await _handleResponse(response);
       return await _handleResponseInterceptor(options, httpResponse);
     } on io.SocketException catch (error) {
-      Logger().e(error.message);
+      Log.d(error.message);
 
       throw TimeoutException(message: error.message);
     } on IHttpException catch (httpException) {
@@ -261,7 +260,7 @@ class HttpAdapter implements IHttpClient {
 
       rethrow;
     } catch (error, stacktrace) {
-      Logger().e(error.toString(),error: error, stackTrace: stacktrace);
+      Log.e(error.toString(),error, stacktrace);
       throw UnknownConnectionError(data: error.toString());
     }
   }
@@ -333,7 +332,7 @@ class HttpAdapter implements IHttpClient {
       final httpResponse = await _handleResponse(response);
       return await _handleResponseInterceptor(options, httpResponse);
     } on io.SocketException catch (error) {
-      Logger().e(error.message);
+      Log.d(error.message);
 
       throw TimeoutException(message: error.message);
     } on IHttpException catch (httpException) {
@@ -341,7 +340,7 @@ class HttpAdapter implements IHttpClient {
 
       rethrow;
     } catch (error, stacktrace) {
-      Logger().e(error.toString(),error: error, stackTrace: stacktrace);
+      Log.e(error.toString(), error,  stacktrace);
       throw Exception();
     }
   }
@@ -352,7 +351,7 @@ class HttpAdapter implements IHttpClient {
 
       return await _handleRequestInterceptor(options);
     } catch (error, stacktrace) {
-      Logger().e(error.toString(),error: error, stackTrace: stacktrace);
+      Log.e(error.toString(), error, stacktrace);
       throw Exception();
     }
   }

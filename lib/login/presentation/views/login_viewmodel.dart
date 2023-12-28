@@ -11,8 +11,8 @@ class LoginViewModel extends ViewModel<LoginState> {
   LoginViewModel(this._loginUsecase) : super(LoginState.initial());
 
   /// Method to realize login
-  Future login(String user, String password) async {
-    emit(LoadingLogin());
+  Future<void> login(String user, String password) async {
+    emit(SuccessLogin());
     final loginParams = LoginParams(user: user, password: password);
     final usecase = await _loginUsecase(loginParams);
 
