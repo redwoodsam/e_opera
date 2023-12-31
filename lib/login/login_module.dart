@@ -30,7 +30,8 @@ class LoginModule extends Module {
         Bind.lazySingleton<IHttpClient>(
           (i) => HttpAdapter(
             client: io.HttpClient(),
-            baseUrl: (() async => 'http://198.27.117.155:8084/api/')(),
+            baseUrl: 'http://198.27.117.155:8094/api/',
+            apiVersion: 'v1',
           )..addInterceptors([LoggerInterceptor()]),
         ),
       ];

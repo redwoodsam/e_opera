@@ -16,8 +16,6 @@ class LoginDatasource implements ILoginDatasource {
 
   @override
   Future<void> login(LoginParamsModel params) async {
-    final response = await _http.get('login', query: params.toJson());
-    // ignore: avoid_print
-    print(response);
+    await _http.post('login', body: params.toJson());
   }
 }

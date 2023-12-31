@@ -12,7 +12,7 @@ class LoginViewModel extends ViewModel<LoginState> {
 
   /// Method to realize login
   Future<void> login(String user, String password) async {
-    emit(SuccessLogin());
+    emit(LoadingLogin());
     final loginParams = LoginParams(user: user, password: password);
     final usecase = await _loginUsecase(loginParams);
 
