@@ -4,7 +4,7 @@ import '../../../login.dart';
 /// Login Datasource
 abstract class ILoginDatasource {
   /// Method to login
-  Future<void> login(LoginParamsModel params);
+  Future<LoginModel> login(LoginParamsModel params);
 }
 
 /// Implementation of [ILoginDatasource]
@@ -15,7 +15,9 @@ class LoginDatasource implements ILoginDatasource {
   LoginDatasource(this._http);
 
   @override
-  Future<void> login(LoginParamsModel params) async {
-    await _http.post('login', body: params.toJson());
+  Future<LoginModel> login(LoginParamsModel params) async {
+    final response = await _http.post('login', body: params.toJson());
+
+    return LoginModel.fromJson(response.data);
   }
 }

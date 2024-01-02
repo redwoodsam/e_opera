@@ -6,5 +6,8 @@ import '../../login.dart';
 /// Interface to [ILoginRepository]
 abstract class ILoginRepository{
   /// Method to get login
-  Future<Either<Failure, Unit>> login(LoginParams params);
+  Future<Either<Failure, Login>> login(LoginParams params);
+
+   /// Retrieve last loggedIn user data
+  Future<Either<Unit, Login>> getCredentials();
 }

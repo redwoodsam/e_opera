@@ -32,17 +32,31 @@ class LoginModule extends Module {
             client: io.HttpClient(),
             baseUrl: 'http://198.27.117.155:8094/api/',
             apiVersion: 'v1',
-          )..addInterceptors([LoggerInterceptor()]),
+          )..addInterceptors([
+              LoggerInterceptor(),
+              AuthorizationInterceptor(ModularDependencyManager.i()),
+            ]),
+        ),
+        Bind.lazySingleton<IStorageClient<List<LoginModel>>>(
+          (di) => HiveStorageAdapter('@auth'),
         ),
       ];
   static List<Bind> get _datasources => [
         Bind.lazySingleton<ILoginDatasource>(
           (i) => LoginDatasource(i.get<IHttpClient>()),
         ),
+        Bind.factory<ILoginLocalDatasource>(
+          (i) => LoginLocalDatasource(
+            i.get<IStorageClient<List<LoginModel>>>(),
+          ),
+        ),
       ];
   static List<Bind> get _repositories => [
         Bind.lazySingleton<ILoginRepository>(
-          (i) => LoginRepository(i.get<ILoginDatasource>()),
+          (i) => LoginRepository(
+            i.get<ILoginDatasource>(),
+            i.get<ILoginLocalDatasource>(),
+          ),
         ),
       ];
   static List<Bind> get _usecases => [

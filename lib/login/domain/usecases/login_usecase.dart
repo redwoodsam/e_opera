@@ -6,7 +6,7 @@ import '../../login.dart';
 /// Interface to login
 abstract class ILoginUsecase {
   /// Method to get login
-  Future<Either<Failure, Unit>> call(LoginParams params);
+  Future<Either<Failure, Login>> call(LoginParams params);
 }
 
 
@@ -17,7 +17,7 @@ class LoginUsecase implements ILoginUsecase{
   /// Constructor of [LoginUsecase]
   LoginUsecase(this._repository);
   @override
-  Future<Either<Failure, Unit>> call(LoginParams params) async {
+  Future<Either<Failure, Login>> call(LoginParams params) async {
     return await _repository.login(params);
   }
 

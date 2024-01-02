@@ -7,24 +7,35 @@ import '../../login.dart';
 /// Implementation of [ILoginRepository]
 class LoginRepository implements ILoginRepository {
   final ILoginDatasource _datasource;
+  final ILoginLocalDatasource _localDatasource;
+
 
   /// Constructor of [LoginRepository]
-  LoginRepository(this._datasource);
+  LoginRepository(this._datasource, this._localDatasource);
 
   @override
-  Future<Either<Failure, Unit>> login(LoginParams params) async {
+  Future<Either<Failure, Login>> login(LoginParams params) async {
     try {
       final encrypt =
           await MzRsaPlugin.encryptStringByPublicKey(params.password, rsaKey);
 
-      await _datasource.login(
+      final response = await _datasource.login(
         LoginParamsModel.fromEntity(params.copyWith(password: encrypt)),
       );
 
-      return const Right(unit);
+      _localDatasource.save([response]);
+
+      return Right(response.toEntity());
     } catch (error) {
       Log.e(error);
       return const Left(Failure.badRequest());
     }
+  }
+
+  @override
+  Future<Either<Unit, Login>> getCredentials() async {
+    final logins = await _localDatasource.get();
+    if (logins.isNotEmpty) return Right(logins.first.toEntity());
+    return const Left(unit);
   }
 }

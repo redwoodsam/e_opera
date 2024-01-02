@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
+import '../../../operator.dart';
 import '../../../operator_module.dart';
 
 /// Page to operator insert some informations
-class OperatorIntroPage extends StatelessWidget {
+class OperatorIntroPage extends StatefulWidget {
   /// Constructor of [OperatorIntroPage]
   const OperatorIntroPage({super.key});
+
+  @override
+  State<OperatorIntroPage> createState() => _OperatorIntroPageState();
+}
+
+class _OperatorIntroPageState
+    extends ViewState<OperatorIntroPage, IntroViewModel> {
+
+      @override
+  void initState() {
+    super.initState();
+    viewModel.getFarms();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +56,12 @@ class OperatorIntroPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Center(child: Image.asset('assets/images/map.png', height:const Dimension(20).height,)),
+                Center(
+                  child: Image.asset(
+                    'assets/images/map.png',
+                    height: const Dimension(20).height,
+                  ),
+                ),
               ],
             ),
             Container(
