@@ -41,7 +41,7 @@ class MainApp extends StatelessWidget {
               routeInformationParser: Modular.routeInformationParser,
               routerDelegate: Modular.routerDelegate,
               theme: ThemeFactory.buildFor(ThemeType.light),
-              darkTheme: ThemeFactory.buildFor(ThemeType.dark),
+              darkTheme: ThemeFactory.buildFor(ThemeType.light),
               locale: const Locale('pt', 'BR'),
             );
           },
