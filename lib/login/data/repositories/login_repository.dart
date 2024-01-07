@@ -9,7 +9,6 @@ class LoginRepository implements ILoginRepository {
   final ILoginDatasource _datasource;
   final ILoginLocalDatasource _localDatasource;
 
-
   /// Constructor of [LoginRepository]
   LoginRepository(this._datasource, this._localDatasource);
 
@@ -18,7 +17,7 @@ class LoginRepository implements ILoginRepository {
     try {
       final encrypt =
           await MzRsaPlugin.encryptStringByPublicKey(params.password, rsaKey);
-
+      // final encrypt = await this._datasource.encrypt(params.password);
       final response = await _datasource.login(
         LoginParamsModel.fromEntity(params.copyWith(password: encrypt)),
       );

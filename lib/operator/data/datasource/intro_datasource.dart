@@ -1,12 +1,19 @@
+import 'dart:convert';
+
+import 'package:http/http.dart';
+
 import '../../../../core/core.dart';
+import '../models/response/farm_model.dart';
 
 /// Intro Datasource
 abstract class IIntroDatasource {
   /// Method to get all farms
-  Future<void> getFarms();
+  Future<List<FarmModel>> getFarms();
+  Future<void> getHarvests();
+  Future<void> getFields();
 }
 
-/// Implementation of [ILoginDatasource]
+/// Implementation of [IIntroDatasource]
 class IntroDatasource implements IIntroDatasource {
   final IHttpClient _http;
 
@@ -14,8 +21,23 @@ class IntroDatasource implements IIntroDatasource {
   IntroDatasource(this._http);
 
   @override
-  Future<void> getFarms() async {
+  Future<List<FarmModel>> getFarms() async {
     final response = await _http.get('fazendas');
-    print(response.data['fazendas']);
+    final farmsJson = response.data['fazendas'] as List;
+
+    return List<FarmModel>.from(
+        farmsJson.map((record) => FarmModel.fromJson(record)));
+  }
+
+  @override
+  Future<void> getHarvests() async {
+    // final response = await _http.get('safra');
+    // print(response.data['safra']);
+  }
+
+  @override
+  Future<void> getFields() async {
+    // final response = await _http.get('talhao');
+    // print(response.data['talhao']);
   }
 }

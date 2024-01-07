@@ -23,7 +23,7 @@ class AuthorizationInterceptor extends HttpInterceptor {
     final Map<String, String> headers = Map.from(request.headers ?? {});
     final credentialsOrNone = await _loginService.getCredentials();
 
-    if (credentialsOrNone.isRight()) {
+    if (credentialsOrNone.isRight() && !request.path.contains('login')) {
       credentialsOrNone.fold((l) => null, (r) {
         headers['Authorization'] = 'Bearer ${r.accessToken}';
         request = request.copyWith(headers: headers);

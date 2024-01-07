@@ -4,7 +4,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../core/core.dart';
 import 'data/data.dart';
+import 'data/repositories/field_repository.dart';
+import 'data/repositories/harvest_repository.dart';
 import 'domain/domain.dart';
+import 'domain/repositories/field_repository.dart';
+import 'domain/repositories/harvest_repository.dart';
+import 'domain/usecases/get_fields_usecase.dart';
+import 'domain/usecases/get_harvests_usecase.dart';
 import 'operator.dart';
 import 'presentation/views/home/home.dart';
 
@@ -58,15 +64,28 @@ class OperatorModule extends Module {
         Bind.lazySingleton<IFarmRepository>(
           (i) => FarmRepository(i.get<IIntroDatasource>()),
         ),
+        Bind.lazySingleton<IFieldRepository>(
+          (i) => FieldRepository(i.get<IIntroDatasource>()),
+        ),
+        Bind.lazySingleton<IHarvestRepository>(
+          (i) => HarvestRepository(i.get<IIntroDatasource>()),
+        ),
       ];
+
   static List<Bind> get _usecases => [
         Bind.factory<IGetFarmsUsecase>(
           (i) => GetFarmsUsecase(i.get<IFarmRepository>()),
         ),
+        Bind.factory<IGetFieldsUsecase>(
+            (i) => GetFieldsUsecase(i.get<IFieldRepository>())),
+        Bind.factory<IGetHarvestsUsecase>(
+            (i) => GetHarvestsUsecase(i.get<IHarvestRepository>()))
       ];
+
   static List<Bind> get _viewmodel => [
         Bind.lazySingleton<IntroViewModel>(
-          (i) => IntroViewModel(i.get<IGetFarmsUsecase>()),
+          (i) => IntroViewModel(i.get<IGetFarmsUsecase>(),
+              i.get<IGetFieldsUsecase>(), i.get<IGetHarvestsUsecase>()),
         ),
       ];
 }

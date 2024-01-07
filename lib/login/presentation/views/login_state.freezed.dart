@@ -113,7 +113,7 @@ class _$InitialLoginImpl implements InitialLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialLoginImpl);
   }
@@ -227,7 +227,7 @@ class _$ErrorLoginImpl implements ErrorLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ErrorLoginImpl);
   }
@@ -341,7 +341,7 @@ class _$LoadingLoginImpl implements LoadingLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingLoginImpl);
   }
@@ -455,7 +455,7 @@ class _$SuccessLoginImpl implements SuccessLogin {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SuccessLoginImpl);
   }

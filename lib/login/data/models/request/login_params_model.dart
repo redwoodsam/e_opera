@@ -34,9 +34,9 @@ class LoginParamsModel with _$LoginParamsModel {
     LoginParams entity,
   ) {
     return LoginParamsModel(
-       user: entity.user,
-       password: entity.password,
-       application: 'teste',
-      );
+      user: entity.user.trim(),
+      password: entity.password.replaceAll('\n', ''),
+      application: 'teste',
+    );
   }
 }

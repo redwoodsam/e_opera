@@ -113,7 +113,7 @@ class _$InitialIntroImpl implements InitialIntro {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$InitialIntroImpl);
   }
@@ -227,7 +227,7 @@ class _$ErrorIntroImpl implements ErrorIntro {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ErrorIntroImpl);
   }
@@ -341,7 +341,7 @@ class _$LoadingIntroImpl implements LoadingIntro {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadingIntroImpl);
   }
@@ -455,7 +455,7 @@ class _$SuccessIntroImpl implements SuccessIntro {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SuccessIntroImpl);
   }
