@@ -4,7 +4,6 @@ import '../../../core/core.dart';
 import '../../domain/domain.dart';
 import '../../domain/entities/farm.dart';
 import '../data.dart';
-import '../models/response/farm_model.dart';
 
 /// Implementation of [IFarmRepository]
 class FarmRepository implements IFarmRepository {

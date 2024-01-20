@@ -12,7 +12,7 @@ class IntroViewModel extends ViewModel<IntroState> {
 
   /// Constructor of [IntroViewModel]
   IntroViewModel(
-      this._getFarmsUsecase, this._getFieldsUsecase, this._getHarvestsUsecase)
+      this._getFarmsUsecase, this._getFieldsUsecase, this._getHarvestsUsecase,)
       : super(IntroState.initial());
 
   /// Method to realize login

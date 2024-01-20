@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import '../../../core/core.dart';
-import '../domain.dart';
 import '../repositories/harvest_repository.dart';
 
 /// Interface to Harvests

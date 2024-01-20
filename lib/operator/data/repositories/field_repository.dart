@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../core/core.dart';
-import '../../domain/domain.dart';
 import '../../domain/repositories/field_repository.dart';
 import '../data.dart';
 
