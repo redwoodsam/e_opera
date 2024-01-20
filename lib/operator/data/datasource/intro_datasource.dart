@@ -4,13 +4,15 @@ import 'package:http/http.dart';
 
 import '../../../../core/core.dart';
 import '../models/response/farm_model.dart';
+import '../models/response/field_model.dart';
+import '../models/response/harvest_model.dart';
 
 /// Intro Datasource
 abstract class IIntroDatasource {
   /// Method to get all farms
   Future<List<FarmModel>> getFarms();
-  Future<void> getHarvests();
-  Future<void> getFields();
+  Future<List<HarvestModel>> getHarvests();
+  Future<List<FieldModel>> getFields();
 }
 
 /// Implementation of [IIntroDatasource]
@@ -30,14 +32,24 @@ class IntroDatasource implements IIntroDatasource {
   }
 
   @override
-  Future<void> getHarvests() async {
+  Future<List<HarvestModel>> getHarvests() async {
     // final response = await _http.get('safra');
-    // print(response.data['safra']);
+    // final harvestsJson = response.data['safra'] as List;
+    final harvestsStatic = [
+      HarvestModel(desSafra: 'SAFRA 2023/2024', codigoSafra: '2324')
+    ];
+
+    // return List<HarvestModel>.from(
+    //     harvestsJson.map((record) => HarvestModel.fromJson(record)));
+    return harvestsStatic;
   }
 
   @override
-  Future<void> getFields() async {
-    // final response = await _http.get('talhao');
-    // print(response.data['talhao']);
+  Future<List<FieldModel>> getFields() async {
+    final response = await _http.get('talhao');
+    final fieldJson = response.data['talhao'] as List;
+
+    return List<FieldModel>.from(
+        fieldJson.map((record) => FieldModel.fromJson(record)));
   }
 }

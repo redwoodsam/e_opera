@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/core.dart';
 import 'login/login.dart';
+import 'driver/driver_module.dart';
 import 'operator/operator_module.dart';
 
 /// Main Module
@@ -30,10 +31,12 @@ class MainModule extends Module {
 
   ///
   static const BasePath operatorModule = BasePath('/operator/');
+  static const BasePath driverModule = BasePath('/driver/');
 
   @override
   List<ModularRoute> get routes => [
         ModuleRoute(loginModule.path, module: LoginModule()),
         ModuleRoute(operatorModule.path, module: OperatorModule()),
+        ModuleRoute(driverModule.path, module: DriverModule()),
       ];
 }

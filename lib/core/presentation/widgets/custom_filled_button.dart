@@ -10,11 +10,13 @@ class CustomFilledButton extends StatelessWidget {
     required this.onPressed,
     required this.text,
     this.loading = false,
+    this.disabled = false,
   });
 
   final VoidCallback onPressed;
   final bool loading;
   final String text;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,8 @@ class CustomFilledButton extends StatelessWidget {
           shadowColor: MaterialStatePropertyAll<Color>(
             Colors.black.withOpacity(0.25),
           ),
-          backgroundColor: const MaterialStatePropertyAll<Color>(
-            Color(0xFF0D8536),
+          backgroundColor: MaterialStatePropertyAll<Color>(
+            disabled ? Color.fromARGB(255, 207, 207, 207) : Color(0xFF0D8536),
           ),
           shape: const MaterialStatePropertyAll<OutlinedBorder>(
             RoundedRectangleBorder(
@@ -35,7 +37,7 @@ class CustomFilledButton extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: onPressed,
+        onPressed: disabled ? null : onPressed,
         child: loading
             ? const CircularProgressIndicator(
                 strokeWidth: 1.0,

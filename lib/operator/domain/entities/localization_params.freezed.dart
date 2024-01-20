@@ -15,29 +15,33 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LocalizationParams {
-  String get farm => throw _privateConstructorUsedError;
-  String get harvest => throw _privateConstructorUsedError;
-  String get field => throw _privateConstructorUsedError;
+mixin _$LocationParams {
+  Farm get farm => throw _privateConstructorUsedError;
+  Harvest get harvest => throw _privateConstructorUsedError;
+  Field get field => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LocalizationParamsCopyWith<LocalizationParams> get copyWith =>
+  $LocationParamsCopyWith<LocationParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LocalizationParamsCopyWith<$Res> {
-  factory $LocalizationParamsCopyWith(
-          LocalizationParams value, $Res Function(LocalizationParams) then) =
-      _$LocalizationParamsCopyWithImpl<$Res, LocalizationParams>;
+abstract class $LocationParamsCopyWith<$Res> {
+  factory $LocationParamsCopyWith(
+          LocationParams value, $Res Function(LocationParams) then) =
+      _$LocationParamsCopyWithImpl<$Res, LocationParams>;
   @useResult
-  $Res call({String farm, String harvest, String field});
+  $Res call({Farm farm, Harvest harvest, Field field});
+
+  $FarmCopyWith<$Res> get farm;
+  $HarvestCopyWith<$Res> get harvest;
+  $FieldCopyWith<$Res> get field;
 }
 
 /// @nodoc
-class _$LocalizationParamsCopyWithImpl<$Res, $Val extends LocalizationParams>
-    implements $LocalizationParamsCopyWith<$Res> {
-  _$LocalizationParamsCopyWithImpl(this._value, this._then);
+class _$LocationParamsCopyWithImpl<$Res, $Val extends LocationParams>
+    implements $LocationParamsCopyWith<$Res> {
+  _$LocationParamsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -55,36 +59,67 @@ class _$LocalizationParamsCopyWithImpl<$Res, $Val extends LocalizationParams>
       farm: null == farm
           ? _value.farm
           : farm // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Farm,
       harvest: null == harvest
           ? _value.harvest
           : harvest // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Harvest,
       field: null == field
           ? _value.field
           : field // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Field,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FarmCopyWith<$Res> get farm {
+    return $FarmCopyWith<$Res>(_value.farm, (value) {
+      return _then(_value.copyWith(farm: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HarvestCopyWith<$Res> get harvest {
+    return $HarvestCopyWith<$Res>(_value.harvest, (value) {
+      return _then(_value.copyWith(harvest: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FieldCopyWith<$Res> get field {
+    return $FieldCopyWith<$Res>(_value.field, (value) {
+      return _then(_value.copyWith(field: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$LocalizationParamsImplCopyWith<$Res>
-    implements $LocalizationParamsCopyWith<$Res> {
-  factory _$$LocalizationParamsImplCopyWith(_$LocalizationParamsImpl value,
-          $Res Function(_$LocalizationParamsImpl) then) =
-      __$$LocalizationParamsImplCopyWithImpl<$Res>;
+abstract class _$$LocationParamsImplCopyWith<$Res>
+    implements $LocationParamsCopyWith<$Res> {
+  factory _$$LocationParamsImplCopyWith(_$LocationParamsImpl value,
+          $Res Function(_$LocationParamsImpl) then) =
+      __$$LocationParamsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String farm, String harvest, String field});
+  $Res call({Farm farm, Harvest harvest, Field field});
+
+  @override
+  $FarmCopyWith<$Res> get farm;
+  @override
+  $HarvestCopyWith<$Res> get harvest;
+  @override
+  $FieldCopyWith<$Res> get field;
 }
 
 /// @nodoc
-class __$$LocalizationParamsImplCopyWithImpl<$Res>
-    extends _$LocalizationParamsCopyWithImpl<$Res, _$LocalizationParamsImpl>
-    implements _$$LocalizationParamsImplCopyWith<$Res> {
-  __$$LocalizationParamsImplCopyWithImpl(_$LocalizationParamsImpl _value,
-      $Res Function(_$LocalizationParamsImpl) _then)
+class __$$LocationParamsImplCopyWithImpl<$Res>
+    extends _$LocationParamsCopyWithImpl<$Res, _$LocationParamsImpl>
+    implements _$$LocationParamsImplCopyWith<$Res> {
+  __$$LocationParamsImplCopyWithImpl(
+      _$LocationParamsImpl _value, $Res Function(_$LocationParamsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,49 +129,47 @@ class __$$LocalizationParamsImplCopyWithImpl<$Res>
     Object? harvest = null,
     Object? field = null,
   }) {
-    return _then(_$LocalizationParamsImpl(
+    return _then(_$LocationParamsImpl(
       farm: null == farm
           ? _value.farm
           : farm // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Farm,
       harvest: null == harvest
           ? _value.harvest
           : harvest // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Harvest,
       field: null == field
           ? _value.field
           : field // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Field,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LocalizationParamsImpl extends _LocalizationParams {
-  _$LocalizationParamsImpl({this.farm = '', this.harvest = '', this.field = ''})
+class _$LocationParamsImpl extends _LocationParams {
+  _$LocationParamsImpl(
+      {required this.farm, required this.harvest, required this.field})
       : super._();
 
   @override
-  @JsonKey()
-  final String farm;
+  final Farm farm;
   @override
-  @JsonKey()
-  final String harvest;
+  final Harvest harvest;
   @override
-  @JsonKey()
-  final String field;
+  final Field field;
 
   @override
   String toString() {
-    return 'LocalizationParams(farm: $farm, harvest: $harvest, field: $field)';
+    return 'LocationParams(farm: $farm, harvest: $harvest, field: $field)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalizationParamsImpl &&
+            other is _$LocationParamsImpl &&
             (identical(other.farm, farm) || other.farm == farm) &&
             (identical(other.harvest, harvest) || other.harvest == harvest) &&
             (identical(other.field, field) || other.field == field));
@@ -148,26 +181,26 @@ class _$LocalizationParamsImpl extends _LocalizationParams {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalizationParamsImplCopyWith<_$LocalizationParamsImpl> get copyWith =>
-      __$$LocalizationParamsImplCopyWithImpl<_$LocalizationParamsImpl>(
+  _$$LocationParamsImplCopyWith<_$LocationParamsImpl> get copyWith =>
+      __$$LocationParamsImplCopyWithImpl<_$LocationParamsImpl>(
           this, _$identity);
 }
 
-abstract class _LocalizationParams extends LocalizationParams {
-  factory _LocalizationParams(
-      {final String farm,
-      final String harvest,
-      final String field}) = _$LocalizationParamsImpl;
-  _LocalizationParams._() : super._();
+abstract class _LocationParams extends LocationParams {
+  factory _LocationParams(
+      {required final Farm farm,
+      required final Harvest harvest,
+      required final Field field}) = _$LocationParamsImpl;
+  _LocationParams._() : super._();
 
   @override
-  String get farm;
+  Farm get farm;
   @override
-  String get harvest;
+  Harvest get harvest;
   @override
-  String get field;
+  Field get field;
   @override
   @JsonKey(ignore: true)
-  _$$LocalizationParamsImplCopyWith<_$LocalizationParamsImpl> get copyWith =>
+  _$$LocationParamsImplCopyWith<_$LocationParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -13,6 +13,7 @@ import 'domain/usecases/get_fields_usecase.dart';
 import 'domain/usecases/get_harvests_usecase.dart';
 import 'operator.dart';
 import 'presentation/views/home/home.dart';
+import 'presentation/views/home/home_viewmodel.dart';
 
 /// Login module
 class OperatorModule extends Module {
@@ -87,5 +88,6 @@ class OperatorModule extends Module {
           (i) => IntroViewModel(i.get<IGetFarmsUsecase>(),
               i.get<IGetFieldsUsecase>(), i.get<IGetHarvestsUsecase>()),
         ),
+        Bind.lazySingleton<HomeViewModel>((i) => HomeViewModel()),
       ];
 }

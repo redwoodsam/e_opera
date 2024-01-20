@@ -3,12 +3,28 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
+import '../../../domain/entities/localization_params.dart';
+import 'home_viewmodel.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<StatefulWidget> createState() => _OperatorHomePageState();
+}
+
+class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
+  @override
+  void initState() {
+    super.initState();
+    // viewModel.getLocationParams();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final routeArgs =
+        ModalRoute.of(context)!.settings.arguments as LocationParams;
+
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -88,7 +104,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Fazenda LoremImpsum, Talhão x',
+                            '${routeArgs.farm.farmName}, ${routeArgs.field.fieldDescription}',
                             style: TextStyle(
                               color: const Color(0xFF121517),
                               fontSize: 14.fontSize,

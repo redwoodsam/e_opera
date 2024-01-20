@@ -21,6 +21,14 @@ mixin _$IntroState {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)
+        loaded,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +37,14 @@ mixin _$IntroState {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +53,14 @@ mixin _$IntroState {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -46,6 +70,7 @@ mixin _$IntroState {
     required TResult Function(InitialIntro value) initial,
     required TResult Function(ErrorIntro value) error,
     required TResult Function(LoadingIntro value) loading,
+    required TResult Function(LoadedIntro value) loaded,
     required TResult Function(SuccessIntro value) success,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +79,7 @@ mixin _$IntroState {
     TResult? Function(InitialIntro value)? initial,
     TResult? Function(ErrorIntro value)? error,
     TResult? Function(LoadingIntro value)? loading,
+    TResult? Function(LoadedIntro value)? loaded,
     TResult? Function(SuccessIntro value)? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +88,7 @@ mixin _$IntroState {
     TResult Function(InitialIntro value)? initial,
     TResult Function(ErrorIntro value)? error,
     TResult Function(LoadingIntro value)? loading,
+    TResult Function(LoadedIntro value)? loaded,
     TResult Function(SuccessIntro value)? success,
     required TResult orElse(),
   }) =>
@@ -127,6 +154,14 @@ class _$InitialIntroImpl implements InitialIntro {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)
+        loaded,
     required TResult Function() success,
   }) {
     return initial();
@@ -138,6 +173,14 @@ class _$InitialIntroImpl implements InitialIntro {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -149,6 +192,14 @@ class _$InitialIntroImpl implements InitialIntro {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -164,6 +215,7 @@ class _$InitialIntroImpl implements InitialIntro {
     required TResult Function(InitialIntro value) initial,
     required TResult Function(ErrorIntro value) error,
     required TResult Function(LoadingIntro value) loading,
+    required TResult Function(LoadedIntro value) loaded,
     required TResult Function(SuccessIntro value) success,
   }) {
     return initial(this);
@@ -175,6 +227,7 @@ class _$InitialIntroImpl implements InitialIntro {
     TResult? Function(InitialIntro value)? initial,
     TResult? Function(ErrorIntro value)? error,
     TResult? Function(LoadingIntro value)? loading,
+    TResult? Function(LoadedIntro value)? loaded,
     TResult? Function(SuccessIntro value)? success,
   }) {
     return initial?.call(this);
@@ -186,6 +239,7 @@ class _$InitialIntroImpl implements InitialIntro {
     TResult Function(InitialIntro value)? initial,
     TResult Function(ErrorIntro value)? error,
     TResult Function(LoadingIntro value)? loading,
+    TResult Function(LoadedIntro value)? loaded,
     TResult Function(SuccessIntro value)? success,
     required TResult orElse(),
   }) {
@@ -241,6 +295,14 @@ class _$ErrorIntroImpl implements ErrorIntro {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)
+        loaded,
     required TResult Function() success,
   }) {
     return error();
@@ -252,6 +314,14 @@ class _$ErrorIntroImpl implements ErrorIntro {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult? Function()? success,
   }) {
     return error?.call();
@@ -263,6 +333,14 @@ class _$ErrorIntroImpl implements ErrorIntro {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -278,6 +356,7 @@ class _$ErrorIntroImpl implements ErrorIntro {
     required TResult Function(InitialIntro value) initial,
     required TResult Function(ErrorIntro value) error,
     required TResult Function(LoadingIntro value) loading,
+    required TResult Function(LoadedIntro value) loaded,
     required TResult Function(SuccessIntro value) success,
   }) {
     return error(this);
@@ -289,6 +368,7 @@ class _$ErrorIntroImpl implements ErrorIntro {
     TResult? Function(InitialIntro value)? initial,
     TResult? Function(ErrorIntro value)? error,
     TResult? Function(LoadingIntro value)? loading,
+    TResult? Function(LoadedIntro value)? loaded,
     TResult? Function(SuccessIntro value)? success,
   }) {
     return error?.call(this);
@@ -300,6 +380,7 @@ class _$ErrorIntroImpl implements ErrorIntro {
     TResult Function(InitialIntro value)? initial,
     TResult Function(ErrorIntro value)? error,
     TResult Function(LoadingIntro value)? loading,
+    TResult Function(LoadedIntro value)? loaded,
     TResult Function(SuccessIntro value)? success,
     required TResult orElse(),
   }) {
@@ -355,6 +436,14 @@ class _$LoadingIntroImpl implements LoadingIntro {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)
+        loaded,
     required TResult Function() success,
   }) {
     return loading();
@@ -366,6 +455,14 @@ class _$LoadingIntroImpl implements LoadingIntro {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult? Function()? success,
   }) {
     return loading?.call();
@@ -377,6 +474,14 @@ class _$LoadingIntroImpl implements LoadingIntro {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -392,6 +497,7 @@ class _$LoadingIntroImpl implements LoadingIntro {
     required TResult Function(InitialIntro value) initial,
     required TResult Function(ErrorIntro value) error,
     required TResult Function(LoadingIntro value) loading,
+    required TResult Function(LoadedIntro value) loaded,
     required TResult Function(SuccessIntro value) success,
   }) {
     return loading(this);
@@ -403,6 +509,7 @@ class _$LoadingIntroImpl implements LoadingIntro {
     TResult? Function(InitialIntro value)? initial,
     TResult? Function(ErrorIntro value)? error,
     TResult? Function(LoadingIntro value)? loading,
+    TResult? Function(LoadedIntro value)? loaded,
     TResult? Function(SuccessIntro value)? success,
   }) {
     return loading?.call(this);
@@ -414,6 +521,7 @@ class _$LoadingIntroImpl implements LoadingIntro {
     TResult Function(InitialIntro value)? initial,
     TResult Function(ErrorIntro value)? error,
     TResult Function(LoadingIntro value)? loading,
+    TResult Function(LoadedIntro value)? loaded,
     TResult Function(SuccessIntro value)? success,
     required TResult orElse(),
   }) {
@@ -426,6 +534,318 @@ class _$LoadingIntroImpl implements LoadingIntro {
 
 abstract class LoadingIntro implements IntroState {
   factory LoadingIntro() = _$LoadingIntroImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadedIntroImplCopyWith<$Res> {
+  factory _$$LoadedIntroImplCopyWith(
+          _$LoadedIntroImpl value, $Res Function(_$LoadedIntroImpl) then) =
+      __$$LoadedIntroImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {List<Farm> farms,
+      Farm? selectedFarm,
+      List<Harvest> harvests,
+      Harvest? selectedHarvest,
+      List<Field> fields,
+      Field? selectedField});
+
+  $FarmCopyWith<$Res>? get selectedFarm;
+  $HarvestCopyWith<$Res>? get selectedHarvest;
+  $FieldCopyWith<$Res>? get selectedField;
+}
+
+/// @nodoc
+class __$$LoadedIntroImplCopyWithImpl<$Res>
+    extends _$IntroStateCopyWithImpl<$Res, _$LoadedIntroImpl>
+    implements _$$LoadedIntroImplCopyWith<$Res> {
+  __$$LoadedIntroImplCopyWithImpl(
+      _$LoadedIntroImpl _value, $Res Function(_$LoadedIntroImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? farms = null,
+    Object? selectedFarm = freezed,
+    Object? harvests = null,
+    Object? selectedHarvest = freezed,
+    Object? fields = null,
+    Object? selectedField = freezed,
+  }) {
+    return _then(_$LoadedIntroImpl(
+      farms: null == farms
+          ? _value._farms
+          : farms // ignore: cast_nullable_to_non_nullable
+              as List<Farm>,
+      selectedFarm: freezed == selectedFarm
+          ? _value.selectedFarm
+          : selectedFarm // ignore: cast_nullable_to_non_nullable
+              as Farm?,
+      harvests: null == harvests
+          ? _value._harvests
+          : harvests // ignore: cast_nullable_to_non_nullable
+              as List<Harvest>,
+      selectedHarvest: freezed == selectedHarvest
+          ? _value.selectedHarvest
+          : selectedHarvest // ignore: cast_nullable_to_non_nullable
+              as Harvest?,
+      fields: null == fields
+          ? _value._fields
+          : fields // ignore: cast_nullable_to_non_nullable
+              as List<Field>,
+      selectedField: freezed == selectedField
+          ? _value.selectedField
+          : selectedField // ignore: cast_nullable_to_non_nullable
+              as Field?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FarmCopyWith<$Res>? get selectedFarm {
+    if (_value.selectedFarm == null) {
+      return null;
+    }
+
+    return $FarmCopyWith<$Res>(_value.selectedFarm!, (value) {
+      return _then(_value.copyWith(selectedFarm: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HarvestCopyWith<$Res>? get selectedHarvest {
+    if (_value.selectedHarvest == null) {
+      return null;
+    }
+
+    return $HarvestCopyWith<$Res>(_value.selectedHarvest!, (value) {
+      return _then(_value.copyWith(selectedHarvest: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FieldCopyWith<$Res>? get selectedField {
+    if (_value.selectedField == null) {
+      return null;
+    }
+
+    return $FieldCopyWith<$Res>(_value.selectedField!, (value) {
+      return _then(_value.copyWith(selectedField: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedIntroImpl implements LoadedIntro {
+  _$LoadedIntroImpl(
+      {final List<Farm> farms = const [],
+      this.selectedFarm,
+      final List<Harvest> harvests = const [],
+      this.selectedHarvest,
+      final List<Field> fields = const [],
+      this.selectedField})
+      : _farms = farms,
+        _harvests = harvests,
+        _fields = fields;
+
+  final List<Farm> _farms;
+  @override
+  @JsonKey()
+  List<Farm> get farms {
+    if (_farms is EqualUnmodifiableListView) return _farms;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_farms);
+  }
+
+  @override
+  final Farm? selectedFarm;
+  final List<Harvest> _harvests;
+  @override
+  @JsonKey()
+  List<Harvest> get harvests {
+    if (_harvests is EqualUnmodifiableListView) return _harvests;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_harvests);
+  }
+
+  @override
+  final Harvest? selectedHarvest;
+  final List<Field> _fields;
+  @override
+  @JsonKey()
+  List<Field> get fields {
+    if (_fields is EqualUnmodifiableListView) return _fields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_fields);
+  }
+
+  @override
+  final Field? selectedField;
+
+  @override
+  String toString() {
+    return 'IntroState.loaded(farms: $farms, selectedFarm: $selectedFarm, harvests: $harvests, selectedHarvest: $selectedHarvest, fields: $fields, selectedField: $selectedField)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedIntroImpl &&
+            const DeepCollectionEquality().equals(other._farms, _farms) &&
+            (identical(other.selectedFarm, selectedFarm) ||
+                other.selectedFarm == selectedFarm) &&
+            const DeepCollectionEquality().equals(other._harvests, _harvests) &&
+            (identical(other.selectedHarvest, selectedHarvest) ||
+                other.selectedHarvest == selectedHarvest) &&
+            const DeepCollectionEquality().equals(other._fields, _fields) &&
+            (identical(other.selectedField, selectedField) ||
+                other.selectedField == selectedField));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_farms),
+      selectedFarm,
+      const DeepCollectionEquality().hash(_harvests),
+      selectedHarvest,
+      const DeepCollectionEquality().hash(_fields),
+      selectedField);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedIntroImplCopyWith<_$LoadedIntroImpl> get copyWith =>
+      __$$LoadedIntroImplCopyWithImpl<_$LoadedIntroImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() error,
+    required TResult Function() loading,
+    required TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)
+        loaded,
+    required TResult Function() success,
+  }) {
+    return loaded(
+        farms, selectedFarm, harvests, selectedHarvest, fields, selectedField);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? error,
+    TResult? Function()? loading,
+    TResult? Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
+    TResult? Function()? success,
+  }) {
+    return loaded?.call(
+        farms, selectedFarm, harvests, selectedHarvest, fields, selectedField);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? error,
+    TResult Function()? loading,
+    TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(farms, selectedFarm, harvests, selectedHarvest, fields,
+          selectedField);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialIntro value) initial,
+    required TResult Function(ErrorIntro value) error,
+    required TResult Function(LoadingIntro value) loading,
+    required TResult Function(LoadedIntro value) loaded,
+    required TResult Function(SuccessIntro value) success,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialIntro value)? initial,
+    TResult? Function(ErrorIntro value)? error,
+    TResult? Function(LoadingIntro value)? loading,
+    TResult? Function(LoadedIntro value)? loaded,
+    TResult? Function(SuccessIntro value)? success,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialIntro value)? initial,
+    TResult Function(ErrorIntro value)? error,
+    TResult Function(LoadingIntro value)? loading,
+    TResult Function(LoadedIntro value)? loaded,
+    TResult Function(SuccessIntro value)? success,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadedIntro implements IntroState {
+  factory LoadedIntro(
+      {final List<Farm> farms,
+      final Farm? selectedFarm,
+      final List<Harvest> harvests,
+      final Harvest? selectedHarvest,
+      final List<Field> fields,
+      final Field? selectedField}) = _$LoadedIntroImpl;
+
+  List<Farm> get farms;
+  Farm? get selectedFarm;
+  List<Harvest> get harvests;
+  Harvest? get selectedHarvest;
+  List<Field> get fields;
+  Field? get selectedField;
+  @JsonKey(ignore: true)
+  _$$LoadedIntroImplCopyWith<_$LoadedIntroImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -469,6 +889,14 @@ class _$SuccessIntroImpl implements SuccessIntro {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)
+        loaded,
     required TResult Function() success,
   }) {
     return success();
@@ -480,6 +908,14 @@ class _$SuccessIntroImpl implements SuccessIntro {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -491,6 +927,14 @@ class _$SuccessIntroImpl implements SuccessIntro {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(
+            List<Farm> farms,
+            Farm? selectedFarm,
+            List<Harvest> harvests,
+            Harvest? selectedHarvest,
+            List<Field> fields,
+            Field? selectedField)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -506,6 +950,7 @@ class _$SuccessIntroImpl implements SuccessIntro {
     required TResult Function(InitialIntro value) initial,
     required TResult Function(ErrorIntro value) error,
     required TResult Function(LoadingIntro value) loading,
+    required TResult Function(LoadedIntro value) loaded,
     required TResult Function(SuccessIntro value) success,
   }) {
     return success(this);
@@ -517,6 +962,7 @@ class _$SuccessIntroImpl implements SuccessIntro {
     TResult? Function(InitialIntro value)? initial,
     TResult? Function(ErrorIntro value)? error,
     TResult? Function(LoadingIntro value)? loading,
+    TResult? Function(LoadedIntro value)? loaded,
     TResult? Function(SuccessIntro value)? success,
   }) {
     return success?.call(this);
@@ -528,6 +974,7 @@ class _$SuccessIntroImpl implements SuccessIntro {
     TResult Function(InitialIntro value)? initial,
     TResult Function(ErrorIntro value)? error,
     TResult Function(LoadingIntro value)? loading,
+    TResult Function(LoadedIntro value)? loaded,
     TResult Function(SuccessIntro value)? success,
     required TResult orElse(),
   }) {

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/core.dart';
 import '../../domain/domain.dart';
+import '../../domain/entities/harvest.dart';
 import '../../domain/repositories/harvest_repository.dart';
 import '../data.dart';
 
@@ -13,10 +14,12 @@ class HarvestRepository implements IHarvestRepository {
   HarvestRepository(this._datasource);
 
   @override
-  Future<Either<Failure, Unit>> getHarvests() async {
+  Future<Either<Failure, List<Harvest>>> getHarvests() async {
     try {
-      await _datasource.getHarvests();
-      return const Right(unit);
+      final response = await _datasource.getHarvests();
+      List<Harvest> harvestList =
+          List<Harvest>.from(response.map((record) => record.toEntity()));
+      return Right(harvestList);
     } catch (error) {
       Log.e(error);
       return const Left(Failure.badRequest());

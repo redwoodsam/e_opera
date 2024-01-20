@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
+import '../../../domain/entities/farm.dart';
 import '../../../operator.dart';
 import '../../../operator_module.dart';
 
@@ -15,8 +16,8 @@ class OperatorIntroPage extends StatefulWidget {
 
 class _OperatorIntroPageState
     extends ViewState<OperatorIntroPage, IntroViewModel> {
-
-      @override
+  List<Farm> _farmOptions = List<Farm>.empty();
+  @override
   void initState() {
     super.initState();
     viewModel.getFarms();
@@ -25,123 +26,181 @@ class _OperatorIntroPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: context.screenWidth,
-        height: context.screenHeight,
-        clipBehavior: Clip.antiAlias,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment(-0.21, -0.98),
-            end: Alignment(0.21, 0.98),
-            colors: [Color(0xFF93ECB0), Color(0xFF074624)],
-          ),
-        ),
-        child: Stack(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: Dimension.md.width,
-                    top: const Dimension(6.43).height,
-                  ),
-                  child: Text(
-                    'Operador',
-                    style: TextStyle(
-                      color: const Color(0xFF121517),
-                      fontSize: 20.fontSize,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Image.asset(
-                    'assets/images/map.png',
-                    height: const Dimension(20).height,
-                  ),
-                ),
-              ],
-            ),
+        body: ViewModelConsumer<IntroViewModel, IntroState>(
+      viewModel: viewModel,
+
+      // Eventos que não precisam rebuildar a tela
+      // Eg. Success que vai para a próxima tela
+      listener: (context, state) => switch (state) {
+        SuccessIntro() => {},
+        _ => null,
+      },
+      // Quando modificações para buildar a tela
+      // Eg. para atualizar um estado de autocomplete
+      builder: (context, state) {
+        return switch (state) {
+          LoadedIntro(
+            :final farms,
+            :final selectedFarm,
+            :final fields,
+            :final selectedField,
+            :final harvests,
+            :final selectedHarvest
+          ) =>
             Container(
-              width: double.infinity,
-              constraints: BoxConstraints(
-                maxHeight: context.screenHeight - const Dimension(31).height,
-                maxWidth: context.screenWidth,
-              ),
-              margin: EdgeInsets.only(top: const Dimension(31).height),
+              width: context.screenWidth,
+              height: context.screenHeight,
+              clipBehavior: Clip.antiAlias,
               decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(45),
-                  topRight: Radius.circular(45),
+                gradient: LinearGradient(
+                  begin: Alignment(-0.21, -0.98),
+                  end: Alignment(0.21, 0.98),
+                  colors: [Color(0xFF93ECB0), Color(0xFF074624)],
                 ),
               ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: Dimension.md.width),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: Dimension.xl.height),
-                      child: Text(
-                        'Qual a sua localização atual?',
-                        style: TextStyle(
-                          color: const Color(0xFF121517),
-                          fontSize: 18.fontSize,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w500,
+              child: SingleChildScrollView(
+                  child: Stack(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: Dimension.md.width,
+                          top: const Dimension(6.43).height,
+                        ),
+                        child: Text(
+                          'Operador',
+                          style: TextStyle(
+                            color: const Color(0xFF121517),
+                            fontSize: 20.fontSize,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
+                      Center(
+                        child: Image.asset(
+                          'assets/images/map.png',
+                          height: const Dimension(20).height,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    width: double.infinity,
+                    constraints: BoxConstraints(
+                      maxHeight:
+                          context.screenHeight - const Dimension(31).height,
+                      maxWidth: context.screenWidth,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: Dimension.md.height),
-                      child: const _CustomItemSearch(
-                        title: 'Fazenda',
-                        hintText: 'Qual fazenda você se encontra?',
+                    margin: EdgeInsets.only(top: const Dimension(31).height),
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(45),
+                        topRight: Radius.circular(45),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: Dimension.md.height),
-                      child: const _CustomItemSearch(
-                        title: 'Safra',
-                        hintText: 'Qual safra você se encontra?',
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: Dimension.md.width),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: Dimension.xl.height),
+                            child: Text(
+                              'Qual a sua localização atual?',
+                              style: TextStyle(
+                                color: const Color(0xFF121517),
+                                fontSize: 18.fontSize,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: Dimension.md.height),
+                            child: _CustomAutoComplete(
+                              title: 'Fazenda',
+                              hintText: 'Qual fazenda você se encontra?',
+                              listOfContents:
+                                  farms.map((e) => e.farmName).toList(),
+                              onSelected: viewModel.onSelectFarm,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: Dimension.md.height),
+                            child: _CustomAutoComplete(
+                              title: 'Safra',
+                              hintText: 'Qual safra você se encontra?',
+                              listOfContents:
+                                  harvests.map((e) => e.description).toList(),
+                              onSelected: viewModel.onSelectHarvest,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: Dimension.md.height),
+                            child: _CustomAutoComplete(
+                              title: 'Talhão',
+                              hintText: 'Qual talhão você se encontra?',
+                              listOfContents: fields
+                                  .map((e) => e.fieldDescription)
+                                  .toList(),
+                              onSelected: viewModel.onSelectField,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: Dimension.xxl.height),
+                            child: CustomFilledButton(
+                              onPressed: () => viewModel.navigateToHomePage(),
+                              text: 'Continuar',
+                              disabled: [
+                                selectedFarm,
+                                selectedField,
+                                selectedHarvest
+                              ].any((element) =>
+                                      element == null || element == '')
+                                  ? true
+                                  : false,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: Dimension.md.height),
-                      child: const _CustomItemSearch(
-                        title: 'Talhão',
-                        hintText: 'Qual talhão você se encontra?',
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: Dimension.xxl.height),
-                      child: CustomFilledButton(
-                        onPressed: () => Nav.pushNamed(OperatorModule.home),
-                        text: 'Continuar',
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
+              )),
+            ),
+          LoadingIntro() => Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          ErrorIntro() => Scaffold(
+                body: Center(
+              /// TODO: tela de erro
+              child: Text('Erro'),
+            )),
+          _ => const SizedBox.shrink()
+        };
+      },
+    ));
   }
 }
 
 class _CustomItemSearch extends StatelessWidget {
   final String title;
   final String hintText;
+  final TextEditingController textEditingController;
+  final FocusNode focusNode;
 
-  const _CustomItemSearch({
-    required this.title,
-    required this.hintText,
-  });
+  _CustomItemSearch(
+      {required this.title,
+      required this.hintText,
+      required this.textEditingController,
+      required this.focusNode});
 
   @override
   Widget build(BuildContext context) {
@@ -175,6 +234,8 @@ class _CustomItemSearch extends StatelessWidget {
                 children: [
                   Flexible(
                     child: TextFormField(
+                      controller: textEditingController,
+                      focusNode: focusNode,
                       style: TextStyle(
                         color: context.foreground.active,
                         fontSize: 16.fontSize,
@@ -213,5 +274,77 @@ class _CustomItemSearch extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _CustomAutoComplete extends StatelessWidget {
+  final String title;
+  final String hintText;
+  final List<String> listOfContents;
+  final Function(String) onSelected;
+  final _focusNode = FocusNode();
+
+  _CustomAutoComplete({
+    super.key,
+    required this.title,
+    required this.hintText,
+    required this.listOfContents,
+    required this.onSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+        onTap: () => _focusNode.unfocus(),
+        child: Autocomplete<String>(
+          optionsBuilder: (TextEditingValue textEditingValue) {
+            if (textEditingValue.text == '') {
+              return const Iterable<String>.empty();
+            }
+
+            return listOfContents.where((option) => option
+                .toLowerCase()
+                .contains(textEditingValue.text.toLowerCase()));
+          },
+          fieldViewBuilder:
+              (context, textEditingController, focusNode, onFieldSubmitted) {
+            return _CustomItemSearch(
+              textEditingController: textEditingController,
+              title: title,
+              hintText: hintText,
+              focusNode: focusNode,
+            );
+          },
+          onSelected: onSelected,
+          optionsViewBuilder: (context, onSelected, options) {
+            return Align(
+                alignment: Alignment.topLeft,
+                child: Material(
+                    color: Colors.white,
+                    shadowColor: Colors.grey,
+                    elevation: 4,
+                    child: SizedBox(
+                        width: Dimension(41).width,
+                        child: ListView.separated(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            final option = options.elementAt(index);
+
+                            return ListTile(
+                              title: Text(
+                                option.toString(),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: Dimension(2).value),
+                              ),
+                              onTap: () => onSelected(option),
+                            );
+                          },
+                          itemCount: options.length,
+                          separatorBuilder: (context, index) => const Divider(),
+                        ))));
+          },
+        ));
   }
 }

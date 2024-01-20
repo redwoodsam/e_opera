@@ -18,7 +18,12 @@ class _LoginPageState extends State<LoginPage> {
   late LoginViewModel viewModel;
   late final TextEditingController _userController;
   late final TextEditingController _passwordController;
+
+  // ValueNotifier:
+  // Serve para atualizar o estado de um widget em específico dentro de um
+  // ValueListenableBuilder - Atualiza apenas o componente involucrado nisso
   final ValueNotifier<bool> _obscureNotifier = ValueNotifier(true);
+
   @override
   void initState() {
     super.initState();
@@ -39,7 +44,8 @@ class _LoginPageState extends State<LoginPage> {
       body: ViewModelConsumer<LoginViewModel, LoginState>(
         viewModel: viewModel,
         listener: (context, state) => switch (state) {
-          SuccessLogin() => Nav.pushNamed(MainModule.operatorModule),
+          // SuccessLogin() => Nav.pushNamed(MainModule.operatorModule),
+          SuccessLogin() => Nav.pushNamed(MainModule.driverModule),
           _ => null,
         },
         builder: (context, state) {
@@ -59,7 +65,8 @@ class _LoginPageState extends State<LoginPage> {
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: Dimension.md.width),
-                    child: Column(
+                    child: SingleChildScrollView(
+                        child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
@@ -243,7 +250,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ],
-                    ),
+                    )),
                   ),
                 ),
               ),

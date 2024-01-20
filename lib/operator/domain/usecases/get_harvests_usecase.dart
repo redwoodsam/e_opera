@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
 import '../../../core/core.dart';
 import '../domain.dart';
+import '../entities/harvest.dart';
 import '../repositories/harvest_repository.dart';
 
 /// Interface to Harvests
 abstract class IGetHarvestsUsecase {
   /// Method to get harvests
-  Future<Either<Failure, Unit>> call();
+  Future<Either<Failure, List<Harvest>>> call();
 }
 
 /// Implementation of [IGetHarvestsUsecase]
@@ -16,9 +17,7 @@ class GetHarvestsUsecase implements IGetHarvestsUsecase {
   GetHarvestsUsecase(this._repository);
 
   @override
-  Future<Either<Failure, Unit>> call() async {
-    await _repository.getHarvests();
-
-    return const Right(unit);
+  Future<Either<Failure, List<Harvest>>> call() async {
+    return await _repository.getHarvests();
   }
 }
