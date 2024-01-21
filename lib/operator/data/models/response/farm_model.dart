@@ -41,9 +41,9 @@ class FarmModel with _$FarmModel {
   ///Creates a [Farm] from a [FarmModel].
   Farm toEntity() {
     return Farm(
-        branchCode: branchCode as String,
-        branchName: branchName as String,
-        farmCode: farmCode as String,
-        farmName: farmName as String);
+        branchCode: branchCode,
+        branchName: branchName,
+        farmCode: farmCode,
+        farmName: farmName,);
   }
 }

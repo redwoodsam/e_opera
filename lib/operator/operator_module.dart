@@ -78,15 +78,15 @@ class OperatorModule extends Module {
           (i) => GetFarmsUsecase(i.get<IFarmRepository>()),
         ),
         Bind.factory<IGetFieldsUsecase>(
-            (i) => GetFieldsUsecase(i.get<IFieldRepository>())),
+            (i) => GetFieldsUsecase(i.get<IFieldRepository>()),),
         Bind.factory<IGetHarvestsUsecase>(
-            (i) => GetHarvestsUsecase(i.get<IHarvestRepository>()))
+            (i) => GetHarvestsUsecase(i.get<IHarvestRepository>()),),
       ];
 
   static List<Bind> get _viewmodel => [
         Bind.lazySingleton<IntroViewModel>(
           (i) => IntroViewModel(i.get<IGetFarmsUsecase>(),
-              i.get<IGetFieldsUsecase>(), i.get<IGetHarvestsUsecase>()),
+              i.get<IGetFieldsUsecase>(), i.get<IGetHarvestsUsecase>(),),
         ),
         Bind.lazySingleton<HomeViewModel>((i) => HomeViewModel()),
       ];

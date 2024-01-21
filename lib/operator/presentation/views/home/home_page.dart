@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/core.dart';
 import '../../../domain/entities/localization_params.dart';
 import 'home_viewmodel.dart';
+import '../../../harvestForm/presentation/views/productData_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -198,20 +199,34 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
                               ),
                             ],
                           ),
-                          child: Column(
-                            children: [
-                              Image.asset('assets/icons/realizar_colheira.png'),
-                              Text(
-                                'Realizar colheita',
-                                style: TextStyle(
-                                  color: const Color(0xFF121517),
-                                  fontSize: 16.fontSize,
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w500,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductDataPage()),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Image.asset(
+                                  'assets/icons/realizar_colheira.png',
+                                  height: 80, // ajuste conforme necessário
+                                  width: 80, // ajuste conforme necessário
                                 ),
-                              ),
-                              Dimension.xs.vertical,
-                            ],
+                                Text(
+                                  'Realizar colheita',
+                                  style: TextStyle(
+                                    color: const Color(0xFF121517),
+                                    fontSize: 16,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                SizedBox(height: 8),
+                                // ajuste conforme necessário
+                              ],
+                            ),
                           ),
                         ),
                         Container(
