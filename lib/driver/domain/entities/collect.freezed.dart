@@ -16,20 +16,17 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Collect {
-  String get date => throw _privateConstructorUsedError;
-  String get area => throw _privateConstructorUsedError;
-  String get responsible => throw _privateConstructorUsedError;
-  String get productCode => throw _privateConstructorUsedError;
-  String get productDescription => throw _privateConstructorUsedError;
-  String get productVariety => throw _privateConstructorUsedError;
-  String get productCollectedAmount => throw _privateConstructorUsedError;
-  String get productUnit => throw _privateConstructorUsedError;
-  String get driverName => throw _privateConstructorUsedError;
-  String get driverCPF => throw _privateConstructorUsedError;
-  String get truckPlate => throw _privateConstructorUsedError;
-  String get carrier => throw _privateConstructorUsedError;
-  String get destination => throw _privateConstructorUsedError;
-  String get observation => throw _privateConstructorUsedError;
+  String get codigo => throw _privateConstructorUsedError;
+  String get destinoColheita => throw _privateConstructorUsedError;
+  String get observacoes => throw _privateConstructorUsedError;
+  String get descricao => throw _privateConstructorUsedError;
+  String get variedade => throw _privateConstructorUsedError;
+  String get quantidadeColetada => throw _privateConstructorUsedError;
+  String get unidade => throw _privateConstructorUsedError;
+  String get nomeMotorista => throw _privateConstructorUsedError;
+  String get cpfMotorista => throw _privateConstructorUsedError;
+  String get placaCaminhao => throw _privateConstructorUsedError;
+  String get nomeTransportadora => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CollectCopyWith<Collect> get copyWith => throw _privateConstructorUsedError;
@@ -41,20 +38,17 @@ abstract class $CollectCopyWith<$Res> {
       _$CollectCopyWithImpl<$Res, Collect>;
   @useResult
   $Res call(
-      {String date,
-      String area,
-      String responsible,
-      String productCode,
-      String productDescription,
-      String productVariety,
-      String productCollectedAmount,
-      String productUnit,
-      String driverName,
-      String driverCPF,
-      String truckPlate,
-      String carrier,
-      String destination,
-      String observation});
+      {String codigo,
+      String destinoColheita,
+      String observacoes,
+      String descricao,
+      String variedade,
+      String quantidadeColetada,
+      String unidade,
+      String nomeMotorista,
+      String cpfMotorista,
+      String placaCaminhao,
+      String nomeTransportadora});
 }
 
 /// @nodoc
@@ -70,77 +64,62 @@ class _$CollectCopyWithImpl<$Res, $Val extends Collect>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = null,
-    Object? area = null,
-    Object? responsible = null,
-    Object? productCode = null,
-    Object? productDescription = null,
-    Object? productVariety = null,
-    Object? productCollectedAmount = null,
-    Object? productUnit = null,
-    Object? driverName = null,
-    Object? driverCPF = null,
-    Object? truckPlate = null,
-    Object? carrier = null,
-    Object? destination = null,
-    Object? observation = null,
+    Object? codigo = null,
+    Object? destinoColheita = null,
+    Object? observacoes = null,
+    Object? descricao = null,
+    Object? variedade = null,
+    Object? quantidadeColetada = null,
+    Object? unidade = null,
+    Object? nomeMotorista = null,
+    Object? cpfMotorista = null,
+    Object? placaCaminhao = null,
+    Object? nomeTransportadora = null,
   }) {
     return _then(_value.copyWith(
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
+      codigo: null == codigo
+          ? _value.codigo
+          : codigo // ignore: cast_nullable_to_non_nullable
               as String,
-      area: null == area
-          ? _value.area
-          : area // ignore: cast_nullable_to_non_nullable
+      destinoColheita: null == destinoColheita
+          ? _value.destinoColheita
+          : destinoColheita // ignore: cast_nullable_to_non_nullable
               as String,
-      responsible: null == responsible
-          ? _value.responsible
-          : responsible // ignore: cast_nullable_to_non_nullable
+      observacoes: null == observacoes
+          ? _value.observacoes
+          : observacoes // ignore: cast_nullable_to_non_nullable
               as String,
-      productCode: null == productCode
-          ? _value.productCode
-          : productCode // ignore: cast_nullable_to_non_nullable
+      descricao: null == descricao
+          ? _value.descricao
+          : descricao // ignore: cast_nullable_to_non_nullable
               as String,
-      productDescription: null == productDescription
-          ? _value.productDescription
-          : productDescription // ignore: cast_nullable_to_non_nullable
+      variedade: null == variedade
+          ? _value.variedade
+          : variedade // ignore: cast_nullable_to_non_nullable
               as String,
-      productVariety: null == productVariety
-          ? _value.productVariety
-          : productVariety // ignore: cast_nullable_to_non_nullable
+      quantidadeColetada: null == quantidadeColetada
+          ? _value.quantidadeColetada
+          : quantidadeColetada // ignore: cast_nullable_to_non_nullable
               as String,
-      productCollectedAmount: null == productCollectedAmount
-          ? _value.productCollectedAmount
-          : productCollectedAmount // ignore: cast_nullable_to_non_nullable
+      unidade: null == unidade
+          ? _value.unidade
+          : unidade // ignore: cast_nullable_to_non_nullable
               as String,
-      productUnit: null == productUnit
-          ? _value.productUnit
-          : productUnit // ignore: cast_nullable_to_non_nullable
+      nomeMotorista: null == nomeMotorista
+          ? _value.nomeMotorista
+          : nomeMotorista // ignore: cast_nullable_to_non_nullable
               as String,
-      driverName: null == driverName
-          ? _value.driverName
-          : driverName // ignore: cast_nullable_to_non_nullable
+      cpfMotorista: null == cpfMotorista
+          ? _value.cpfMotorista
+          : cpfMotorista // ignore: cast_nullable_to_non_nullable
               as String,
-      driverCPF: null == driverCPF
-          ? _value.driverCPF
-          : driverCPF // ignore: cast_nullable_to_non_nullable
+      placaCaminhao: null == placaCaminhao
+          ? _value.placaCaminhao
+          : placaCaminhao // ignore: cast_nullable_to_non_nullable
               as String,
-      truckPlate: null == truckPlate
-          ? _value.truckPlate
-          : truckPlate // ignore: cast_nullable_to_non_nullable
-              as String,
-      carrier: null == carrier
-          ? _value.carrier
-          : carrier // ignore: cast_nullable_to_non_nullable
-              as String,
-      destination: null == destination
-          ? _value.destination
-          : destination // ignore: cast_nullable_to_non_nullable
-              as String,
-      observation: null == observation
-          ? _value.observation
-          : observation // ignore: cast_nullable_to_non_nullable
+      nomeTransportadora: null == nomeTransportadora
+          ? _value.nomeTransportadora
+          : nomeTransportadora // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -154,20 +133,17 @@ abstract class _$$CollectImplCopyWith<$Res> implements $CollectCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String date,
-      String area,
-      String responsible,
-      String productCode,
-      String productDescription,
-      String productVariety,
-      String productCollectedAmount,
-      String productUnit,
-      String driverName,
-      String driverCPF,
-      String truckPlate,
-      String carrier,
-      String destination,
-      String observation});
+      {String codigo,
+      String destinoColheita,
+      String observacoes,
+      String descricao,
+      String variedade,
+      String quantidadeColetada,
+      String unidade,
+      String nomeMotorista,
+      String cpfMotorista,
+      String placaCaminhao,
+      String nomeTransportadora});
 }
 
 /// @nodoc
@@ -181,77 +157,62 @@ class __$$CollectImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? date = null,
-    Object? area = null,
-    Object? responsible = null,
-    Object? productCode = null,
-    Object? productDescription = null,
-    Object? productVariety = null,
-    Object? productCollectedAmount = null,
-    Object? productUnit = null,
-    Object? driverName = null,
-    Object? driverCPF = null,
-    Object? truckPlate = null,
-    Object? carrier = null,
-    Object? destination = null,
-    Object? observation = null,
+    Object? codigo = null,
+    Object? destinoColheita = null,
+    Object? observacoes = null,
+    Object? descricao = null,
+    Object? variedade = null,
+    Object? quantidadeColetada = null,
+    Object? unidade = null,
+    Object? nomeMotorista = null,
+    Object? cpfMotorista = null,
+    Object? placaCaminhao = null,
+    Object? nomeTransportadora = null,
   }) {
     return _then(_$CollectImpl(
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
+      codigo: null == codigo
+          ? _value.codigo
+          : codigo // ignore: cast_nullable_to_non_nullable
               as String,
-      area: null == area
-          ? _value.area
-          : area // ignore: cast_nullable_to_non_nullable
+      destinoColheita: null == destinoColheita
+          ? _value.destinoColheita
+          : destinoColheita // ignore: cast_nullable_to_non_nullable
               as String,
-      responsible: null == responsible
-          ? _value.responsible
-          : responsible // ignore: cast_nullable_to_non_nullable
+      observacoes: null == observacoes
+          ? _value.observacoes
+          : observacoes // ignore: cast_nullable_to_non_nullable
               as String,
-      productCode: null == productCode
-          ? _value.productCode
-          : productCode // ignore: cast_nullable_to_non_nullable
+      descricao: null == descricao
+          ? _value.descricao
+          : descricao // ignore: cast_nullable_to_non_nullable
               as String,
-      productDescription: null == productDescription
-          ? _value.productDescription
-          : productDescription // ignore: cast_nullable_to_non_nullable
+      variedade: null == variedade
+          ? _value.variedade
+          : variedade // ignore: cast_nullable_to_non_nullable
               as String,
-      productVariety: null == productVariety
-          ? _value.productVariety
-          : productVariety // ignore: cast_nullable_to_non_nullable
+      quantidadeColetada: null == quantidadeColetada
+          ? _value.quantidadeColetada
+          : quantidadeColetada // ignore: cast_nullable_to_non_nullable
               as String,
-      productCollectedAmount: null == productCollectedAmount
-          ? _value.productCollectedAmount
-          : productCollectedAmount // ignore: cast_nullable_to_non_nullable
+      unidade: null == unidade
+          ? _value.unidade
+          : unidade // ignore: cast_nullable_to_non_nullable
               as String,
-      productUnit: null == productUnit
-          ? _value.productUnit
-          : productUnit // ignore: cast_nullable_to_non_nullable
+      nomeMotorista: null == nomeMotorista
+          ? _value.nomeMotorista
+          : nomeMotorista // ignore: cast_nullable_to_non_nullable
               as String,
-      driverName: null == driverName
-          ? _value.driverName
-          : driverName // ignore: cast_nullable_to_non_nullable
+      cpfMotorista: null == cpfMotorista
+          ? _value.cpfMotorista
+          : cpfMotorista // ignore: cast_nullable_to_non_nullable
               as String,
-      driverCPF: null == driverCPF
-          ? _value.driverCPF
-          : driverCPF // ignore: cast_nullable_to_non_nullable
+      placaCaminhao: null == placaCaminhao
+          ? _value.placaCaminhao
+          : placaCaminhao // ignore: cast_nullable_to_non_nullable
               as String,
-      truckPlate: null == truckPlate
-          ? _value.truckPlate
-          : truckPlate // ignore: cast_nullable_to_non_nullable
-              as String,
-      carrier: null == carrier
-          ? _value.carrier
-          : carrier // ignore: cast_nullable_to_non_nullable
-              as String,
-      destination: null == destination
-          ? _value.destination
-          : destination // ignore: cast_nullable_to_non_nullable
-              as String,
-      observation: null == observation
-          ? _value.observation
-          : observation // ignore: cast_nullable_to_non_nullable
+      nomeTransportadora: null == nomeTransportadora
+          ? _value.nomeTransportadora
+          : nomeTransportadora // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -261,68 +222,56 @@ class __$$CollectImplCopyWithImpl<$Res>
 
 class _$CollectImpl extends _Collect {
   _$CollectImpl(
-      {this.date = '',
-      this.area = '',
-      this.responsible = '',
-      this.productCode = '',
-      this.productDescription = '',
-      this.productVariety = '',
-      this.productCollectedAmount = '',
-      this.productUnit = '',
-      this.driverName = '',
-      this.driverCPF = '',
-      this.truckPlate = '',
-      this.carrier = '',
-      this.destination = '',
-      this.observation = ''})
+      {this.codigo = '',
+      this.destinoColheita = '',
+      this.observacoes = '',
+      this.descricao = '',
+      this.variedade = '',
+      this.quantidadeColetada = '',
+      this.unidade = '',
+      this.nomeMotorista = '',
+      this.cpfMotorista = '',
+      this.placaCaminhao = '',
+      this.nomeTransportadora = ''})
       : super._();
 
   @override
   @JsonKey()
-  final String date;
+  final String codigo;
   @override
   @JsonKey()
-  final String area;
+  final String destinoColheita;
   @override
   @JsonKey()
-  final String responsible;
+  final String observacoes;
   @override
   @JsonKey()
-  final String productCode;
+  final String descricao;
   @override
   @JsonKey()
-  final String productDescription;
+  final String variedade;
   @override
   @JsonKey()
-  final String productVariety;
+  final String quantidadeColetada;
   @override
   @JsonKey()
-  final String productCollectedAmount;
+  final String unidade;
   @override
   @JsonKey()
-  final String productUnit;
+  final String nomeMotorista;
   @override
   @JsonKey()
-  final String driverName;
+  final String cpfMotorista;
   @override
   @JsonKey()
-  final String driverCPF;
+  final String placaCaminhao;
   @override
   @JsonKey()
-  final String truckPlate;
-  @override
-  @JsonKey()
-  final String carrier;
-  @override
-  @JsonKey()
-  final String destination;
-  @override
-  @JsonKey()
-  final String observation;
+  final String nomeTransportadora;
 
   @override
   String toString() {
-    return 'Collect(date: $date, area: $area, responsible: $responsible, productCode: $productCode, productDescription: $productDescription, productVariety: $productVariety, productCollectedAmount: $productCollectedAmount, productUnit: $productUnit, driverName: $driverName, driverCPF: $driverCPF, truckPlate: $truckPlate, carrier: $carrier, destination: $destination, observation: $observation)';
+    return 'Collect(codigo: $codigo, destinoColheita: $destinoColheita, observacoes: $observacoes, descricao: $descricao, variedade: $variedade, quantidadeColetada: $quantidadeColetada, unidade: $unidade, nomeMotorista: $nomeMotorista, cpfMotorista: $cpfMotorista, placaCaminhao: $placaCaminhao, nomeTransportadora: $nomeTransportadora)';
   }
 
   @override
@@ -330,50 +279,42 @@ class _$CollectImpl extends _Collect {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectImpl &&
-            (identical(other.date, date) || other.date == date) &&
-            (identical(other.area, area) || other.area == area) &&
-            (identical(other.responsible, responsible) ||
-                other.responsible == responsible) &&
-            (identical(other.productCode, productCode) ||
-                other.productCode == productCode) &&
-            (identical(other.productDescription, productDescription) ||
-                other.productDescription == productDescription) &&
-            (identical(other.productVariety, productVariety) ||
-                other.productVariety == productVariety) &&
-            (identical(other.productCollectedAmount, productCollectedAmount) ||
-                other.productCollectedAmount == productCollectedAmount) &&
-            (identical(other.productUnit, productUnit) ||
-                other.productUnit == productUnit) &&
-            (identical(other.driverName, driverName) ||
-                other.driverName == driverName) &&
-            (identical(other.driverCPF, driverCPF) ||
-                other.driverCPF == driverCPF) &&
-            (identical(other.truckPlate, truckPlate) ||
-                other.truckPlate == truckPlate) &&
-            (identical(other.carrier, carrier) || other.carrier == carrier) &&
-            (identical(other.destination, destination) ||
-                other.destination == destination) &&
-            (identical(other.observation, observation) ||
-                other.observation == observation));
+            (identical(other.codigo, codigo) || other.codigo == codigo) &&
+            (identical(other.destinoColheita, destinoColheita) ||
+                other.destinoColheita == destinoColheita) &&
+            (identical(other.observacoes, observacoes) ||
+                other.observacoes == observacoes) &&
+            (identical(other.descricao, descricao) ||
+                other.descricao == descricao) &&
+            (identical(other.variedade, variedade) ||
+                other.variedade == variedade) &&
+            (identical(other.quantidadeColetada, quantidadeColetada) ||
+                other.quantidadeColetada == quantidadeColetada) &&
+            (identical(other.unidade, unidade) || other.unidade == unidade) &&
+            (identical(other.nomeMotorista, nomeMotorista) ||
+                other.nomeMotorista == nomeMotorista) &&
+            (identical(other.cpfMotorista, cpfMotorista) ||
+                other.cpfMotorista == cpfMotorista) &&
+            (identical(other.placaCaminhao, placaCaminhao) ||
+                other.placaCaminhao == placaCaminhao) &&
+            (identical(other.nomeTransportadora, nomeTransportadora) ||
+                other.nomeTransportadora == nomeTransportadora));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      date,
-      area,
-      responsible,
-      productCode,
-      productDescription,
-      productVariety,
-      productCollectedAmount,
-      productUnit,
-      driverName,
-      driverCPF,
-      truckPlate,
-      carrier,
-      destination,
-      observation);
+      codigo,
+      destinoColheita,
+      observacoes,
+      descricao,
+      variedade,
+      quantidadeColetada,
+      unidade,
+      nomeMotorista,
+      cpfMotorista,
+      placaCaminhao,
+      nomeTransportadora);
 
   @JsonKey(ignore: true)
   @override
@@ -384,50 +325,41 @@ class _$CollectImpl extends _Collect {
 
 abstract class _Collect extends Collect {
   factory _Collect(
-      {final String date,
-      final String area,
-      final String responsible,
-      final String productCode,
-      final String productDescription,
-      final String productVariety,
-      final String productCollectedAmount,
-      final String productUnit,
-      final String driverName,
-      final String driverCPF,
-      final String truckPlate,
-      final String carrier,
-      final String destination,
-      final String observation}) = _$CollectImpl;
+      {final String codigo,
+      final String destinoColheita,
+      final String observacoes,
+      final String descricao,
+      final String variedade,
+      final String quantidadeColetada,
+      final String unidade,
+      final String nomeMotorista,
+      final String cpfMotorista,
+      final String placaCaminhao,
+      final String nomeTransportadora}) = _$CollectImpl;
   _Collect._() : super._();
 
   @override
-  String get date;
+  String get codigo;
   @override
-  String get area;
+  String get destinoColheita;
   @override
-  String get responsible;
+  String get observacoes;
   @override
-  String get productCode;
+  String get descricao;
   @override
-  String get productDescription;
+  String get variedade;
   @override
-  String get productVariety;
+  String get quantidadeColetada;
   @override
-  String get productCollectedAmount;
+  String get unidade;
   @override
-  String get productUnit;
+  String get nomeMotorista;
   @override
-  String get driverName;
+  String get cpfMotorista;
   @override
-  String get driverCPF;
+  String get placaCaminhao;
   @override
-  String get truckPlate;
-  @override
-  String get carrier;
-  @override
-  String get destination;
-  @override
-  String get observation;
+  String get nomeTransportadora;
   @override
   @JsonKey(ignore: true)
   _$$CollectImplCopyWith<_$CollectImpl> get copyWith =>

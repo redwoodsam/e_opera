@@ -21,6 +21,7 @@ mixin _$SummaryState {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(HarvestParams? harvestParams) loaded,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$SummaryState {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(HarvestParams? harvestParams)? loaded,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$SummaryState {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(HarvestParams? harvestParams)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$SummaryState {
     required TResult Function(SummaryInitial value) initial,
     required TResult Function(SummaryError value) error,
     required TResult Function(SummaryLoading value) loading,
+    required TResult Function(LoadedSummaryState value) loaded,
     required TResult Function(SummarySuccess value) success,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$SummaryState {
     TResult? Function(SummaryInitial value)? initial,
     TResult? Function(SummaryError value)? error,
     TResult? Function(SummaryLoading value)? loading,
+    TResult? Function(LoadedSummaryState value)? loaded,
     TResult? Function(SummarySuccess value)? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$SummaryState {
     TResult Function(SummaryInitial value)? initial,
     TResult Function(SummaryError value)? error,
     TResult Function(SummaryLoading value)? loading,
+    TResult Function(LoadedSummaryState value)? loaded,
     TResult Function(SummarySuccess value)? success,
     required TResult orElse(),
   }) =>
@@ -127,6 +133,7 @@ class _$SummaryInitialImpl implements SummaryInitial {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(HarvestParams? harvestParams) loaded,
     required TResult Function() success,
   }) {
     return initial();
@@ -138,6 +145,7 @@ class _$SummaryInitialImpl implements SummaryInitial {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(HarvestParams? harvestParams)? loaded,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -149,6 +157,7 @@ class _$SummaryInitialImpl implements SummaryInitial {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(HarvestParams? harvestParams)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -164,6 +173,7 @@ class _$SummaryInitialImpl implements SummaryInitial {
     required TResult Function(SummaryInitial value) initial,
     required TResult Function(SummaryError value) error,
     required TResult Function(SummaryLoading value) loading,
+    required TResult Function(LoadedSummaryState value) loaded,
     required TResult Function(SummarySuccess value) success,
   }) {
     return initial(this);
@@ -175,6 +185,7 @@ class _$SummaryInitialImpl implements SummaryInitial {
     TResult? Function(SummaryInitial value)? initial,
     TResult? Function(SummaryError value)? error,
     TResult? Function(SummaryLoading value)? loading,
+    TResult? Function(LoadedSummaryState value)? loaded,
     TResult? Function(SummarySuccess value)? success,
   }) {
     return initial?.call(this);
@@ -186,6 +197,7 @@ class _$SummaryInitialImpl implements SummaryInitial {
     TResult Function(SummaryInitial value)? initial,
     TResult Function(SummaryError value)? error,
     TResult Function(SummaryLoading value)? loading,
+    TResult Function(LoadedSummaryState value)? loaded,
     TResult Function(SummarySuccess value)? success,
     required TResult orElse(),
   }) {
@@ -241,6 +253,7 @@ class _$SummaryErrorImpl implements SummaryError {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(HarvestParams? harvestParams) loaded,
     required TResult Function() success,
   }) {
     return error();
@@ -252,6 +265,7 @@ class _$SummaryErrorImpl implements SummaryError {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(HarvestParams? harvestParams)? loaded,
     TResult? Function()? success,
   }) {
     return error?.call();
@@ -263,6 +277,7 @@ class _$SummaryErrorImpl implements SummaryError {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(HarvestParams? harvestParams)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -278,6 +293,7 @@ class _$SummaryErrorImpl implements SummaryError {
     required TResult Function(SummaryInitial value) initial,
     required TResult Function(SummaryError value) error,
     required TResult Function(SummaryLoading value) loading,
+    required TResult Function(LoadedSummaryState value) loaded,
     required TResult Function(SummarySuccess value) success,
   }) {
     return error(this);
@@ -289,6 +305,7 @@ class _$SummaryErrorImpl implements SummaryError {
     TResult? Function(SummaryInitial value)? initial,
     TResult? Function(SummaryError value)? error,
     TResult? Function(SummaryLoading value)? loading,
+    TResult? Function(LoadedSummaryState value)? loaded,
     TResult? Function(SummarySuccess value)? success,
   }) {
     return error?.call(this);
@@ -300,6 +317,7 @@ class _$SummaryErrorImpl implements SummaryError {
     TResult Function(SummaryInitial value)? initial,
     TResult Function(SummaryError value)? error,
     TResult Function(SummaryLoading value)? loading,
+    TResult Function(LoadedSummaryState value)? loaded,
     TResult Function(SummarySuccess value)? success,
     required TResult orElse(),
   }) {
@@ -355,6 +373,7 @@ class _$SummaryLoadingImpl implements SummaryLoading {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(HarvestParams? harvestParams) loaded,
     required TResult Function() success,
   }) {
     return loading();
@@ -366,6 +385,7 @@ class _$SummaryLoadingImpl implements SummaryLoading {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(HarvestParams? harvestParams)? loaded,
     TResult? Function()? success,
   }) {
     return loading?.call();
@@ -377,6 +397,7 @@ class _$SummaryLoadingImpl implements SummaryLoading {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(HarvestParams? harvestParams)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -392,6 +413,7 @@ class _$SummaryLoadingImpl implements SummaryLoading {
     required TResult Function(SummaryInitial value) initial,
     required TResult Function(SummaryError value) error,
     required TResult Function(SummaryLoading value) loading,
+    required TResult Function(LoadedSummaryState value) loaded,
     required TResult Function(SummarySuccess value) success,
   }) {
     return loading(this);
@@ -403,6 +425,7 @@ class _$SummaryLoadingImpl implements SummaryLoading {
     TResult? Function(SummaryInitial value)? initial,
     TResult? Function(SummaryError value)? error,
     TResult? Function(SummaryLoading value)? loading,
+    TResult? Function(LoadedSummaryState value)? loaded,
     TResult? Function(SummarySuccess value)? success,
   }) {
     return loading?.call(this);
@@ -414,6 +437,7 @@ class _$SummaryLoadingImpl implements SummaryLoading {
     TResult Function(SummaryInitial value)? initial,
     TResult Function(SummaryError value)? error,
     TResult Function(SummaryLoading value)? loading,
+    TResult Function(LoadedSummaryState value)? loaded,
     TResult Function(SummarySuccess value)? success,
     required TResult orElse(),
   }) {
@@ -426,6 +450,174 @@ class _$SummaryLoadingImpl implements SummaryLoading {
 
 abstract class SummaryLoading implements SummaryState {
   factory SummaryLoading() = _$SummaryLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadedSummaryStateImplCopyWith<$Res> {
+  factory _$$LoadedSummaryStateImplCopyWith(_$LoadedSummaryStateImpl value,
+          $Res Function(_$LoadedSummaryStateImpl) then) =
+      __$$LoadedSummaryStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({HarvestParams? harvestParams});
+
+  $HarvestParamsCopyWith<$Res>? get harvestParams;
+}
+
+/// @nodoc
+class __$$LoadedSummaryStateImplCopyWithImpl<$Res>
+    extends _$SummaryStateCopyWithImpl<$Res, _$LoadedSummaryStateImpl>
+    implements _$$LoadedSummaryStateImplCopyWith<$Res> {
+  __$$LoadedSummaryStateImplCopyWithImpl(_$LoadedSummaryStateImpl _value,
+      $Res Function(_$LoadedSummaryStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? harvestParams = freezed,
+  }) {
+    return _then(_$LoadedSummaryStateImpl(
+      harvestParams: freezed == harvestParams
+          ? _value.harvestParams
+          : harvestParams // ignore: cast_nullable_to_non_nullable
+              as HarvestParams?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $HarvestParamsCopyWith<$Res>? get harvestParams {
+    if (_value.harvestParams == null) {
+      return null;
+    }
+
+    return $HarvestParamsCopyWith<$Res>(_value.harvestParams!, (value) {
+      return _then(_value.copyWith(harvestParams: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedSummaryStateImpl implements LoadedSummaryState {
+  _$LoadedSummaryStateImpl({this.harvestParams});
+
+  @override
+  final HarvestParams? harvestParams;
+
+  @override
+  String toString() {
+    return 'SummaryState.loaded(harvestParams: $harvestParams)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedSummaryStateImpl &&
+            (identical(other.harvestParams, harvestParams) ||
+                other.harvestParams == harvestParams));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, harvestParams);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedSummaryStateImplCopyWith<_$LoadedSummaryStateImpl> get copyWith =>
+      __$$LoadedSummaryStateImplCopyWithImpl<_$LoadedSummaryStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() error,
+    required TResult Function() loading,
+    required TResult Function(HarvestParams? harvestParams) loaded,
+    required TResult Function() success,
+  }) {
+    return loaded(harvestParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? error,
+    TResult? Function()? loading,
+    TResult? Function(HarvestParams? harvestParams)? loaded,
+    TResult? Function()? success,
+  }) {
+    return loaded?.call(harvestParams);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? error,
+    TResult Function()? loading,
+    TResult Function(HarvestParams? harvestParams)? loaded,
+    TResult Function()? success,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(harvestParams);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SummaryInitial value) initial,
+    required TResult Function(SummaryError value) error,
+    required TResult Function(SummaryLoading value) loading,
+    required TResult Function(LoadedSummaryState value) loaded,
+    required TResult Function(SummarySuccess value) success,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SummaryInitial value)? initial,
+    TResult? Function(SummaryError value)? error,
+    TResult? Function(SummaryLoading value)? loading,
+    TResult? Function(LoadedSummaryState value)? loaded,
+    TResult? Function(SummarySuccess value)? success,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SummaryInitial value)? initial,
+    TResult Function(SummaryError value)? error,
+    TResult Function(SummaryLoading value)? loading,
+    TResult Function(LoadedSummaryState value)? loaded,
+    TResult Function(SummarySuccess value)? success,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadedSummaryState implements SummaryState {
+  factory LoadedSummaryState({final HarvestParams? harvestParams}) =
+      _$LoadedSummaryStateImpl;
+
+  HarvestParams? get harvestParams;
+  @JsonKey(ignore: true)
+  _$$LoadedSummaryStateImplCopyWith<_$LoadedSummaryStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -469,6 +661,7 @@ class _$SummarySuccessImpl implements SummarySuccess {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
+    required TResult Function(HarvestParams? harvestParams) loaded,
     required TResult Function() success,
   }) {
     return success();
@@ -480,6 +673,7 @@ class _$SummarySuccessImpl implements SummarySuccess {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
+    TResult? Function(HarvestParams? harvestParams)? loaded,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -491,6 +685,7 @@ class _$SummarySuccessImpl implements SummarySuccess {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
+    TResult Function(HarvestParams? harvestParams)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -506,6 +701,7 @@ class _$SummarySuccessImpl implements SummarySuccess {
     required TResult Function(SummaryInitial value) initial,
     required TResult Function(SummaryError value) error,
     required TResult Function(SummaryLoading value) loading,
+    required TResult Function(LoadedSummaryState value) loaded,
     required TResult Function(SummarySuccess value) success,
   }) {
     return success(this);
@@ -517,6 +713,7 @@ class _$SummarySuccessImpl implements SummarySuccess {
     TResult? Function(SummaryInitial value)? initial,
     TResult? Function(SummaryError value)? error,
     TResult? Function(SummaryLoading value)? loading,
+    TResult? Function(LoadedSummaryState value)? loaded,
     TResult? Function(SummarySuccess value)? success,
   }) {
     return success?.call(this);
@@ -528,6 +725,7 @@ class _$SummarySuccessImpl implements SummarySuccess {
     TResult Function(SummaryInitial value)? initial,
     TResult Function(SummaryError value)? error,
     TResult Function(SummaryLoading value)? loading,
+    TResult Function(LoadedSummaryState value)? loaded,
     TResult Function(SummarySuccess value)? success,
     required TResult orElse(),
   }) {

@@ -2,8 +2,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/core.dart';
-import 'login/login.dart';
 import 'driver/driver_module.dart';
+import 'login/login.dart';
 import 'operator/operator_module.dart';
 
 /// Main Module

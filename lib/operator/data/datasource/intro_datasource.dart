@@ -1,5 +1,3 @@
-
-
 import '../../../../core/core.dart';
 import '../models/response/farm_model.dart';
 import '../models/response/field_model.dart';
@@ -23,10 +21,12 @@ class IntroDatasource implements IIntroDatasource {
   @override
   Future<List<FarmModel>> getFarms() async {
     final response = await _http.get('fazendas');
-    final farmsJson = response.data['fazendas'] as List<Map<String, dynamic>>;
+    final farmsJson =
+        List<Map<String, dynamic>>.from(response.data['fazendas']);
 
     return List<FarmModel>.from(
-        farmsJson.map(FarmModel.fromJson),);
+      farmsJson.map(FarmModel.fromJson),
+    );
   }
 
   @override

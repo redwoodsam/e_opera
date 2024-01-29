@@ -9,19 +9,16 @@ sealed class Collect with _$Collect {
   const Collect._();
 
   factory Collect({
-    @Default('') String date,
-    @Default('') String area,
-    @Default('') String responsible,
-    @Default('') String productCode,
-    @Default('') String productDescription,
-    @Default('') String productVariety,
-    @Default('') String productCollectedAmount,
-    @Default('') String productUnit,
-    @Default('') String driverName,
-    @Default('') String driverCPF,
-    @Default('') String truckPlate,
-    @Default('') String carrier,
-    @Default('') String destination,
-    @Default('') String observation,
+    @Default('') String codigo,
+    @Default('') String destinoColheita,
+    @Default('') String observacoes,
+    @Default('') String descricao,
+    @Default('') String variedade,
+    @Default('') String quantidadeColetada,
+    @Default('') String unidade,
+    @Default('') String nomeMotorista,
+    @Default('') String cpfMotorista,
+    @Default('') String placaCaminhao,
+    @Default('') String nomeTransportadora,
   }) = _Collect;
 }

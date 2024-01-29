@@ -20,19 +20,25 @@ class LoginModelAdapter extends TypeAdapter<_$LoginModelImpl> {
       id: fields[0] as int,
       accessToken: fields[1] as String,
       refreshToken: fields[2] as String,
+      nome: fields[3] as String?,
+      perfil: fields[4] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$LoginModelImpl obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.accessToken)
       ..writeByte(2)
-      ..write(obj.refreshToken);
+      ..write(obj.refreshToken)
+      ..writeByte(3)
+      ..write(obj.nome)
+      ..writeByte(4)
+      ..write(obj.perfil);
   }
 
   @override
@@ -55,6 +61,8 @@ _$LoginModelImpl _$$LoginModelImplFromJson(Map<String, dynamic> json) =>
       id: json['userId'] as int,
       accessToken: json['accessToken'] as String,
       refreshToken: json['refreshToken'] as String,
+      nome: json['nome'] as String? ?? '',
+      perfil: json['perfil'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$LoginModelImplToJson(_$LoginModelImpl instance) =>
@@ -62,4 +70,6 @@ Map<String, dynamic> _$$LoginModelImplToJson(_$LoginModelImpl instance) =>
       'userId': instance.id,
       'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,
+      'nome': instance.nome,
+      'perfil': instance.perfil,
     };

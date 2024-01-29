@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
 import '../../../domain/entities/localization_params.dart';
+import '../../../operator_module.dart';
 import 'home_viewmodel.dart';
-import '../../../harvestForm/presentation/views/productData_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -201,11 +201,13 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
                           ),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ProductDataPage()),
-                              );
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => ProductDataPage(),
+                              //   ),
+                              // );
+                              Nav.pushNamed(OperatorModule.productForm);
                             },
                             child: Column(
                               children: [

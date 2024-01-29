@@ -27,6 +27,10 @@ mixin _$LoginModel {
   String get accessToken => throw _privateConstructorUsedError;
   @HiveField(2)
   String get refreshToken => throw _privateConstructorUsedError;
+  @HiveField(3)
+  String? get nome => throw _privateConstructorUsedError;
+  @HiveField(4)
+  String? get perfil => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +47,9 @@ abstract class $LoginModelCopyWith<$Res> {
   $Res call(
       {@HiveField(0) @JsonKey(name: 'userId') int id,
       @HiveField(1) String accessToken,
-      @HiveField(2) String refreshToken});
+      @HiveField(2) String refreshToken,
+      @HiveField(3) String? nome,
+      @HiveField(4) String? perfil});
 }
 
 /// @nodoc
@@ -62,6 +68,8 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
     Object? id = null,
     Object? accessToken = null,
     Object? refreshToken = null,
+    Object? nome = freezed,
+    Object? perfil = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -76,6 +84,14 @@ class _$LoginModelCopyWithImpl<$Res, $Val extends LoginModel>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
+      nome: freezed == nome
+          ? _value.nome
+          : nome // ignore: cast_nullable_to_non_nullable
+              as String?,
+      perfil: freezed == perfil
+          ? _value.perfil
+          : perfil // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -91,7 +107,9 @@ abstract class _$$LoginModelImplCopyWith<$Res>
   $Res call(
       {@HiveField(0) @JsonKey(name: 'userId') int id,
       @HiveField(1) String accessToken,
-      @HiveField(2) String refreshToken});
+      @HiveField(2) String refreshToken,
+      @HiveField(3) String? nome,
+      @HiveField(4) String? perfil});
 }
 
 /// @nodoc
@@ -108,6 +126,8 @@ class __$$LoginModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? accessToken = null,
     Object? refreshToken = null,
+    Object? nome = freezed,
+    Object? perfil = freezed,
   }) {
     return _then(_$LoginModelImpl(
       id: null == id
@@ -122,6 +142,14 @@ class __$$LoginModelImplCopyWithImpl<$Res>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
+      nome: freezed == nome
+          ? _value.nome
+          : nome // ignore: cast_nullable_to_non_nullable
+              as String?,
+      perfil: freezed == perfil
+          ? _value.perfil
+          : perfil // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -133,7 +161,9 @@ class _$LoginModelImpl extends _LoginModel {
   const _$LoginModelImpl(
       {@HiveField(0) @JsonKey(name: 'userId') required this.id,
       @HiveField(1) required this.accessToken,
-      @HiveField(2) required this.refreshToken})
+      @HiveField(2) required this.refreshToken,
+      @HiveField(3) this.nome = '',
+      @HiveField(4) this.perfil = ''})
       : super._();
 
   factory _$LoginModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -149,10 +179,18 @@ class _$LoginModelImpl extends _LoginModel {
   @override
   @HiveField(2)
   final String refreshToken;
+  @override
+  @JsonKey()
+  @HiveField(3)
+  final String? nome;
+  @override
+  @JsonKey()
+  @HiveField(4)
+  final String? perfil;
 
   @override
   String toString() {
-    return 'LoginModel(id: $id, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'LoginModel(id: $id, accessToken: $accessToken, refreshToken: $refreshToken, nome: $nome, perfil: $perfil)';
   }
 
   @override
@@ -164,12 +202,15 @@ class _$LoginModelImpl extends _LoginModel {
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
-                other.refreshToken == refreshToken));
+                other.refreshToken == refreshToken) &&
+            (identical(other.nome, nome) || other.nome == nome) &&
+            (identical(other.perfil, perfil) || other.perfil == perfil));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, accessToken, refreshToken);
+  int get hashCode =>
+      Object.hash(runtimeType, id, accessToken, refreshToken, nome, perfil);
 
   @JsonKey(ignore: true)
   @override
@@ -189,7 +230,9 @@ abstract class _LoginModel extends LoginModel {
   const factory _LoginModel(
       {@HiveField(0) @JsonKey(name: 'userId') required final int id,
       @HiveField(1) required final String accessToken,
-      @HiveField(2) required final String refreshToken}) = _$LoginModelImpl;
+      @HiveField(2) required final String refreshToken,
+      @HiveField(3) final String? nome,
+      @HiveField(4) final String? perfil}) = _$LoginModelImpl;
   const _LoginModel._() : super._();
 
   factory _LoginModel.fromJson(Map<String, dynamic> json) =
@@ -205,6 +248,12 @@ abstract class _LoginModel extends LoginModel {
   @override
   @HiveField(2)
   String get refreshToken;
+  @override
+  @HiveField(3)
+  String? get nome;
+  @override
+  @HiveField(4)
+  String? get perfil;
   @override
   @JsonKey(ignore: true)
   _$$LoginModelImplCopyWith<_$LoginModelImpl> get copyWith =>

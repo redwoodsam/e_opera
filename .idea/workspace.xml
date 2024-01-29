@@ -10,58 +10,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591619a-7696-43e6-aeb7-9a6b3bd54b2f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/migrations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/destinationData.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/destinationData_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/driverData.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/driverData_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/productData.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/productData_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/resumoPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/e_opera_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/e_opera_android.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/e_opera.iml" beforeDir="false" afterPath="$PROJECT_DIR$/e_opera.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_file.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_file.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_options.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_options.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_options.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_options.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/domain/validations/failure.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/domain/validations/failure.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/driver/presentation/views/home_driver/home_driver_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/driver/presentation/views/home_driver/home_driver_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/data/models/response/login_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/response/login_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/login/data/models/response/login_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/response/login_model.freezed.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/login/data/models/response/login_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/response/login_model.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/domain/entities/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/entities/login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/login/domain/entities/login.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/entities/login.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/domain/entities/login_params.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/entities/login_params.freezed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/domain/usecases/usecases.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/usecases/usecases.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/presentation/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/presentation/views/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/presentation/views/login_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/presentation/views/login_state.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/login/presentation/views/login_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/presentation/views/login_state.freezed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/login/presentation/views/login_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/presentation/views/login_viewmodel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_module.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/data/data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/data/datasource/datasource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/datasource/datasource.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/operator/data/datasource/intro_datasource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/datasource/intro_datasource.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/farm_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/farm_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/field_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/field_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/harvest_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/harvest_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/farm.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/farm.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/localization_params.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/localization_params.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/usecases/get_fields_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/usecases/get_fields_usecase.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/usecases/get_harvests_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/usecases/get_harvests_usecase.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/repositories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/repositories.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/destinationData.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/destinationData_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/driverData.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/driverData_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/productData.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/productData_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/harvestForm/presentation/views/resumoPage.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/operator/operator_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/operator_module.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/home/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/home/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_viewmodel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/views.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/views.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,23 +92,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "C:/tools/dart-sdk",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "dart.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/samuel/Development/Flutter/e_opera&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

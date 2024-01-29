@@ -21,7 +21,7 @@ mixin _$LoginState {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(int? id, String? perfil, String? nome) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$LoginState {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(int? id, String? perfil, String? nome)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$LoginState {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(int? id, String? perfil, String? nome)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +127,7 @@ class _$InitialLoginImpl implements InitialLogin {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(int? id, String? perfil, String? nome) success,
   }) {
     return initial();
   }
@@ -138,7 +138,7 @@ class _$InitialLoginImpl implements InitialLogin {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(int? id, String? perfil, String? nome)? success,
   }) {
     return initial?.call();
   }
@@ -149,7 +149,7 @@ class _$InitialLoginImpl implements InitialLogin {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(int? id, String? perfil, String? nome)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -241,7 +241,7 @@ class _$ErrorLoginImpl implements ErrorLogin {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(int? id, String? perfil, String? nome) success,
   }) {
     return error();
   }
@@ -252,7 +252,7 @@ class _$ErrorLoginImpl implements ErrorLogin {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(int? id, String? perfil, String? nome)? success,
   }) {
     return error?.call();
   }
@@ -263,7 +263,7 @@ class _$ErrorLoginImpl implements ErrorLogin {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(int? id, String? perfil, String? nome)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -355,7 +355,7 @@ class _$LoadingLoginImpl implements LoadingLogin {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(int? id, String? perfil, String? nome) success,
   }) {
     return loading();
   }
@@ -366,7 +366,7 @@ class _$LoadingLoginImpl implements LoadingLogin {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(int? id, String? perfil, String? nome)? success,
   }) {
     return loading?.call();
   }
@@ -377,7 +377,7 @@ class _$LoadingLoginImpl implements LoadingLogin {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(int? id, String? perfil, String? nome)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -433,6 +433,8 @@ abstract class _$$SuccessLoginImplCopyWith<$Res> {
   factory _$$SuccessLoginImplCopyWith(
           _$SuccessLoginImpl value, $Res Function(_$SuccessLoginImpl) then) =
       __$$SuccessLoginImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int? id, String? perfil, String? nome});
 }
 
 /// @nodoc
@@ -442,26 +444,66 @@ class __$$SuccessLoginImplCopyWithImpl<$Res>
   __$$SuccessLoginImplCopyWithImpl(
       _$SuccessLoginImpl _value, $Res Function(_$SuccessLoginImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? perfil = freezed,
+    Object? nome = freezed,
+  }) {
+    return _then(_$SuccessLoginImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      perfil: freezed == perfil
+          ? _value.perfil
+          : perfil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      nome: freezed == nome
+          ? _value.nome
+          : nome // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessLoginImpl implements SuccessLogin {
-  _$SuccessLoginImpl();
+  _$SuccessLoginImpl({this.id, this.perfil, this.nome});
+
+  @override
+  final int? id;
+  @override
+  final String? perfil;
+  @override
+  final String? nome;
 
   @override
   String toString() {
-    return 'LoginState.success()';
+    return 'LoginState.success(id: $id, perfil: $perfil, nome: $nome)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessLoginImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessLoginImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.perfil, perfil) || other.perfil == perfil) &&
+            (identical(other.nome, nome) || other.nome == nome));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, id, perfil, nome);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessLoginImplCopyWith<_$SuccessLoginImpl> get copyWith =>
+      __$$SuccessLoginImplCopyWithImpl<_$SuccessLoginImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -469,9 +511,9 @@ class _$SuccessLoginImpl implements SuccessLogin {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function() success,
+    required TResult Function(int? id, String? perfil, String? nome) success,
   }) {
-    return success();
+    return success(id, perfil, nome);
   }
 
   @override
@@ -480,9 +522,9 @@ class _$SuccessLoginImpl implements SuccessLogin {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function()? success,
+    TResult? Function(int? id, String? perfil, String? nome)? success,
   }) {
-    return success?.call();
+    return success?.call(id, perfil, nome);
   }
 
   @override
@@ -491,11 +533,11 @@ class _$SuccessLoginImpl implements SuccessLogin {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function()? success,
+    TResult Function(int? id, String? perfil, String? nome)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(id, perfil, nome);
     }
     return orElse();
   }
@@ -539,5 +581,15 @@ class _$SuccessLoginImpl implements SuccessLogin {
 }
 
 abstract class SuccessLogin implements LoginState {
-  factory SuccessLogin() = _$SuccessLoginImpl;
+  factory SuccessLogin(
+      {final int? id,
+      final String? perfil,
+      final String? nome}) = _$SuccessLoginImpl;
+
+  int? get id;
+  String? get perfil;
+  String? get nome;
+  @JsonKey(ignore: true)
+  _$$SuccessLoginImplCopyWith<_$SuccessLoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

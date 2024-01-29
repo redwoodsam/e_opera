@@ -17,5 +17,6 @@ sealed class LoginState extends ViewModelState with _$LoginState {
   factory LoginState.loading() = LoadingLogin;
 
   /// The user [LoginState] state
-  factory LoginState.success() = SuccessLogin;
+  factory LoginState.success({int? id, String? perfil, String? nome}) =
+      SuccessLogin;
 }

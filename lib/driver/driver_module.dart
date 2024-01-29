@@ -28,7 +28,7 @@ class DriverModule extends Module {
         ChildRoute(home.path, child: (context, _) => const DriverHomePage()),
         ChildRoute(qrCodeScanner.path,
             child: (context, _) => DriverQrCodeReadPage()),
-        ChildRoute(qrCodeSummary.path, child: (context, _) => SummaryPage()),
+        // ChildRoute(qrCodeSummary.path, child: (context, _) => SummaryPage()),
       ];
 
   @override
@@ -87,6 +87,6 @@ class DriverModule extends Module {
         Bind.lazySingleton<DriverHomeViewModel>((i) => DriverHomeViewModel()),
         Bind.lazySingleton<DriverQrCodeReadViewModel>(
             (i) => DriverQrCodeReadViewModel()),
-        Bind.lazySingleton((i) => SummaryViewModel()),
+        // Bind.lazySingleton((i) => SummaryViewModel()),
       ];
 }

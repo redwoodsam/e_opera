@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../core/core.dart';
-import '../../../domain/entities/farm.dart';
-import '../../../domain/entities/field.dart';
-import '../../../domain/entities/harvest.dart';
 import '../../../domain/entities/localization_params.dart';
 
 part 'home_state.freezed.dart';

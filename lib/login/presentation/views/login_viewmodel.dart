@@ -16,7 +16,10 @@ class LoginViewModel extends ViewModel<LoginState> {
     final loginParams = LoginParams(user: user, password: password);
     final usecase = await _loginUsecase(loginParams);
 
-    final newState = usecase.fold((l) => ErrorLogin(), (r) => SuccessLogin());
+    final newState = usecase.fold(
+      (l) => ErrorLogin(),
+      (r) => SuccessLogin(id: r.id, nome: r.nome, perfil: r.perfil),
+    );
 
     emit(newState);
   }

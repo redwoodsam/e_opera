@@ -10,6 +10,8 @@ sealed class Login with _$Login {
 
   factory Login({
     @Default(0) int id,
+    @Default('') String? nome,
+    @Default('') String? perfil,
     @Default('') String accessToken,
     @Default('') String refreshToken,
   }) = _Login;

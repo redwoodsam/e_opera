@@ -140,8 +140,8 @@ class _DriverHomePageState
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    // Nav.pushNamed(DriverModule.qrCodeScanner);
-                                    Nav.pushNamed(DriverModule.qrCodeSummary);
+                                    Nav.pushNamed(DriverModule.qrCodeScanner);
+                                    // Nav.pushNamed(DriverModule.qrCodeSummary);
                                   },
                                   child: Container(
                                     width: const Dimension(19.5).width,

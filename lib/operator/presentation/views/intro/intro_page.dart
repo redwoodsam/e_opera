@@ -295,56 +295,60 @@ class _CustomAutoComplete extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () => _focusNode.unfocus(),
-        child: Autocomplete<String>(
-          optionsBuilder: (TextEditingValue textEditingValue) {
-            if (textEditingValue.text == '') {
-              return const Iterable<String>.empty();
-            }
+      onTap: () => _focusNode.unfocus(),
+      child: Autocomplete<String>(
+        optionsBuilder: (TextEditingValue textEditingValue) {
+          if (textEditingValue.text == '') {
+            return const Iterable<String>.empty();
+          }
 
-            return listOfContents.where((option) => option
-                .toLowerCase()
-                .contains(textEditingValue.text.toLowerCase()));
-          },
-          fieldViewBuilder:
-              (context, textEditingController, focusNode, onFieldSubmitted) {
-            return _CustomItemSearch(
-              textEditingController: textEditingController,
-              title: title,
-              hintText: hintText,
-              focusNode: focusNode,
-            );
-          },
-          onSelected: onSelected,
-          optionsViewBuilder: (context, onSelected, options) {
-            return Align(
-                alignment: Alignment.topLeft,
-                child: Material(
-                    color: Colors.white,
-                    shadowColor: Colors.grey,
-                    elevation: 4,
-                    child: SizedBox(
-                        width: Dimension(41).width,
-                        child: ListView.separated(
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            final option = options.elementAt(index);
+          return listOfContents.where((option) => option
+              .toLowerCase()
+              .contains(textEditingValue.text.toLowerCase()));
+        },
+        fieldViewBuilder:
+            (context, textEditingController, focusNode, onFieldSubmitted) {
+          return _CustomItemSearch(
+            textEditingController: textEditingController,
+            title: title,
+            hintText: hintText,
+            focusNode: focusNode,
+          );
+        },
+        onSelected: onSelected,
+        optionsViewBuilder: (context, onSelected, options) {
+          return Align(
+            alignment: Alignment.topLeft,
+            child: Material(
+              color: Colors.white,
+              shadowColor: Colors.grey,
+              elevation: 4,
+              child: SizedBox(
+                width: Dimension(41).width,
+                child: ListView.separated(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final option = options.elementAt(index);
 
-                            return ListTile(
-                              title: Text(
-                                option.toString(),
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: Dimension(2).value),
-                              ),
-                              onTap: () => onSelected(option),
-                            );
-                          },
-                          itemCount: options.length,
-                          separatorBuilder: (context, index) => const Divider(),
-                        ))));
-          },
-        ));
+                    return ListTile(
+                      title: Text(
+                        option.toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: Dimension(2).value),
+                      ),
+                      onTap: () => onSelected(option),
+                    );
+                  },
+                  itemCount: options.length,
+                  separatorBuilder: (context, index) => const Divider(),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }

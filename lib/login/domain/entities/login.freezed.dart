@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Login {
   int get id => throw _privateConstructorUsedError;
+  String? get nome => throw _privateConstructorUsedError;
+  String? get perfil => throw _privateConstructorUsedError;
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
 
@@ -29,7 +31,12 @@ abstract class $LoginCopyWith<$Res> {
   factory $LoginCopyWith(Login value, $Res Function(Login) then) =
       _$LoginCopyWithImpl<$Res, Login>;
   @useResult
-  $Res call({int id, String accessToken, String refreshToken});
+  $Res call(
+      {int id,
+      String? nome,
+      String? perfil,
+      String accessToken,
+      String refreshToken});
 }
 
 /// @nodoc
@@ -46,6 +53,8 @@ class _$LoginCopyWithImpl<$Res, $Val extends Login>
   @override
   $Res call({
     Object? id = null,
+    Object? nome = freezed,
+    Object? perfil = freezed,
     Object? accessToken = null,
     Object? refreshToken = null,
   }) {
@@ -54,6 +63,14 @@ class _$LoginCopyWithImpl<$Res, $Val extends Login>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      nome: freezed == nome
+          ? _value.nome
+          : nome // ignore: cast_nullable_to_non_nullable
+              as String?,
+      perfil: freezed == perfil
+          ? _value.perfil
+          : perfil // ignore: cast_nullable_to_non_nullable
+              as String?,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -73,7 +90,12 @@ abstract class _$$LoginImplCopyWith<$Res> implements $LoginCopyWith<$Res> {
       __$$LoginImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String accessToken, String refreshToken});
+  $Res call(
+      {int id,
+      String? nome,
+      String? perfil,
+      String accessToken,
+      String refreshToken});
 }
 
 /// @nodoc
@@ -88,6 +110,8 @@ class __$$LoginImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? nome = freezed,
+    Object? perfil = freezed,
     Object? accessToken = null,
     Object? refreshToken = null,
   }) {
@@ -96,6 +120,14 @@ class __$$LoginImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      nome: freezed == nome
+          ? _value.nome
+          : nome // ignore: cast_nullable_to_non_nullable
+              as String?,
+      perfil: freezed == perfil
+          ? _value.perfil
+          : perfil // ignore: cast_nullable_to_non_nullable
+              as String?,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -111,12 +143,23 @@ class __$$LoginImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginImpl extends _Login {
-  _$LoginImpl({this.id = 0, this.accessToken = '', this.refreshToken = ''})
+  _$LoginImpl(
+      {this.id = 0,
+      this.nome = '',
+      this.perfil = '',
+      this.accessToken = '',
+      this.refreshToken = ''})
       : super._();
 
   @override
   @JsonKey()
   final int id;
+  @override
+  @JsonKey()
+  final String? nome;
+  @override
+  @JsonKey()
+  final String? perfil;
   @override
   @JsonKey()
   final String accessToken;
@@ -126,7 +169,7 @@ class _$LoginImpl extends _Login {
 
   @override
   String toString() {
-    return 'Login(id: $id, accessToken: $accessToken, refreshToken: $refreshToken)';
+    return 'Login(id: $id, nome: $nome, perfil: $perfil, accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -135,6 +178,8 @@ class _$LoginImpl extends _Login {
         (other.runtimeType == runtimeType &&
             other is _$LoginImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.nome, nome) || other.nome == nome) &&
+            (identical(other.perfil, perfil) || other.perfil == perfil) &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
@@ -142,7 +187,8 @@ class _$LoginImpl extends _Login {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, accessToken, refreshToken);
+  int get hashCode =>
+      Object.hash(runtimeType, id, nome, perfil, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -154,12 +200,18 @@ class _$LoginImpl extends _Login {
 abstract class _Login extends Login {
   factory _Login(
       {final int id,
+      final String? nome,
+      final String? perfil,
       final String accessToken,
       final String refreshToken}) = _$LoginImpl;
   _Login._() : super._();
 
   @override
   int get id;
+  @override
+  String? get nome;
+  @override
+  String? get perfil;
   @override
   String get accessToken;
   @override

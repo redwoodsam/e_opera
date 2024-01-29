@@ -38,6 +38,17 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+  BasePath _getPath(String role) {
+    switch (role) {
+      case 'ROLE_OPERADOR':
+        return MainModule.operatorModule;
+      case 'ROLE_MOTORISTA':
+        return MainModule.driverModule;
+      default:
+        return MainModule.driverModule;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +56,9 @@ class _LoginPageState extends State<LoginPage> {
         viewModel: viewModel,
         listener: (context, state) => switch (state) {
           // SuccessLogin() => Nav.pushNamed(MainModule.operatorModule),
-          SuccessLogin() => Nav.pushNamed(MainModule.driverModule),
+          SuccessLogin(:final id, :final nome, :final perfil) => Nav.pushNamed(
+              _getPath(perfil!),
+              arguments: {id: id, nome: nome, perfil: perfil}),
           _ => null,
         },
         builder: (context, state) {
