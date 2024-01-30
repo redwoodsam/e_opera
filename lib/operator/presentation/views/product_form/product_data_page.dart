@@ -37,105 +37,106 @@ class _ProductDataPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Formulário de Dados do Produto'),
-        backgroundColor: Colors.green,
-        centerTitle: true,
-      ),
-      body: ViewModelConsumer<ProductDataViewModel, ProductDataState>(
-        viewModel: viewModel,
-        listener: (context, state) => switch (state) {
-          LoadedProductDataState(:final products, :final varieties) => {
-              codeOptions =
-                  List<String>.from(products.map((e) => e.productCode)),
-              varietyOptions =
-                  List<String>.from(varieties.map((e) => e.varietyDescription))
+        appBar: AppBar(
+          title: Text('Formulário de Dados do Produto'),
+          backgroundColor: Colors.green,
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          child: ViewModelConsumer<ProductDataViewModel, ProductDataState>(
+            viewModel: viewModel,
+            listener: (context, state) => switch (state) {
+              LoadedProductDataState(:final products, :final varieties) => {
+                  codeOptions =
+                      List<String>.from(products.map((e) => e.productCode)),
+                  varietyOptions = List<String>.from(
+                      varieties.map((e) => e.varietyDescription))
+                },
+              SuccessProductData() => {},
+              _ => null,
             },
-          SuccessProductData() => {},
-          _ => null,
-        },
-        builder: (context, state) {
-          return switch (state) {
-            LoadedProductDataState(
-              :final products,
-              :final varieties,
-              :final selectedProduct,
-              :final selectedVariety,
-            ) =>
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Form(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _buildDropdown(
-                        labelText: 'Código',
-                        value: selectedProduct?.productCode,
-                        items: codeOptions,
-                        onChanged: (String? value) {
-                          viewModel.onSelectProduct(value!);
-                        },
+            builder: (context, state) {
+              return switch (state) {
+                LoadedProductDataState(
+                  :final products,
+                  :final varieties,
+                  :final selectedProduct,
+                  :final selectedVariety,
+                ) =>
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Form(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          _buildDropdown(
+                            labelText: 'Código',
+                            value: selectedProduct?.productCode,
+                            items: codeOptions,
+                            onChanged: (String? value) {
+                              viewModel.onSelectProduct(value!);
+                            },
+                          ),
+                          SizedBox(height: 16.0),
+                          _buildTextFormField(
+                            labelText: 'Descrição',
+                            onChanged: (value) {
+                              setState(() {
+                                descricao = value;
+                              });
+                            },
+                          ),
+                          SizedBox(height: 16.0),
+                          _buildDropdown(
+                            labelText: 'Variedade',
+                            value: selectedVariety?.varietyDescription,
+                            items: varietyOptions,
+                            onChanged: (String? value) {
+                              viewModel.onSelectVariety(value!);
+                            },
+                          ),
+                          SizedBox(height: 16.0),
+                          _buildTextFormField(
+                            labelText: 'Quantidade Coletada',
+                            onChanged: (value) {
+                              setState(() {
+                                quantidadeColetada = value;
+                              });
+                            },
+                            keyboardType: TextInputType.number,
+                          ),
+                          SizedBox(height: 16.0),
+                          _buildDropdown(
+                            labelText: 'Unidade',
+                            value: selectedUnidade,
+                            items: unidadeList,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedUnidade = value;
+                              });
+                            },
+                          ),
+                          SizedBox(height: 32.0),
+                          _buildSubmitButton(),
+                        ],
                       ),
-                      SizedBox(height: 16.0),
-                      _buildTextFormField(
-                        labelText: 'Descrição',
-                        onChanged: (value) {
-                          setState(() {
-                            descricao = value;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 16.0),
-                      _buildDropdown(
-                        labelText: 'Variedade',
-                        value: selectedVariety?.varietyDescription,
-                        items: varietyOptions,
-                        onChanged: (String? value) {
-                          viewModel.onSelectVariety(value!);
-                        },
-                      ),
-                      SizedBox(height: 16.0),
-                      _buildTextFormField(
-                        labelText: 'Quantidade Coletada',
-                        onChanged: (value) {
-                          setState(() {
-                            quantidadeColetada = value;
-                          });
-                        },
-                        keyboardType: TextInputType.number,
-                      ),
-                      SizedBox(height: 16.0),
-                      _buildDropdown(
-                        labelText: 'Unidade',
-                        value: selectedUnidade,
-                        items: unidadeList,
-                        onChanged: (String? value) {
-                          setState(() {
-                            selectedUnidade = value;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 32.0),
-                      _buildSubmitButton(),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            LoadingProductData() => Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
-            ErrorProductData() => Scaffold(
-                  body: Center(
-                /// TODO: tela de erro
-                child: Text('Erro'),
-              )),
-            _ => const SizedBox.shrink()
-          };
-        },
-      ),
-    );
+                LoadingProductData() => Scaffold(
+                    body: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                ErrorProductData() => Scaffold(
+                      body: Center(
+                    /// TODO: tela de erro
+                    child: Text('Erro'),
+                  )),
+                _ => const SizedBox.shrink()
+              };
+            },
+          ),
+        ));
   }
 
   Widget _buildDropdown({

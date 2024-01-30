@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'collect.freezed.dart';
+part 'collect.g.dart';
 
 @freezed
 
@@ -21,4 +22,7 @@ sealed class Collect with _$Collect {
     @Default('') String placaCaminhao,
     @Default('') String nomeTransportadora,
   }) = _Collect;
+
+  factory Collect.fromJson(Map<String, dynamic> json) =>
+      _$CollectFromJson(json);
 }

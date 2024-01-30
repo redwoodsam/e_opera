@@ -9,8 +9,8 @@ import 'presentation/views/home_driver/home_driver_page.dart';
 import 'presentation/views/home_driver/home_driver_viewmodel.dart';
 import 'presentation/views/qrcode_read/qrcode_read_driver_page.dart';
 import 'presentation/views/qrcode_read/qrcode_read_driver_viewmodel.dart';
-import 'presentation/views/summary/summary_page.dart';
-import 'presentation/views/summary/summary_viewmodel.dart';
+import 'presentation/views/summary_driver/summary_driver_page.dart';
+import 'presentation/views/summary_driver/summary_driver_viewmodel.dart';
 
 /// Login module
 class DriverModule extends Module {
@@ -25,10 +25,18 @@ class DriverModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute(home.path, child: (context, _) => const DriverHomePage()),
-        ChildRoute(qrCodeScanner.path,
-            child: (context, _) => DriverQrCodeReadPage()),
-        // ChildRoute(qrCodeSummary.path, child: (context, _) => SummaryPage()),
+        ChildRoute(
+          home.path,
+          child: (context, _) => const DriverHomePage(),
+        ),
+        ChildRoute(
+          qrCodeScanner.path,
+          child: (context, _) => DriverQrCodeReadPage(),
+        ),
+        ChildRoute(
+          qrCodeSummary.path,
+          child: (context, _) => SummaryDriverPage(),
+        ),
       ];
 
   @override
@@ -84,9 +92,12 @@ class DriverModule extends Module {
         //   (i) => IntroViewModel(i.get<IGetFarmsUsecase>(),
         //       i.get<IGetFieldsUsecase>(), i.get<IGetHarvestsUsecase>()),
         // ),
-        Bind.lazySingleton<DriverHomeViewModel>((i) => DriverHomeViewModel()),
+        Bind.lazySingleton<DriverHomeViewModel>(
+          (i) => DriverHomeViewModel(),
+        ),
         Bind.lazySingleton<DriverQrCodeReadViewModel>(
-            (i) => DriverQrCodeReadViewModel()),
-        // Bind.lazySingleton((i) => SummaryViewModel()),
+          (i) => DriverQrCodeReadViewModel(),
+        ),
+        Bind.lazySingleton((i) => SummaryDriverViewModel()),
       ];
 }

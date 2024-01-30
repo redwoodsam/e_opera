@@ -15,8 +15,7 @@ class QrCodeViewerPage extends StatefulWidget {
 class _QrCodeViewerPageState extends State<QrCodeViewerPage> {
   @override
   Widget build(BuildContext context) {
-    final routeArgs =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as String;
     // final routeArgs =
     //     ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     return Scaffold(
@@ -30,7 +29,7 @@ class _QrCodeViewerPageState extends State<QrCodeViewerPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              child: _buildQrCode(routeArgs.toString(), 300),
+              child: _buildQrCode(routeArgs, 300),
               width: 400,
               height: 400,
             ),

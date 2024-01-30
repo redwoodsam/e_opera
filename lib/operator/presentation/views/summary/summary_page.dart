@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
@@ -49,25 +51,14 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
     observacoes = routeArgs['observacoes'] ?? '';
     destinoColheita = routeArgs['destinoColheita'] ?? '';
 
-    // codigo = routeArgs.codigo ?? "";
-    // descricao = routeArgs.descricao ?? "";
-    // variedade = routeArgs.variedade ?? "";
-    // quantidadeColetada = routeArgs.quantidadeColetada ?? "";
-    // unidade = routeArgs.unidade ?? '';
-    // nomeMotorista = routeArgs.nomeMotorista ?? '';
-    // cpfMotorista = routeArgs.cpfMotorista ?? '';
-    // placaCaminhao = routeArgs.placaCaminhao ?? '';
-    // nomeTransportadora = routeArgs.nomeTransportadora ?? '';
-    // observacoes = routeArgs.observacoes ?? '';
-    // destinoColheita = routeArgs.destinoColheita ?? '';
-
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Resumo'),
-          backgroundColor: Colors.green,
-          centerTitle: true,
-        ),
-        body: ViewModelConsumer<SummaryViewModel, SummaryState>(
+      appBar: AppBar(
+        title: Text('Resumo'),
+        backgroundColor: Colors.green,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: ViewModelConsumer<SummaryViewModel, SummaryState>(
           viewModel: viewModel,
           listener: (context, state) => switch (state) {
             LoadedSummaryState(
@@ -97,43 +88,41 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
               LoadedSummaryState(
                 :final harvestParams,
               ) =>
-                SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Seção: Dados Sobre o Produto
-                        _buildSectionTitle('Dados Sobre o Produto:'),
-                        _buildInfoItem('Código:', codigo),
-                        _buildInfoItem('Descrição:', descricao),
-                        _buildInfoItem('Variedade:', variedade),
-                        _buildInfoItem(
-                            'Quantidade Coletada:', quantidadeColetada),
-                        _buildInfoItem('Unidade:', unidade),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Seção: Dados Sobre o Produto
+                      _buildSectionTitle('Dados Sobre o Produto:'),
+                      _buildInfoItem('Código:', codigo),
+                      _buildInfoItem('Descrição:', descricao),
+                      _buildInfoItem('Variedade:', variedade),
+                      _buildInfoItem(
+                          'Quantidade Coletada:', quantidadeColetada),
+                      _buildInfoItem('Unidade:', unidade),
 
-                        SizedBox(height: 16.0),
+                      SizedBox(height: 16.0),
 
-                        // Seção: Dados Sobre o Motorista
-                        _buildSectionTitle('Dados Sobre o Motorista:'),
-                        _buildInfoItem('Nome do Motorista:', nomeMotorista),
-                        _buildInfoItem('CPF do Motorista:', cpfMotorista),
-                        _buildInfoItem('Placa do Caminhão:', placaCaminhao),
-                        _buildInfoItem(
-                            'Nome da Transportadora:', nomeTransportadora),
+                      // Seção: Dados Sobre o Motorista
+                      _buildSectionTitle('Dados Sobre o Motorista:'),
+                      _buildInfoItem('Nome do Motorista:', nomeMotorista),
+                      _buildInfoItem('CPF do Motorista:', cpfMotorista),
+                      _buildInfoItem('Placa do Caminhão:', placaCaminhao),
+                      _buildInfoItem(
+                          'Nome da Transportadora:', nomeTransportadora),
 
-                        SizedBox(height: 16.0),
+                      SizedBox(height: 16.0),
 
-                        // Seção: Dados Sobre o Destino
-                        _buildSectionTitle('Dados Sobre o Destino:'),
-                        _buildInfoItem('Destino da Colheita:', destinoColheita),
-                        _buildInfoItem('Observação:', observacoes),
+                      // Seção: Dados Sobre o Destino
+                      _buildSectionTitle('Dados Sobre o Destino:'),
+                      _buildInfoItem('Destino da Colheita:', destinoColheita),
+                      _buildInfoItem('Observação:', observacoes),
 
-                        SizedBox(height: 26.0),
+                      SizedBox(height: 26.0),
 
-                        _buildSubmitButton(routeArgs),
-                      ],
-                    ),
+                      _buildSubmitButton(routeArgs),
+                    ],
                   ),
                 ),
               SummaryLoading() => Scaffold(
@@ -149,7 +138,9 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
               _ => const SizedBox.shrink(),
             };
           },
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _buildSubmitButton(formData) {
@@ -157,7 +148,10 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-          Nav.pushNamed(OperatorModule.qrCodeGenerator, arguments: formData);
+          Nav.pushNamed(
+            OperatorModule.qrCodeGenerator,
+            arguments: jsonEncode(formData),
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,

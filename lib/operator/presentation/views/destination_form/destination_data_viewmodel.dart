@@ -28,7 +28,7 @@ class DestinationDataViewModel extends ViewModel<DestinationDataState> {
       case LoadedDestinationDataState(:final copyWith, :final destinations):
         {
           final destination = destinations.firstWhere(
-              (element) => element.destinationCode == selectedDestination);
+              (element) => element.destinationName == selectedDestination);
 
           // similar ao {..., selectedFarm: farm} do JavaScript
           emit(copyWith(selectedDestination: destination));

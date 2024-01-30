@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../../../core/core.dart';
 import '../../../domain/domain.dart';
 import '../../../domain/entities/collect.dart';
@@ -24,8 +26,8 @@ class DriverQrCodeReadViewModel extends ViewModel<DriverQrCodeReadState> {
 
   Future<void> readQrCode(String qrCodeDataString) async {
     emit(DriverLoadingQrCodeRead());
-    print(qrCodeDataString);
-    final _collect = Collect();
+    print(jsonDecode(qrCodeDataString));
+    final _collect = Collect.fromJson(jsonDecode(qrCodeDataString));
 
     emit(DriverSuccessQrCodeRead(_collect));
   }

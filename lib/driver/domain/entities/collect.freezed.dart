@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Collect _$CollectFromJson(Map<String, dynamic> json) {
+  return _Collect.fromJson(json);
+}
+
 /// @nodoc
 mixin _$Collect {
   String get codigo => throw _privateConstructorUsedError;
@@ -28,6 +32,7 @@ mixin _$Collect {
   String get placaCaminhao => throw _privateConstructorUsedError;
   String get nomeTransportadora => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CollectCopyWith<Collect> get copyWith => throw _privateConstructorUsedError;
 }
@@ -219,7 +224,7 @@ class __$$CollectImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$CollectImpl extends _Collect {
   _$CollectImpl(
       {this.codigo = '',
@@ -234,6 +239,9 @@ class _$CollectImpl extends _Collect {
       this.placaCaminhao = '',
       this.nomeTransportadora = ''})
       : super._();
+
+  factory _$CollectImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CollectImplFromJson(json);
 
   @override
   @JsonKey()
@@ -301,6 +309,7 @@ class _$CollectImpl extends _Collect {
                 other.nomeTransportadora == nomeTransportadora));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -321,6 +330,13 @@ class _$CollectImpl extends _Collect {
   @pragma('vm:prefer-inline')
   _$$CollectImplCopyWith<_$CollectImpl> get copyWith =>
       __$$CollectImplCopyWithImpl<_$CollectImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CollectImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _Collect extends Collect {
@@ -337,6 +353,8 @@ abstract class _Collect extends Collect {
       final String placaCaminhao,
       final String nomeTransportadora}) = _$CollectImpl;
   _Collect._() : super._();
+
+  factory _Collect.fromJson(Map<String, dynamic> json) = _$CollectImpl.fromJson;
 
   @override
   String get codigo;

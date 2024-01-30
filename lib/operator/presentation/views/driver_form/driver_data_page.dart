@@ -67,88 +67,91 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
         backgroundColor: Colors.green,
         centerTitle: true,
       ),
-      body: ViewModelConsumer<DriverDataViewModel, DriverDataState>(
-        viewModel: viewModel,
-        listener: (context, state) => switch (state) {
-          LoadedDriverDataState(
-            :final shippingCompanies,
-            :final vehicles,
-          ) =>
-            {
-              placaCaminhaoList = List<String>.from(
-                vehicles.map((e) => e.vehiclePlate),
-              ),
-              transportadoraList = List<String>.from(
-                shippingCompanies.map((e) => e.shippingCompanyName),
-              )
-            },
-          SuccessProductData() => {},
-          _ => null,
-        },
-        builder: (context, state) {
-          return switch (state) {
+      body: SingleChildScrollView(
+        child: ViewModelConsumer<DriverDataViewModel, DriverDataState>(
+          viewModel: viewModel,
+          listener: (context, state) => switch (state) {
             LoadedDriverDataState(
               :final shippingCompanies,
               :final vehicles,
-              :final selectedShippingCompany,
-              :final selectedVehicle
             ) =>
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildTextFormField(
-                      controller: _nomeMotoristaController,
-                      labelText: 'Nome do Motorista',
-                    ),
-                    SizedBox(height: 16.0),
-                    _buildTextFormField(
-                      controller: _cpfController,
-                      labelText: 'CPF',
-                      keyboardType: TextInputType.number,
-                    ),
-                    SizedBox(height: 16.0),
-                    _buildDropdown(
-                      value: selectedVehicle?.vehiclePlate,
-                      items: vehicles.map((e) => e.vehiclePlate.value).toList(),
-                      onChanged: (value) {
-                        viewModel.onSelectVehicle(value!);
-                      },
-                      labelText: 'Placa do Caminhão',
-                    ),
-                    SizedBox(height: 16.0),
-                    _buildDropdown(
-                      value: selectedShippingCompany?.shippingCompanyName,
-                      items: shippingCompanies
-                          .map((e) => e.shippingCompanyName)
-                          .toList(),
-                      onChanged: (value) {
-                        viewModel.onSelectShippingCompany(value!);
-                      },
-                      labelText: 'Transportadora',
-                    ),
-                    SizedBox(height: 16.0),
-                    _buildSubmitButton(
-                      selectedVehicle?.vehiclePlate ?? '',
-                      selectedShippingCompany?.shippingCompanyName ?? '',
-                    ),
-                  ],
+              {
+                placaCaminhaoList = List<String>.from(
+                  vehicles.map((e) => e.vehiclePlate),
                 ),
-              ),
-            LoadingProductData() => Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
+                transportadoraList = List<String>.from(
+                  shippingCompanies.map((e) => e.shippingCompanyName),
+                )
+              },
+            SuccessProductData() => {},
+            _ => null,
+          },
+          builder: (context, state) {
+            return switch (state) {
+              LoadedDriverDataState(
+                :final shippingCompanies,
+                :final vehicles,
+                :final selectedShippingCompany,
+                :final selectedVehicle
+              ) =>
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildTextFormField(
+                        controller: _nomeMotoristaController,
+                        labelText: 'Nome do Motorista',
+                      ),
+                      SizedBox(height: 16.0),
+                      _buildTextFormField(
+                        controller: _cpfController,
+                        labelText: 'CPF',
+                        keyboardType: TextInputType.number,
+                      ),
+                      SizedBox(height: 16.0),
+                      _buildDropdown(
+                        value: selectedVehicle?.vehiclePlate,
+                        items:
+                            vehicles.map((e) => e.vehiclePlate.value).toList(),
+                        onChanged: (value) {
+                          viewModel.onSelectVehicle(value!);
+                        },
+                        labelText: 'Placa do Caminhão',
+                      ),
+                      SizedBox(height: 16.0),
+                      _buildDropdown(
+                        value: selectedShippingCompany?.shippingCompanyName,
+                        items: shippingCompanies
+                            .map((e) => e.shippingCompanyName)
+                            .toList(),
+                        onChanged: (value) {
+                          viewModel.onSelectShippingCompany(value!);
+                        },
+                        labelText: 'Transportadora',
+                      ),
+                      SizedBox(height: 16.0),
+                      _buildSubmitButton(
+                        selectedVehicle?.vehiclePlate ?? '',
+                        selectedShippingCompany?.shippingCompanyName ?? '',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ErrorProductData() => Scaffold(
+              LoadingProductData() => Scaffold(
                   body: Center(
-                /// TODO: tela de erro
-                child: Text('Erro'),
-              )),
-            _ => const SizedBox.shrink(),
-          };
-        },
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              ErrorProductData() => Scaffold(
+                    body: Center(
+                  /// TODO: tela de erro
+                  child: Text('Erro'),
+                )),
+              _ => const SizedBox.shrink(),
+            };
+          },
+        ),
       ),
     );
   }

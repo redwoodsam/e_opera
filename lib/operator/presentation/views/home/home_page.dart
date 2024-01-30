@@ -131,7 +131,7 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.only(top: const Dimension(7.5).height),
+              margin: EdgeInsets.only(top: const Dimension(9).height),
               constraints: BoxConstraints(
                 maxHeight: context.screenHeight - const Dimension(7.5).height,
               ),
@@ -213,8 +213,6 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
                               children: [
                                 Image.asset(
                                   'assets/icons/realizar_colheira.png',
-                                  height: 80, // ajuste conforme necessário
-                                  width: 80, // ajuste conforme necessário
                                 ),
                                 Text(
                                   'Realizar colheita',
