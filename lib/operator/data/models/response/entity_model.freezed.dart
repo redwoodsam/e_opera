@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 EntityModel _$EntityModelFromJson(Map<String, dynamic> json) {
-  return EentityModel.fromJson(json);
+  return _EntityModel.fromJson(json);
 }
 
 /// @nodoc
@@ -88,11 +88,11 @@ class _$EntityModelCopyWithImpl<$Res, $Val extends EntityModel>
 }
 
 /// @nodoc
-abstract class _$$EentityModelImplCopyWith<$Res>
+abstract class _$$EntityModelImplCopyWith<$Res>
     implements $EntityModelCopyWith<$Res> {
-  factory _$$EentityModelImplCopyWith(
-          _$EentityModelImpl value, $Res Function(_$EentityModelImpl) then) =
-      __$$EentityModelImplCopyWithImpl<$Res>;
+  factory _$$EntityModelImplCopyWith(
+          _$EntityModelImpl value, $Res Function(_$EntityModelImpl) then) =
+      __$$EntityModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -103,11 +103,11 @@ abstract class _$$EentityModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EentityModelImplCopyWithImpl<$Res>
-    extends _$EntityModelCopyWithImpl<$Res, _$EentityModelImpl>
-    implements _$$EentityModelImplCopyWith<$Res> {
-  __$$EentityModelImplCopyWithImpl(
-      _$EentityModelImpl _value, $Res Function(_$EentityModelImpl) _then)
+class __$$EntityModelImplCopyWithImpl<$Res>
+    extends _$EntityModelCopyWithImpl<$Res, _$EntityModelImpl>
+    implements _$$EntityModelImplCopyWith<$Res> {
+  __$$EntityModelImplCopyWithImpl(
+      _$EntityModelImpl _value, $Res Function(_$EntityModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$EentityModelImplCopyWithImpl<$Res>
     Object? entityStore = freezed,
     Object? entityStoreName = freezed,
   }) {
-    return _then(_$EentityModelImpl(
+    return _then(_$EntityModelImpl(
       entityCode: null == entityCode
           ? _value.entityCode
           : entityCode // ignore: cast_nullable_to_non_nullable
@@ -141,16 +141,16 @@ class __$$EentityModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$EentityModelImpl extends EentityModel {
-  _$EentityModelImpl(
+class _$EntityModelImpl extends _EntityModel {
+  _$EntityModelImpl(
       {@JsonKey(name: 'codEntidade') required this.entityCode,
       @JsonKey(name: 'nomeEntidade') required this.entityName,
       @JsonKey(name: 'lojEntidade') this.entityStore,
       @JsonKey(name: 'nomeLojEntidade') this.entityStoreName})
       : super._();
 
-  factory _$EentityModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EentityModelImplFromJson(json);
+  factory _$EntityModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EntityModelImplFromJson(json);
 
   @override
   @JsonKey(name: 'codEntidade')
@@ -174,7 +174,7 @@ class _$EentityModelImpl extends EentityModel {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EentityModelImpl &&
+            other is _$EntityModelImpl &&
             (identical(other.entityCode, entityCode) ||
                 other.entityCode == entityCode) &&
             (identical(other.entityName, entityName) ||
@@ -193,28 +193,28 @@ class _$EentityModelImpl extends EentityModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EentityModelImplCopyWith<_$EentityModelImpl> get copyWith =>
-      __$$EentityModelImplCopyWithImpl<_$EentityModelImpl>(this, _$identity);
+  _$$EntityModelImplCopyWith<_$EntityModelImpl> get copyWith =>
+      __$$EntityModelImplCopyWithImpl<_$EntityModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EentityModelImplToJson(
+    return _$$EntityModelImplToJson(
       this,
     );
   }
 }
 
-abstract class EentityModel extends EntityModel {
-  factory EentityModel(
+abstract class _EntityModel extends EntityModel {
+  factory _EntityModel(
           {@JsonKey(name: 'codEntidade') required final String entityCode,
           @JsonKey(name: 'nomeEntidade') required final String entityName,
           @JsonKey(name: 'lojEntidade') final String? entityStore,
           @JsonKey(name: 'nomeLojEntidade') final String? entityStoreName}) =
-      _$EentityModelImpl;
-  EentityModel._() : super._();
+      _$EntityModelImpl;
+  _EntityModel._() : super._();
 
-  factory EentityModel.fromJson(Map<String, dynamic> json) =
-      _$EentityModelImpl.fromJson;
+  factory _EntityModel.fromJson(Map<String, dynamic> json) =
+      _$EntityModelImpl.fromJson;
 
   @override
   @JsonKey(name: 'codEntidade')
@@ -230,6 +230,6 @@ abstract class EentityModel extends EntityModel {
   String? get entityStoreName;
   @override
   @JsonKey(ignore: true)
-  _$$EentityModelImplCopyWith<_$EentityModelImpl> get copyWith =>
+  _$$EntityModelImplCopyWith<_$EntityModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

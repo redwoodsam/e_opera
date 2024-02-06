@@ -6,15 +6,15 @@ part of 'entity_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EentityModelImpl _$$EentityModelImplFromJson(Map<String, dynamic> json) =>
-    _$EentityModelImpl(
+_$EntityModelImpl _$$EntityModelImplFromJson(Map<String, dynamic> json) =>
+    _$EntityModelImpl(
       entityCode: json['codEntidade'] as String,
       entityName: json['nomeEntidade'] as String,
       entityStore: json['lojEntidade'] as String?,
       entityStoreName: json['nomeLojEntidade'] as String?,
     );
 
-Map<String, dynamic> _$$EentityModelImplToJson(_$EentityModelImpl instance) =>
+Map<String, dynamic> _$$EntityModelImplToJson(_$EntityModelImpl instance) =>
     <String, dynamic>{
       'codEntidade': instance.entityCode,
       'nomeEntidade': instance.entityName,

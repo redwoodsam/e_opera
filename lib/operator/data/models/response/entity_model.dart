@@ -23,7 +23,7 @@ class EntityModel with _$EntityModel {
     @JsonKey(name: 'nomeEntidade') required String entityName,
     @JsonKey(name: 'lojEntidade') String? entityStore,
     @JsonKey(name: 'nomeLojEntidade') String? entityStoreName,
-  }) = EentityModel;
+  }) = _EntityModel;
 
   factory EntityModel.fromJson(Map<String, dynamic> json) =>
       _$EntityModelFromJson(json);
