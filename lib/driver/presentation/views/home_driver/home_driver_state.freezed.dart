@@ -20,7 +20,9 @@ mixin _$DriverHomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function(Login? loggedInUser, bool syncronizing) loaded,
+    required TResult Function(
+            Login? loggedInUser, bool syncronizing, bool syncError)
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
   }) =>
@@ -29,7 +31,8 @@ mixin _$DriverHomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? error,
-    TResult? Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult? Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
   }) =>
@@ -38,7 +41,8 @@ mixin _$DriverHomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult Function()? loading,
     TResult Function()? success,
     required TResult orElse(),
@@ -132,7 +136,9 @@ class _$DriverInitialHomeImpl implements DriverInitialHome {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function(Login? loggedInUser, bool syncronizing) loaded,
+    required TResult Function(
+            Login? loggedInUser, bool syncronizing, bool syncError)
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
   }) {
@@ -144,7 +150,8 @@ class _$DriverInitialHomeImpl implements DriverInitialHome {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? error,
-    TResult? Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult? Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
   }) {
@@ -156,7 +163,8 @@ class _$DriverInitialHomeImpl implements DriverInitialHome {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult Function()? loading,
     TResult Function()? success,
     required TResult orElse(),
@@ -252,7 +260,9 @@ class _$DriverErrorHomeImpl implements DriverErrorHome {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function(Login? loggedInUser, bool syncronizing) loaded,
+    required TResult Function(
+            Login? loggedInUser, bool syncronizing, bool syncError)
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
   }) {
@@ -264,7 +274,8 @@ class _$DriverErrorHomeImpl implements DriverErrorHome {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? error,
-    TResult? Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult? Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
   }) {
@@ -276,7 +287,8 @@ class _$DriverErrorHomeImpl implements DriverErrorHome {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult Function()? loading,
     TResult Function()? success,
     required TResult orElse(),
@@ -338,7 +350,7 @@ abstract class _$$DriverLoadedHomeImplCopyWith<$Res> {
           $Res Function(_$DriverLoadedHomeImpl) then) =
       __$$DriverLoadedHomeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Login? loggedInUser, bool syncronizing});
+  $Res call({Login? loggedInUser, bool syncronizing, bool syncError});
 
   $LoginCopyWith<$Res>? get loggedInUser;
 }
@@ -356,6 +368,7 @@ class __$$DriverLoadedHomeImplCopyWithImpl<$Res>
   $Res call({
     Object? loggedInUser = freezed,
     Object? syncronizing = null,
+    Object? syncError = null,
   }) {
     return _then(_$DriverLoadedHomeImpl(
       loggedInUser: freezed == loggedInUser
@@ -365,6 +378,10 @@ class __$$DriverLoadedHomeImplCopyWithImpl<$Res>
       syncronizing: null == syncronizing
           ? _value.syncronizing
           : syncronizing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      syncError: null == syncError
+          ? _value.syncError
+          : syncError // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -385,17 +402,21 @@ class __$$DriverLoadedHomeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DriverLoadedHomeImpl implements DriverLoadedHome {
-  _$DriverLoadedHomeImpl({this.loggedInUser, this.syncronizing = false});
+  _$DriverLoadedHomeImpl(
+      {this.loggedInUser, this.syncronizing = false, this.syncError = false});
 
   @override
   final Login? loggedInUser;
   @override
   @JsonKey()
   final bool syncronizing;
+  @override
+  @JsonKey()
+  final bool syncError;
 
   @override
   String toString() {
-    return 'DriverHomeState.loaded(loggedInUser: $loggedInUser, syncronizing: $syncronizing)';
+    return 'DriverHomeState.loaded(loggedInUser: $loggedInUser, syncronizing: $syncronizing, syncError: $syncError)';
   }
 
   @override
@@ -406,11 +427,14 @@ class _$DriverLoadedHomeImpl implements DriverLoadedHome {
             (identical(other.loggedInUser, loggedInUser) ||
                 other.loggedInUser == loggedInUser) &&
             (identical(other.syncronizing, syncronizing) ||
-                other.syncronizing == syncronizing));
+                other.syncronizing == syncronizing) &&
+            (identical(other.syncError, syncError) ||
+                other.syncError == syncError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loggedInUser, syncronizing);
+  int get hashCode =>
+      Object.hash(runtimeType, loggedInUser, syncronizing, syncError);
 
   @JsonKey(ignore: true)
   @override
@@ -424,11 +448,13 @@ class _$DriverLoadedHomeImpl implements DriverLoadedHome {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function(Login? loggedInUser, bool syncronizing) loaded,
+    required TResult Function(
+            Login? loggedInUser, bool syncronizing, bool syncError)
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
   }) {
-    return loaded(loggedInUser, syncronizing);
+    return loaded(loggedInUser, syncronizing, syncError);
   }
 
   @override
@@ -436,11 +462,12 @@ class _$DriverLoadedHomeImpl implements DriverLoadedHome {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? error,
-    TResult? Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult? Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
   }) {
-    return loaded?.call(loggedInUser, syncronizing);
+    return loaded?.call(loggedInUser, syncronizing, syncError);
   }
 
   @override
@@ -448,13 +475,14 @@ class _$DriverLoadedHomeImpl implements DriverLoadedHome {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult Function()? loading,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(loggedInUser, syncronizing);
+      return loaded(loggedInUser, syncronizing, syncError);
     }
     return orElse();
   }
@@ -503,10 +531,12 @@ class _$DriverLoadedHomeImpl implements DriverLoadedHome {
 abstract class DriverLoadedHome implements DriverHomeState {
   factory DriverLoadedHome(
       {final Login? loggedInUser,
-      final bool syncronizing}) = _$DriverLoadedHomeImpl;
+      final bool syncronizing,
+      final bool syncError}) = _$DriverLoadedHomeImpl;
 
   Login? get loggedInUser;
   bool get syncronizing;
+  bool get syncError;
   @JsonKey(ignore: true)
   _$$DriverLoadedHomeImplCopyWith<_$DriverLoadedHomeImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -552,7 +582,9 @@ class _$DriverLoadingHomeImpl implements DriverLoadingHome {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function(Login? loggedInUser, bool syncronizing) loaded,
+    required TResult Function(
+            Login? loggedInUser, bool syncronizing, bool syncError)
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
   }) {
@@ -564,7 +596,8 @@ class _$DriverLoadingHomeImpl implements DriverLoadingHome {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? error,
-    TResult? Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult? Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
   }) {
@@ -576,7 +609,8 @@ class _$DriverLoadingHomeImpl implements DriverLoadingHome {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult Function()? loading,
     TResult Function()? success,
     required TResult orElse(),
@@ -672,7 +706,9 @@ class _$DriverSuccessHomeImpl implements DriverSuccessHome {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() error,
-    required TResult Function(Login? loggedInUser, bool syncronizing) loaded,
+    required TResult Function(
+            Login? loggedInUser, bool syncronizing, bool syncError)
+        loaded,
     required TResult Function() loading,
     required TResult Function() success,
   }) {
@@ -684,7 +720,8 @@ class _$DriverSuccessHomeImpl implements DriverSuccessHome {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? error,
-    TResult? Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult? Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult? Function()? loading,
     TResult? Function()? success,
   }) {
@@ -696,7 +733,8 @@ class _$DriverSuccessHomeImpl implements DriverSuccessHome {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? error,
-    TResult Function(Login? loggedInUser, bool syncronizing)? loaded,
+    TResult Function(Login? loggedInUser, bool syncronizing, bool syncError)?
+        loaded,
     TResult Function()? loading,
     TResult Function()? success,
     required TResult orElse(),

@@ -32,8 +32,11 @@ class CollectRepository implements ICollectRepository {
     var listOfFuture = await Future.wait(list.map((element) async {
       return await _datasource.collect(element);
     }));
-    return Either.cond(() => !listOfFuture.any((element) => element.isLeft()),
-        () => null, () => Failure.badRequest());
+    return Either.cond(
+      () => !listOfFuture.any((element) => element.isLeft()),
+      () => null,
+      () => Failure.badRequest(),
+    );
   }
 
   @override

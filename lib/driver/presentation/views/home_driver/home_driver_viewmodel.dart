@@ -22,8 +22,14 @@ class DriverHomeViewModel extends ViewModel<DriverHomeState> {
   Future<void> synchronizeLocalDatabaseUsecase(Login loggedInUser) async {
     emit(DriverLoadingHome());
 
-    await _synchronizeLocalDatabaseUsecase();
-    emit(DriverLoadedHome(loggedInUser: loggedInUser, syncronizing: true));
+    var usecase = await _synchronizeLocalDatabaseUsecase();
+    emit(
+      DriverLoadedHome(
+        loggedInUser: loggedInUser,
+        syncronizing: true,
+        syncError: usecase.isLeft(),
+      ),
+    );
   }
 
   Future<void> getCredentials() async {

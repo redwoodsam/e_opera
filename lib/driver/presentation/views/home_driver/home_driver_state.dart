@@ -17,6 +17,7 @@ sealed class DriverHomeState extends ViewModelState with _$DriverHomeState {
   factory DriverHomeState.loaded({
     Login? loggedInUser,
     @Default(false) bool syncronizing,
+    @Default(false) bool syncError,
   }) = DriverLoadedHome;
 
   /// The loading [DriverHomeState] state

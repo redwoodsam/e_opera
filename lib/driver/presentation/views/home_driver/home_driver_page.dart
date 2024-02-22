@@ -44,11 +44,17 @@ class _DriverHomePageState
           // Eventos que não precisam rebuildar a tela
           // Eg. Success que vai para a próxima tela
           listener: (context, state) => switch (state) {
-            DriverLoadedHome(:final syncronizing) => {
-                if (syncronizing)
+            DriverLoadedHome(:final syncronizing, :final syncError) => {
+                if (syncronizing && !syncError)
                   {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text("Banco de dados atualizado com sucesso")))
+                  },
+                if (syncError)
+                  {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            "Falha ao sincronizar banco de dados. Verifique sua conexão e tente novamente.")))
                   }
               },
             DriverSuccessHome() => {},
