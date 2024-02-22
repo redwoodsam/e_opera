@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/core.dart';
 import '../../../domain/entities/collect.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
 
 part 'summary_driver_state.freezed.dart';
 
@@ -15,7 +16,7 @@ sealed class SummaryDriverState extends ViewModelState
   factory SummaryDriverState.loading() = SummaryDriverLoading;
 
   factory SummaryDriverState.loaded({
-    Collect? collectedData,
+    HarvestForm? collectedData,
   }) = LoadedSummaryDriverState;
 
   factory SummaryDriverState.success() = SummaryDriverSuccess;

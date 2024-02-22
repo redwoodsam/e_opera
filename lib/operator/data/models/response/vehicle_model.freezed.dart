@@ -12,7 +12,7 @@ part of 'vehicle_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 VehicleModel _$VehicleModelFromJson(Map<String, dynamic> json) {
   return _VehicleModel.fromJson(json);
@@ -20,12 +20,16 @@ VehicleModel _$VehicleModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VehicleModel {
+  @HiveField(0)
   @JsonKey(name: 'codVeiculo')
   String get vehicleCode => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'motoristaVeiculo')
   String get driverVehicle => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'nomeVeiculo')
   String get vehicleName => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'placaVeiculo')
   String get vehiclePlate => throw _privateConstructorUsedError;
 
@@ -42,10 +46,10 @@ abstract class $VehicleModelCopyWith<$Res> {
       _$VehicleModelCopyWithImpl<$Res, VehicleModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'codVeiculo') String vehicleCode,
-      @JsonKey(name: 'motoristaVeiculo') String driverVehicle,
-      @JsonKey(name: 'nomeVeiculo') String vehicleName,
-      @JsonKey(name: 'placaVeiculo') String vehiclePlate});
+      {@HiveField(0) @JsonKey(name: 'codVeiculo') String vehicleCode,
+      @HiveField(1) @JsonKey(name: 'motoristaVeiculo') String driverVehicle,
+      @HiveField(2) @JsonKey(name: 'nomeVeiculo') String vehicleName,
+      @HiveField(3) @JsonKey(name: 'placaVeiculo') String vehiclePlate});
 }
 
 /// @nodoc
@@ -96,10 +100,10 @@ abstract class _$$VehicleModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'codVeiculo') String vehicleCode,
-      @JsonKey(name: 'motoristaVeiculo') String driverVehicle,
-      @JsonKey(name: 'nomeVeiculo') String vehicleName,
-      @JsonKey(name: 'placaVeiculo') String vehiclePlate});
+      {@HiveField(0) @JsonKey(name: 'codVeiculo') String vehicleCode,
+      @HiveField(1) @JsonKey(name: 'motoristaVeiculo') String driverVehicle,
+      @HiveField(2) @JsonKey(name: 'nomeVeiculo') String vehicleName,
+      @HiveField(3) @JsonKey(name: 'placaVeiculo') String vehiclePlate});
 }
 
 /// @nodoc
@@ -141,27 +145,34 @@ class __$$VehicleModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: vehicleModelAdapterTypeId, adapterName: 'VehicleModelAdapter')
 class _$VehicleModelImpl extends _VehicleModel {
   _$VehicleModelImpl(
-      {@JsonKey(name: 'codVeiculo') required this.vehicleCode,
-      @JsonKey(name: 'motoristaVeiculo') required this.driverVehicle,
-      @JsonKey(name: 'nomeVeiculo') required this.vehicleName,
-      @JsonKey(name: 'placaVeiculo') required this.vehiclePlate})
+      {@HiveField(0) @JsonKey(name: 'codVeiculo') required this.vehicleCode,
+      @HiveField(1)
+      @JsonKey(name: 'motoristaVeiculo')
+      required this.driverVehicle,
+      @HiveField(2) @JsonKey(name: 'nomeVeiculo') required this.vehicleName,
+      @HiveField(3) @JsonKey(name: 'placaVeiculo') required this.vehiclePlate})
       : super._();
 
   factory _$VehicleModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$VehicleModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codVeiculo')
   final String vehicleCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'motoristaVeiculo')
   final String driverVehicle;
   @override
+  @HiveField(2)
   @JsonKey(name: 'nomeVeiculo')
   final String vehicleName;
   @override
+  @HiveField(3)
   @JsonKey(name: 'placaVeiculo')
   final String vehiclePlate;
 
@@ -206,9 +217,16 @@ class _$VehicleModelImpl extends _VehicleModel {
 
 abstract class _VehicleModel extends VehicleModel {
   factory _VehicleModel(
-      {@JsonKey(name: 'codVeiculo') required final String vehicleCode,
-      @JsonKey(name: 'motoristaVeiculo') required final String driverVehicle,
-      @JsonKey(name: 'nomeVeiculo') required final String vehicleName,
+      {@HiveField(0)
+      @JsonKey(name: 'codVeiculo')
+      required final String vehicleCode,
+      @HiveField(1)
+      @JsonKey(name: 'motoristaVeiculo')
+      required final String driverVehicle,
+      @HiveField(2)
+      @JsonKey(name: 'nomeVeiculo')
+      required final String vehicleName,
+      @HiveField(3)
       @JsonKey(name: 'placaVeiculo')
       required final String vehiclePlate}) = _$VehicleModelImpl;
   _VehicleModel._() : super._();
@@ -217,15 +235,19 @@ abstract class _VehicleModel extends VehicleModel {
       _$VehicleModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codVeiculo')
   String get vehicleCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'motoristaVeiculo')
   String get driverVehicle;
   @override
+  @HiveField(2)
   @JsonKey(name: 'nomeVeiculo')
   String get vehicleName;
   @override
+  @HiveField(3)
   @JsonKey(name: 'placaVeiculo')
   String get vehiclePlate;
   @override

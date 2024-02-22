@@ -12,7 +12,7 @@ part of 'variety_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 VarietyModel _$VarietyModelFromJson(Map<String, dynamic> json) {
   return _VarietyModel.fromJson(json);
@@ -20,12 +20,16 @@ VarietyModel _$VarietyModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VarietyModel {
+  @HiveField(0)
   @JsonKey(name: 'codVariedade')
   String get varietyCode => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'desVariedade')
   String get varietyDescription => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'codProduto')
   String get productCode => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'desProduto')
   String get productDescription => throw _privateConstructorUsedError;
 
@@ -42,10 +46,10 @@ abstract class $VarietyModelCopyWith<$Res> {
       _$VarietyModelCopyWithImpl<$Res, VarietyModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'codVariedade') String varietyCode,
-      @JsonKey(name: 'desVariedade') String varietyDescription,
-      @JsonKey(name: 'codProduto') String productCode,
-      @JsonKey(name: 'desProduto') String productDescription});
+      {@HiveField(0) @JsonKey(name: 'codVariedade') String varietyCode,
+      @HiveField(1) @JsonKey(name: 'desVariedade') String varietyDescription,
+      @HiveField(2) @JsonKey(name: 'codProduto') String productCode,
+      @HiveField(3) @JsonKey(name: 'desProduto') String productDescription});
 }
 
 /// @nodoc
@@ -96,10 +100,10 @@ abstract class _$$VarietyModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'codVariedade') String varietyCode,
-      @JsonKey(name: 'desVariedade') String varietyDescription,
-      @JsonKey(name: 'codProduto') String productCode,
-      @JsonKey(name: 'desProduto') String productDescription});
+      {@HiveField(0) @JsonKey(name: 'codVariedade') String varietyCode,
+      @HiveField(1) @JsonKey(name: 'desVariedade') String varietyDescription,
+      @HiveField(2) @JsonKey(name: 'codProduto') String productCode,
+      @HiveField(3) @JsonKey(name: 'desProduto') String productDescription});
 }
 
 /// @nodoc
@@ -141,27 +145,36 @@ class __$$VarietyModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: varietyModelAdapterTypeId, adapterName: 'VarietyModelAdapter')
 class _$VarietyModelImpl extends _VarietyModel {
   _$VarietyModelImpl(
-      {@JsonKey(name: 'codVariedade') required this.varietyCode,
-      @JsonKey(name: 'desVariedade') required this.varietyDescription,
-      @JsonKey(name: 'codProduto') required this.productCode,
-      @JsonKey(name: 'desProduto') required this.productDescription})
+      {@HiveField(0) @JsonKey(name: 'codVariedade') required this.varietyCode,
+      @HiveField(1)
+      @JsonKey(name: 'desVariedade')
+      required this.varietyDescription,
+      @HiveField(2) @JsonKey(name: 'codProduto') required this.productCode,
+      @HiveField(3)
+      @JsonKey(name: 'desProduto')
+      required this.productDescription})
       : super._();
 
   factory _$VarietyModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$VarietyModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codVariedade')
   final String varietyCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'desVariedade')
   final String varietyDescription;
   @override
+  @HiveField(2)
   @JsonKey(name: 'codProduto')
   final String productCode;
   @override
+  @HiveField(3)
   @JsonKey(name: 'desProduto')
   final String productDescription;
 
@@ -206,9 +219,16 @@ class _$VarietyModelImpl extends _VarietyModel {
 
 abstract class _VarietyModel extends VarietyModel {
   factory _VarietyModel(
-      {@JsonKey(name: 'codVariedade') required final String varietyCode,
-      @JsonKey(name: 'desVariedade') required final String varietyDescription,
-      @JsonKey(name: 'codProduto') required final String productCode,
+      {@HiveField(0)
+      @JsonKey(name: 'codVariedade')
+      required final String varietyCode,
+      @HiveField(1)
+      @JsonKey(name: 'desVariedade')
+      required final String varietyDescription,
+      @HiveField(2)
+      @JsonKey(name: 'codProduto')
+      required final String productCode,
+      @HiveField(3)
       @JsonKey(name: 'desProduto')
       required final String productDescription}) = _$VarietyModelImpl;
   _VarietyModel._() : super._();
@@ -217,15 +237,19 @@ abstract class _VarietyModel extends VarietyModel {
       _$VarietyModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codVariedade')
   String get varietyCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'desVariedade')
   String get varietyDescription;
   @override
+  @HiveField(2)
   @JsonKey(name: 'codProduto')
   String get productCode;
   @override
+  @HiveField(3)
   @JsonKey(name: 'desProduto')
   String get productDescription;
   @override

@@ -1,10 +1,21 @@
 import 'dart:io' as io;
 
+import 'package:eopera/driver/domain/repositories/collect_repository.dart';
+import 'package:eopera/driver/domain/usecases/get_loggedIn_user_usecase.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../core/core.dart';
+import '../login/data/data.dart';
+import '../login/domain/domain.dart';
 import 'data/data.dart';
+import 'data/datasource/interfaces/collect_datasource.dart';
+import 'data/datasource/local/collect_datasource.dart';
+import 'data/datasource/remote/collect_datasource.dart';
+import 'data/models/request/collect_model.dart';
+import 'data/repositories/collect_repository.dart';
 import 'domain/domain.dart';
+import 'domain/usecases/send_collect_usecase.dart';
+import 'domain/usecases/synchronize_local_database_usecase.dart';
 import 'presentation/views/home_driver/home_driver_page.dart';
 import 'presentation/views/home_driver/home_driver_viewmodel.dart';
 import 'presentation/views/qrcode_read/qrcode_read_driver_page.dart';
@@ -59,16 +70,49 @@ class DriverModule extends Module {
               AuthorizationInterceptor(ModularDependencyManager.i()),
             ]),
         ),
+        Bind.lazySingleton<IStorageClient<List<LoginModel>>>(
+          (di) => HiveStorageAdapter('@auth'),
+        ),
+        Bind.lazySingleton<IStorageClient<List<CollectModel>>>(
+          (di) => HiveStorageAdapter('@Collect'),
+        ),
       ];
   static List<Bind> get _datasources => [
-        // Bind.lazySingleton<IIntroDatasource>(
-        //   (i) => IntroDatasource(i.get<IHttpClient>()),
-        // ),
+        Bind.lazySingleton<ICollectDatasource>(
+          (i) => CollectDatasource(
+            i.get<IHttpClient>(),
+          ),
+        ),
+        Bind.lazySingleton<ICollectLocalDatasource>(
+          (i) => CollectLocalDatasource(
+            i.get<IStorageClient<List<CollectModel>>>(),
+          ),
+        ),
+        Bind.lazySingleton<ILoginDatasource>(
+          (i) => LoginDatasource(
+            i.get<IHttpClient>(),
+          ),
+        ),
+        Bind.lazySingleton<ILoginLocalDatasource>(
+          (i) => LoginLocalDatasource(
+            i.get<IStorageClient<List<LoginModel>>>(),
+          ),
+        ),
       ];
+
   static List<Bind> get _repositories => [
-        // Bind.lazySingleton<IFarmRepository>(
-        //   (i) => FarmRepository(i.get<IIntroDatasource>()),
-        // ),
+        Bind.lazySingleton<ICollectRepository>(
+          (i) => CollectRepository(
+            i.get<ICollectDatasource>(),
+            i.get<ICollectLocalDatasource>(),
+          ),
+        ),
+        Bind.lazySingleton<ILoginRepository>(
+          (i) => LoginRepository(
+            i.get<ILoginDatasource>(),
+            i.get<ILoginLocalDatasource>(),
+          ),
+        )
         // Bind.lazySingleton<IFieldRepository>(
         //   (i) => FieldRepository(i.get<IIntroDatasource>()),
         // ),
@@ -78,9 +122,22 @@ class DriverModule extends Module {
       ];
 
   static List<Bind> get _usecases => [
-        // Bind.factory<IGetFarmsUsecase>(
-        //   (i) => GetFarmsUsecase(i.get<IFarmRepository>()),
-        // ),
+        Bind.factory<ISendCollectUsecase>(
+          (i) => SendCollectUsecase(
+            i.get<ICollectRepository>(),
+          ),
+        ),
+        Bind.factory<ISynchronizeLocalDatabaseUsecase>(
+          (i) => SynchronizeLocalDatabaseUsecase(
+            i.get<ICollectRepository>(),
+          ),
+        ),
+
+        Bind.factory<IGetLoggedInUserUsecase>(
+          (i) => GetLoggedInUserUsecase(
+            i.get<ILoginRepository>(),
+          ),
+        ),
         // Bind.factory<IGetFieldsUsecase>(
         //     (i) => GetFieldsUsecase(i.get<IFieldRepository>())),
         // Bind.factory<IGetHarvestsUsecase>(
@@ -93,11 +150,18 @@ class DriverModule extends Module {
         //       i.get<IGetFieldsUsecase>(), i.get<IGetHarvestsUsecase>()),
         // ),
         Bind.lazySingleton<DriverHomeViewModel>(
-          (i) => DriverHomeViewModel(),
+          (i) => DriverHomeViewModel(
+            i.get<IGetLoggedInUserUsecase>(),
+            i.get<ISynchronizeLocalDatabaseUsecase>(),
+          ),
         ),
         Bind.lazySingleton<DriverQrCodeReadViewModel>(
           (i) => DriverQrCodeReadViewModel(),
         ),
-        Bind.lazySingleton((i) => SummaryDriverViewModel()),
+        Bind.lazySingleton<SummaryDriverViewModel>(
+          (i) => SummaryDriverViewModel(
+            i.get<ISendCollectUsecase>(),
+          ),
+        ),
       ];
 }

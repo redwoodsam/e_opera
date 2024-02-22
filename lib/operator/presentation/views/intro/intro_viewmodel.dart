@@ -2,10 +2,13 @@ import '../../../../core/core.dart';
 import '../../../domain/domain.dart';
 import '../../../domain/entities/farm.dart';
 import '../../../domain/entities/field.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
 import '../../../domain/entities/harvest.dart';
 import '../../../domain/entities/localization_params.dart';
 import '../../../domain/usecases/get_fields_usecase.dart';
 import '../../../domain/usecases/get_harvests_usecase.dart';
+import '../../../domain/usecases/get_location_params_usecase.dart';
+import '../../../domain/usecases/save_location_params_usecase.dart';
 import '../../../operator_module.dart';
 import 'intro_state.dart';
 
@@ -14,10 +17,16 @@ class IntroViewModel extends ViewModel<IntroState> {
   final IGetFarmsUsecase _getFarmsUsecase;
   final IGetFieldsUsecase _getFieldsUsecase;
   final IGetHarvestsUsecase _getHarvestsUsecase;
+  final IGetLocationParamsLocallyUsecase _getLocationParamsLocallyUsecase;
+  final ISaveLocationParamsLocallyUsecase _saveLocationParamsLocallyUsecase;
 
   /// Constructor of [IntroViewModel]
   IntroViewModel(
-      this._getFarmsUsecase, this._getFieldsUsecase, this._getHarvestsUsecase,)
+      this._getFarmsUsecase,
+      this._getFieldsUsecase,
+      this._getHarvestsUsecase,
+      this._getLocationParamsLocallyUsecase,
+      this._saveLocationParamsLocallyUsecase)
       : super(IntroState.initial());
 
   /// Method to realize login
@@ -35,13 +44,26 @@ class IntroViewModel extends ViewModel<IntroState> {
         farms: usecases.first.toRight() as List<Farm>,
         fields: usecases[1].toRight() as List<Field>,
         harvests: usecases[2].toRight() as List<Harvest>));
+  }
 
-    // final loginParams = LoginParams(user: user, password: password);
-    // final usecase = await _loginUsecase(loginParams);
+  Future<bool> loadSavedLocation() async {
+    switch (state) {
+      case InitialIntro() || LoadingIntro():
+        {
+          var response = await _getLocationParamsLocallyUsecase.call();
+          if (response.isLeft()) return false;
+          var savedLocation = response.toRight();
 
-    // final newState = usecase.fold((l) => ErrorLogin(), (r) => SuccessLogin());
-
-    // emit(newState);
+          emit(LoadedIntro(
+            selectedFarm: savedLocation.farm,
+            selectedField: savedLocation.field,
+            selectedHarvest: savedLocation.harvest,
+          ));
+          return true;
+        }
+      default:
+        return false;
+    }
   }
 
   void navigateToHomePage() {
@@ -58,7 +80,15 @@ class IntroViewModel extends ViewModel<IntroState> {
             harvest: selectedHarvest!,
             field: selectedField!,
           );
-          Nav.pushNamed(OperatorModule.home, arguments: locationParams);
+          _saveLocationParamsLocallyUsecase(
+            selectedFarm,
+            selectedHarvest,
+            selectedField,
+          );
+          Nav.pushReplacementNamed(
+            OperatorModule.home,
+            arguments: HarvestForm(location: locationParams),
+          );
         }
       default:
         null;

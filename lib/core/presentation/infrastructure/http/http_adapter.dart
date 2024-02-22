@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 
 import '../../../core.dart';
 
-
 ///
 /// [IHttpClient] implementation using dart:io default HttpClient
 ///
@@ -221,7 +220,7 @@ class HttpAdapter implements IHttpClient {
   }) async {
     // TODO: IMPLEMENTAR SQLITE
     final ConnectionStatusSingleton connection = ConnectionStatusSingleton();
-    if(!await connection.call()){
+    if (!await connection.call()) {
       Log.i('Não há conexão com a internet');
       return const HttpResponse(status: HttpStatus.networkConnectTimeoutError);
     }
@@ -260,7 +259,7 @@ class HttpAdapter implements IHttpClient {
 
       rethrow;
     } catch (error, stacktrace) {
-      Log.e(error.toString(),error, stacktrace);
+      Log.e(error.toString(), error, stacktrace);
       throw UnknownConnectionError(data: error.toString());
     }
   }
@@ -340,7 +339,7 @@ class HttpAdapter implements IHttpClient {
 
       rethrow;
     } catch (error, stacktrace) {
-      Log.e(error.toString(), error,  stacktrace);
+      Log.e(error.toString(), error, stacktrace);
       throw Exception();
     }
   }
@@ -502,7 +501,6 @@ class HttpAdapter implements IHttpClient {
 
     return toReturn;
   }
-
 }
 
 /// Extension for status code

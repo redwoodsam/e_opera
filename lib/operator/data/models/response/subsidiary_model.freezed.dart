@@ -12,7 +12,7 @@ part of 'subsidiary_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SubsidiaryModel _$SubsidiaryModelFromJson(Map<String, dynamic> json) {
   return _SubsidiaryModel.fromJson(json);
@@ -20,10 +20,13 @@ SubsidiaryModel _$SubsidiaryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$SubsidiaryModel {
+  @HiveField(0)
   @JsonKey(name: 'codFilial')
   String get subsidiaryCode => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'nomeFilial')
   String get subsidiaryName => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'empresaFilial')
   String? get companyName => throw _privateConstructorUsedError;
 
@@ -40,9 +43,9 @@ abstract class $SubsidiaryModelCopyWith<$Res> {
       _$SubsidiaryModelCopyWithImpl<$Res, SubsidiaryModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'codFilial') String subsidiaryCode,
-      @JsonKey(name: 'nomeFilial') String subsidiaryName,
-      @JsonKey(name: 'empresaFilial') String? companyName});
+      {@HiveField(0) @JsonKey(name: 'codFilial') String subsidiaryCode,
+      @HiveField(1) @JsonKey(name: 'nomeFilial') String subsidiaryName,
+      @HiveField(2) @JsonKey(name: 'empresaFilial') String? companyName});
 }
 
 /// @nodoc
@@ -88,9 +91,9 @@ abstract class _$$SubsidiaryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'codFilial') String subsidiaryCode,
-      @JsonKey(name: 'nomeFilial') String subsidiaryName,
-      @JsonKey(name: 'empresaFilial') String? companyName});
+      {@HiveField(0) @JsonKey(name: 'codFilial') String subsidiaryCode,
+      @HiveField(1) @JsonKey(name: 'nomeFilial') String subsidiaryName,
+      @HiveField(2) @JsonKey(name: 'empresaFilial') String? companyName});
 }
 
 /// @nodoc
@@ -127,23 +130,28 @@ class __$$SubsidiaryModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(
+    typeId: subsidiaryModelAdapterTypeId, adapterName: 'SubsidiaryModelAdapter')
 class _$SubsidiaryModelImpl extends _SubsidiaryModel {
   _$SubsidiaryModelImpl(
-      {@JsonKey(name: 'codFilial') required this.subsidiaryCode,
-      @JsonKey(name: 'nomeFilial') required this.subsidiaryName,
-      @JsonKey(name: 'empresaFilial') this.companyName})
+      {@HiveField(0) @JsonKey(name: 'codFilial') required this.subsidiaryCode,
+      @HiveField(1) @JsonKey(name: 'nomeFilial') required this.subsidiaryName,
+      @HiveField(2) @JsonKey(name: 'empresaFilial') this.companyName})
       : super._();
 
   factory _$SubsidiaryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubsidiaryModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codFilial')
   final String subsidiaryCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeFilial')
   final String subsidiaryName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'empresaFilial')
   final String? companyName;
 
@@ -187,22 +195,30 @@ class _$SubsidiaryModelImpl extends _SubsidiaryModel {
 
 abstract class _SubsidiaryModel extends SubsidiaryModel {
   factory _SubsidiaryModel(
-          {@JsonKey(name: 'codFilial') required final String subsidiaryCode,
-          @JsonKey(name: 'nomeFilial') required final String subsidiaryName,
-          @JsonKey(name: 'empresaFilial') final String? companyName}) =
-      _$SubsidiaryModelImpl;
+      {@HiveField(0)
+      @JsonKey(name: 'codFilial')
+      required final String subsidiaryCode,
+      @HiveField(1)
+      @JsonKey(name: 'nomeFilial')
+      required final String subsidiaryName,
+      @HiveField(2)
+      @JsonKey(name: 'empresaFilial')
+      final String? companyName}) = _$SubsidiaryModelImpl;
   _SubsidiaryModel._() : super._();
 
   factory _SubsidiaryModel.fromJson(Map<String, dynamic> json) =
       _$SubsidiaryModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codFilial')
   String get subsidiaryCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeFilial')
   String get subsidiaryName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'empresaFilial')
   String? get companyName;
   @override

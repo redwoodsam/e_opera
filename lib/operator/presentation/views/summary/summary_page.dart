@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
 import '../../../domain/entities/harvest_params.dart';
 import '../../../operator_module.dart';
 import 'summary_state.dart';
@@ -35,22 +36,15 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final routeArgs =
-        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    print(routeArgs);
+  void dispose() {
+    viewModel.dispose();
+    super.dispose();
+  }
 
-    codigo = routeArgs['codigo'] ?? "";
-    descricao = routeArgs['descricao'] ?? "";
-    variedade = routeArgs['variedade'] ?? "";
-    quantidadeColetada = routeArgs['quantidadeColetada'] ?? "";
-    unidade = routeArgs['unidade'] ?? '';
-    nomeMotorista = routeArgs['nomeMotorista'] ?? '';
-    cpfMotorista = routeArgs['cpfMotorista'] ?? '';
-    placaCaminhao = routeArgs['placaCaminhao'] ?? '';
-    nomeTransportadora = routeArgs['nomeTransportadora'] ?? '';
-    observacoes = routeArgs['observacoes'] ?? '';
-    destinoColheita = routeArgs['destinoColheita'] ?? '';
+  @override
+  Widget build(BuildContext context) {
+    final harvestForm =
+        ModalRoute.of(context)!.settings.arguments as HarvestForm;
 
     return Scaffold(
       appBar: AppBar(
@@ -65,22 +59,7 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
             LoadedSummaryState(
               :final harvestParams,
             ) =>
-              {
-                codigo = harvestParams?.codigo ?? codigo,
-                destinoColheita =
-                    harvestParams?.destinoColheita ?? destinoColheita,
-                observacoes = harvestParams?.observacoes ?? observacoes,
-                descricao = harvestParams?.descricao ?? descricao,
-                variedade = harvestParams?.variedade ?? variedade,
-                quantidadeColetada =
-                    harvestParams?.quantidadeColetada ?? quantidadeColetada,
-                unidade = harvestParams?.unidade ?? unidade,
-                nomeMotorista = harvestParams?.nomeMotorista ?? nomeMotorista,
-                cpfMotorista = harvestParams?.cpfMotorista ?? cpfMotorista,
-                placaCaminhao = harvestParams?.placaCaminhao ?? placaCaminhao,
-                nomeTransportadora =
-                    harvestParams?.nomeTransportadora ?? nomeTransportadora,
-              },
+              {},
             SummarySuccess() => {},
             _ => null,
           },
@@ -96,33 +75,42 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
                     children: [
                       // Seção: Dados Sobre o Produto
                       _buildSectionTitle('Dados Sobre o Produto:'),
-                      _buildInfoItem('Código:', codigo),
-                      _buildInfoItem('Descrição:', descricao),
-                      _buildInfoItem('Variedade:', variedade),
                       _buildInfoItem(
-                          'Quantidade Coletada:', quantidadeColetada),
-                      _buildInfoItem('Unidade:', unidade),
+                          'Código:', harvestForm.product?.productCode ?? ''),
+                      _buildInfoItem('Descrição:',
+                          harvestForm.product?.productDescription ?? ""),
+                      _buildInfoItem('Variedade:',
+                          harvestForm.product?.productVariety ?? ''),
+                      _buildInfoItem('Quantidade Coletada:',
+                          harvestForm.product?.quantity ?? ''),
+                      _buildInfoItem(
+                          'Unidade:', harvestForm.product?.unit ?? ''),
 
                       SizedBox(height: 16.0),
 
                       // Seção: Dados Sobre o Motorista
                       _buildSectionTitle('Dados Sobre o Motorista:'),
-                      _buildInfoItem('Nome do Motorista:', nomeMotorista),
-                      _buildInfoItem('CPF do Motorista:', cpfMotorista),
-                      _buildInfoItem('Placa do Caminhão:', placaCaminhao),
-                      _buildInfoItem(
-                          'Nome da Transportadora:', nomeTransportadora),
+                      _buildInfoItem('Nome do Motorista:',
+                          harvestForm.driver?.driverName ?? ''),
+                      _buildInfoItem('CPF do Motorista:',
+                          harvestForm.driver?.driverCpf ?? ''),
+                      _buildInfoItem('Placa do Caminhão:',
+                          harvestForm.driver?.truckPlate ?? ''),
+                      _buildInfoItem('Nome da Transportadora:',
+                          harvestForm.driver?.shippingCompanyName ?? ''),
 
                       SizedBox(height: 16.0),
 
                       // Seção: Dados Sobre o Destino
                       _buildSectionTitle('Dados Sobre o Destino:'),
-                      _buildInfoItem('Destino da Colheita:', destinoColheita),
-                      _buildInfoItem('Observação:', observacoes),
+                      _buildInfoItem('Destino da Colheita:',
+                          harvestForm.destination?.entityName ?? ''),
+                      _buildInfoItem('Observação:',
+                          harvestForm.destination?.details ?? ''),
 
                       SizedBox(height: 26.0),
 
-                      _buildSubmitButton(routeArgs),
+                      _buildSubmitButton(harvestForm),
                     ],
                   ),
                 ),
@@ -151,7 +139,7 @@ class _SummaryPageState extends ViewState<SummaryPage, SummaryViewModel> {
         onPressed: () {
           Nav.pushNamed(
             OperatorModule.qrCodeGenerator,
-            arguments: jsonEncode(formData),
+            arguments: formData,
           );
         },
         style: ElevatedButton.styleFrom(

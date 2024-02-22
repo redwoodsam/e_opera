@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/core.dart';
+import '../../../../login/login.dart';
 import '../../../domain/entities/localization_params.dart';
 
 part 'home_state.freezed.dart';
@@ -13,7 +14,7 @@ sealed class HomeState extends ViewModelState with _$HomeState {
   factory HomeState.initial() = InitialHome;
 
   /// The loading [HomeState] state
-  factory HomeState.error() = ErrorHome;
+  factory HomeState.error({@Default('') String message}) = ErrorHome;
 
   /// The loading [HomeState] state
   factory HomeState.loading() = LoadingHome;
@@ -21,6 +22,7 @@ sealed class HomeState extends ViewModelState with _$HomeState {
   /// TODO: add all entities as params
   factory HomeState.loaded({
     LocationParams? locationParams,
+    Login? loggedInUser,
   }) = LoadedHome;
 
   /// The user [HomeState] state

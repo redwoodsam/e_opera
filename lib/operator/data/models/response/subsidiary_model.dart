@@ -2,6 +2,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../domain/entities/destination.dart';
 
@@ -11,6 +12,8 @@ part 'subsidiary_model.g.dart';
 ///
 /// Model params to farm
 ///
+const int subsidiaryModelAdapterTypeId = 8;
+
 @freezed
 class SubsidiaryModel with _$SubsidiaryModel {
   const SubsidiaryModel._();
@@ -18,10 +21,13 @@ class SubsidiaryModel with _$SubsidiaryModel {
   ///
   /// [SubsidiaryModel] default constructor
   ///
+  @HiveType(
+      typeId: subsidiaryModelAdapterTypeId,
+      adapterName: 'SubsidiaryModelAdapter')
   factory SubsidiaryModel({
-    @JsonKey(name: 'codFilial') required String subsidiaryCode,
-    @JsonKey(name: 'nomeFilial') required String subsidiaryName,
-    @JsonKey(name: 'empresaFilial') String? companyName,
+    @HiveField(0) @JsonKey(name: 'codFilial') required String subsidiaryCode,
+    @HiveField(1) @JsonKey(name: 'nomeFilial') required String subsidiaryName,
+    @HiveField(2) @JsonKey(name: 'empresaFilial') String? companyName,
   }) = _SubsidiaryModel;
 
   factory SubsidiaryModel.fromJson(Map<String, dynamic> json) =>

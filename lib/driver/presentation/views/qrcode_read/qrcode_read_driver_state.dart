@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../core/core.dart';
 import '../../../domain/entities/collect.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
 
 part 'qrcode_read_driver_state.freezed.dart';
 
@@ -19,6 +20,6 @@ sealed class DriverQrCodeReadState extends ViewModelState
   factory DriverQrCodeReadState.loading() = DriverLoadingQrCodeRead;
 
   /// The user [DriverQrCodeReadState] state
-  factory DriverQrCodeReadState.success(Collect collect) =
+  factory DriverQrCodeReadState.success(HarvestForm collect) =
       DriverSuccessQrCodeRead;
 }

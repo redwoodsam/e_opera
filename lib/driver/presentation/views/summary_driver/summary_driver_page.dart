@@ -1,7 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
+import '../../../../operator/presentation/views/summary/summary_state.dart';
 import '../../../domain/entities/collect.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
+import '../../../driver_module.dart';
 import 'summary_driver_state.dart';
 import 'summary_driver_viewmodel.dart';
 
@@ -12,18 +17,6 @@ class SummaryDriverPage extends StatefulWidget {
 
 class _SummaryDriverPageState
     extends ViewState<SummaryDriverPage, SummaryDriverViewModel> {
-  String codigo = '';
-  String destinoColheita = '';
-  String observacoes = '';
-  String descricao = '';
-  String variedade = '';
-  String quantidadeColetada = '';
-  String unidade = '';
-  String nomeMotorista = '';
-  String cpfMotorista = '';
-  String placaCaminhao = '';
-  String nomeTransportadora = '';
-
   @override
   void initState() {
     super.initState();
@@ -32,32 +25,8 @@ class _SummaryDriverPageState
 
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context)!.settings.arguments as Collect;
-    // print(routeArgs);
-
-    codigo = routeArgs.codigo;
-    descricao = routeArgs.descricao;
-    variedade = routeArgs.variedade;
-    quantidadeColetada = routeArgs.quantidadeColetada;
-    unidade = routeArgs.unidade;
-    nomeMotorista = routeArgs.nomeMotorista;
-    cpfMotorista = routeArgs.cpfMotorista;
-    placaCaminhao = routeArgs.placaCaminhao;
-    nomeTransportadora = routeArgs.nomeTransportadora;
-    observacoes = routeArgs.observacoes;
-    destinoColheita = routeArgs.destinoColheita;
-
-    // codigo = routeArgs.codigo ?? "";
-    // descricao = routeArgs.descricao ?? "";
-    // variedade = routeArgs.variedade ?? "";
-    // quantidadeColetada = routeArgs.quantidadeColetada ?? "";
-    // unidade = routeArgs.unidade ?? '';
-    // nomeMotorista = routeArgs.nomeMotorista ?? '';
-    // cpfMotorista = routeArgs.cpfMotorista ?? '';
-    // placaCaminhao = routeArgs.placaCaminhao ?? '';
-    // nomeTransportadora = routeArgs.nomeTransportadora ?? '';
-    // observacoes = routeArgs.observacoes ?? '';
-    // destinoColheita = routeArgs.destinoColheita ?? '';
+    final harvestForm =
+        ModalRoute.of(context)!.settings.arguments as HarvestForm;
 
     return Scaffold(
       appBar: AppBar(
@@ -69,7 +38,7 @@ class _SummaryDriverPageState
         child: ViewModelConsumer<SummaryDriverViewModel, SummaryDriverState>(
           viewModel: viewModel,
           listener: (context, state) => switch (state) {
-            SummaryDriverInitial() => {viewModel.onInitData(routeArgs)},
+            SummaryDriverInitial() => {viewModel.onInitData(harvestForm)},
             // LoadedSummaryDriverState(
             //   :final collectedData,
             // ) =>
@@ -89,7 +58,9 @@ class _SummaryDriverPageState
             //     nomeTransportadora =
             //         collectedData?.nomeTransportadora ?? nomeTransportadora,
             //   },
-            SummaryDriverSuccess() => {},
+            SummaryDriverSuccess() => {
+                Nav.popAndPushNamed(DriverModule.home, arguments: harvestForm)
+              },
             _ => null,
           },
           builder: (context, state) {
@@ -107,23 +78,19 @@ class _SummaryDriverPageState
                         _buildSectionTitle('Dados Sobre o Produto:'),
                         _buildInfoItem(
                           'Código:',
-                          codigo,
+                          harvestForm.product?.productCode ?? '',
                         ),
                         _buildInfoItem(
                           'Descrição:',
-                          descricao,
+                          harvestForm.product?.productDescription ?? '',
                         ),
                         _buildInfoItem(
                           'Variedade:',
-                          variedade,
+                          harvestForm.product?.productVariety ?? '',
                         ),
                         _buildInfoItem(
                           'Quantidade Coletada:',
-                          quantidadeColetada,
-                        ),
-                        _buildInfoItem(
-                          'Unidade:',
-                          unidade,
+                          harvestForm.product?.quantity ?? '',
                         ),
 
                         SizedBox(height: 16.0),
@@ -132,19 +99,19 @@ class _SummaryDriverPageState
                         _buildSectionTitle('Dados Sobre o Motorista:'),
                         _buildInfoItem(
                           'Nome do Motorista:',
-                          nomeMotorista,
+                          harvestForm.driver?.driverName ?? '',
                         ),
                         _buildInfoItem(
                           'CPF do Motorista:',
-                          cpfMotorista,
+                          harvestForm.driver?.driverCpf ?? '',
                         ),
                         _buildInfoItem(
                           'Placa do Caminhão:',
-                          placaCaminhao,
+                          harvestForm.driver?.truckPlate ?? '',
                         ),
                         _buildInfoItem(
                           'Nome da Transportadora:',
-                          nomeTransportadora,
+                          harvestForm.driver?.shippingCompanyName ?? '',
                         ),
 
                         SizedBox(height: 16.0),
@@ -153,16 +120,16 @@ class _SummaryDriverPageState
                         _buildSectionTitle('Dados Sobre o Destino:'),
                         _buildInfoItem(
                           'Destino da Colheita:',
-                          destinoColheita,
+                          harvestForm.destination?.entityName ?? '',
                         ),
                         _buildInfoItem(
                           'Observação:',
-                          observacoes,
+                          harvestForm.destination?.details ?? '',
                         ),
 
                         SizedBox(height: 26.0),
 
-                        _buildSubmitButton(routeArgs),
+                        _buildSubmitButton(harvestForm, viewModel),
                       ],
                     ),
                   ),
@@ -175,8 +142,13 @@ class _SummaryDriverPageState
               SummaryDriverError() => Scaffold(
                     body: Center(
                   /// TODO: tela de erro
-                  child: Text('Erro'),
+                  child: Center(
+                    child: Row(
+                      children: [Text('Erro')],
+                    ),
+                  ),
                 )),
+              SummarySuccess() => _buildSuccessPage(),
               _ => const SizedBox.shrink(),
             };
           },
@@ -185,11 +157,47 @@ class _SummaryDriverPageState
     );
   }
 
-  Widget _buildSubmitButton(formData) {
+  Widget _buildSuccessPage() {
+    Timer(Duration(seconds: 5), () {
+      Nav.pushReplacementNamed(DriverModule.home);
+    });
+
+    return Scaffold(
+      body: Center(
+        /// TODO: tela de erro
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Icon(Icons.check),
+                Text(
+                  'Romaneio enviado com sucesso!',
+                  style: TextStyle(color: Colors.lightGreen),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSubmitButton(
+      HarvestForm formData, SummaryDriverViewModel viewModel) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          viewModel.sendData(formData);
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),

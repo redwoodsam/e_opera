@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../core/core.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
 import '../../../domain/entities/harvest_params.dart';
 import '../../../operator_module.dart';
 
@@ -15,7 +18,7 @@ class QrCodeViewerPage extends StatefulWidget {
 class _QrCodeViewerPageState extends State<QrCodeViewerPage> {
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context)!.settings.arguments as String;
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as HarvestForm;
     // final routeArgs =
     //     ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     return Scaffold(
@@ -34,7 +37,7 @@ class _QrCodeViewerPageState extends State<QrCodeViewerPage> {
               height: 400,
             ),
             SizedBox(height: 16.0),
-            // _buildSubmitButton()
+            _buildSubmitButton(routeArgs)
             // TextButton(
             //   style: TextButton.styleFrom(primary: Colors.blue),
             //   onPressed: _returnToHomePage,
@@ -46,11 +49,18 @@ class _QrCodeViewerPageState extends State<QrCodeViewerPage> {
     );
   }
 
-  Widget _buildSubmitButton() {
+  HarvestForm _resetFormData(HarvestForm formData) {
+    return HarvestForm(location: formData.location);
+  }
+
+  Widget _buildSubmitButton(HarvestForm formData) {
     return ElevatedButton(
       onPressed: () {
         // Nav.pushNamed(OperatorModule.home);
-        Nav.navigate(OperatorModule.home);
+        Nav.popAndPushNamed(
+          OperatorModule.home,
+          arguments: _resetFormData(formData),
+        );
         // Nav.navigate(OperatorModule.home);
       },
       style: ElevatedButton.styleFrom(
@@ -70,7 +80,8 @@ class _QrCodeViewerPageState extends State<QrCodeViewerPage> {
     );
   }
 
-  Widget _buildQrCode(String message, double? size) {
+  Widget _buildQrCode(HarvestForm formData, double? size) {
+    var message = jsonEncode(formData);
     return QrImageView(
       data: message,
       version: QrVersions.auto,

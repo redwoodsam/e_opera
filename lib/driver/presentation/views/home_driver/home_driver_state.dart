@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../core/core.dart';
+import '../../../../login/login.dart';
 
 part 'home_driver_state.freezed.dart';
 
@@ -12,6 +13,11 @@ sealed class DriverHomeState extends ViewModelState with _$DriverHomeState {
 
   /// The loading [DriverHomeState] state
   factory DriverHomeState.error() = DriverErrorHome;
+
+  factory DriverHomeState.loaded({
+    Login? loggedInUser,
+    @Default(false) bool syncronizing,
+  }) = DriverLoadedHome;
 
   /// The loading [DriverHomeState] state
   factory DriverHomeState.loading() = DriverLoadingHome;

@@ -4,5 +4,8 @@ import '../entities/product.dart';
 
 /// Interface to [IProductRepository]
 abstract class IProductRepository {
-  Future<Either<Failure, List<Product>>> getProducts();
+  Future<Either<Failure, List<Product>>> getProducts(
+      {bool forceUpdate = false});
+  Future<Either<Failure, List<Product>>> getProductsLocal();
+  Future<Either<Failure, List<Product>>> getProductsRemote();
 }

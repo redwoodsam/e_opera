@@ -12,7 +12,7 @@ part of 'field_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 FieldModel _$FieldModelFromJson(Map<String, dynamic> json) {
   return _Field.fromJson(json);
@@ -20,20 +20,28 @@ FieldModel _$FieldModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FieldModel {
+  @HiveField(0)
   @JsonKey(name: 'desTalhao')
   String get fieldDescription => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'codTalhao')
   String get fieldCode => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'safraTalhao')
   String get harvestField => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'fazendaTalhao')
   String get farmField => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: 'produtoTalhao')
   String get productField => throw _privateConstructorUsedError;
+  @HiveField(5)
   @JsonKey(name: 'desProduto')
   String get productDescription => throw _privateConstructorUsedError;
+  @HiveField(6)
   @JsonKey(name: 'codVariedade')
   String get varietyCode => throw _privateConstructorUsedError;
+  @HiveField(7)
   @JsonKey(name: 'desVariedade')
   String get varietyDescription => throw _privateConstructorUsedError;
 
@@ -50,14 +58,14 @@ abstract class $FieldModelCopyWith<$Res> {
       _$FieldModelCopyWithImpl<$Res, FieldModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'desTalhao') String fieldDescription,
-      @JsonKey(name: 'codTalhao') String fieldCode,
-      @JsonKey(name: 'safraTalhao') String harvestField,
-      @JsonKey(name: 'fazendaTalhao') String farmField,
-      @JsonKey(name: 'produtoTalhao') String productField,
-      @JsonKey(name: 'desProduto') String productDescription,
-      @JsonKey(name: 'codVariedade') String varietyCode,
-      @JsonKey(name: 'desVariedade') String varietyDescription});
+      {@HiveField(0) @JsonKey(name: 'desTalhao') String fieldDescription,
+      @HiveField(1) @JsonKey(name: 'codTalhao') String fieldCode,
+      @HiveField(2) @JsonKey(name: 'safraTalhao') String harvestField,
+      @HiveField(3) @JsonKey(name: 'fazendaTalhao') String farmField,
+      @HiveField(4) @JsonKey(name: 'produtoTalhao') String productField,
+      @HiveField(5) @JsonKey(name: 'desProduto') String productDescription,
+      @HiveField(6) @JsonKey(name: 'codVariedade') String varietyCode,
+      @HiveField(7) @JsonKey(name: 'desVariedade') String varietyDescription});
 }
 
 /// @nodoc
@@ -127,14 +135,14 @@ abstract class _$$FieldImplCopyWith<$Res> implements $FieldModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'desTalhao') String fieldDescription,
-      @JsonKey(name: 'codTalhao') String fieldCode,
-      @JsonKey(name: 'safraTalhao') String harvestField,
-      @JsonKey(name: 'fazendaTalhao') String farmField,
-      @JsonKey(name: 'produtoTalhao') String productField,
-      @JsonKey(name: 'desProduto') String productDescription,
-      @JsonKey(name: 'codVariedade') String varietyCode,
-      @JsonKey(name: 'desVariedade') String varietyDescription});
+      {@HiveField(0) @JsonKey(name: 'desTalhao') String fieldDescription,
+      @HiveField(1) @JsonKey(name: 'codTalhao') String fieldCode,
+      @HiveField(2) @JsonKey(name: 'safraTalhao') String harvestField,
+      @HiveField(3) @JsonKey(name: 'fazendaTalhao') String farmField,
+      @HiveField(4) @JsonKey(name: 'produtoTalhao') String productField,
+      @HiveField(5) @JsonKey(name: 'desProduto') String productDescription,
+      @HiveField(6) @JsonKey(name: 'codVariedade') String varietyCode,
+      @HiveField(7) @JsonKey(name: 'desVariedade') String varietyDescription});
 }
 
 /// @nodoc
@@ -196,43 +204,56 @@ class __$$FieldImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: fieldModelAdapterTypeId, adapterName: 'FieldModelAdapter')
 class _$FieldImpl extends _Field {
   _$FieldImpl(
-      {@JsonKey(name: 'desTalhao') required this.fieldDescription,
-      @JsonKey(name: 'codTalhao') required this.fieldCode,
-      @JsonKey(name: 'safraTalhao') required this.harvestField,
-      @JsonKey(name: 'fazendaTalhao') required this.farmField,
-      @JsonKey(name: 'produtoTalhao') required this.productField,
-      @JsonKey(name: 'desProduto') required this.productDescription,
-      @JsonKey(name: 'codVariedade') required this.varietyCode,
-      @JsonKey(name: 'desVariedade') required this.varietyDescription})
+      {@HiveField(0) @JsonKey(name: 'desTalhao') required this.fieldDescription,
+      @HiveField(1) @JsonKey(name: 'codTalhao') required this.fieldCode,
+      @HiveField(2) @JsonKey(name: 'safraTalhao') required this.harvestField,
+      @HiveField(3) @JsonKey(name: 'fazendaTalhao') required this.farmField,
+      @HiveField(4) @JsonKey(name: 'produtoTalhao') required this.productField,
+      @HiveField(5)
+      @JsonKey(name: 'desProduto')
+      required this.productDescription,
+      @HiveField(6) @JsonKey(name: 'codVariedade') required this.varietyCode,
+      @HiveField(7)
+      @JsonKey(name: 'desVariedade')
+      required this.varietyDescription})
       : super._();
 
   factory _$FieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$FieldImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'desTalhao')
   final String fieldDescription;
   @override
+  @HiveField(1)
   @JsonKey(name: 'codTalhao')
   final String fieldCode;
   @override
+  @HiveField(2)
   @JsonKey(name: 'safraTalhao')
   final String harvestField;
   @override
+  @HiveField(3)
   @JsonKey(name: 'fazendaTalhao')
   final String farmField;
   @override
+  @HiveField(4)
   @JsonKey(name: 'produtoTalhao')
   final String productField;
   @override
+  @HiveField(5)
   @JsonKey(name: 'desProduto')
   final String productDescription;
   @override
+  @HiveField(6)
   @JsonKey(name: 'codVariedade')
   final String varietyCode;
   @override
+  @HiveField(7)
   @JsonKey(name: 'desVariedade')
   final String varietyDescription;
 
@@ -293,13 +314,26 @@ class _$FieldImpl extends _Field {
 
 abstract class _Field extends FieldModel {
   factory _Field(
-      {@JsonKey(name: 'desTalhao') required final String fieldDescription,
-      @JsonKey(name: 'codTalhao') required final String fieldCode,
-      @JsonKey(name: 'safraTalhao') required final String harvestField,
-      @JsonKey(name: 'fazendaTalhao') required final String farmField,
-      @JsonKey(name: 'produtoTalhao') required final String productField,
-      @JsonKey(name: 'desProduto') required final String productDescription,
-      @JsonKey(name: 'codVariedade') required final String varietyCode,
+      {@HiveField(0)
+      @JsonKey(name: 'desTalhao')
+      required final String fieldDescription,
+      @HiveField(1) @JsonKey(name: 'codTalhao') required final String fieldCode,
+      @HiveField(2)
+      @JsonKey(name: 'safraTalhao')
+      required final String harvestField,
+      @HiveField(3)
+      @JsonKey(name: 'fazendaTalhao')
+      required final String farmField,
+      @HiveField(4)
+      @JsonKey(name: 'produtoTalhao')
+      required final String productField,
+      @HiveField(5)
+      @JsonKey(name: 'desProduto')
+      required final String productDescription,
+      @HiveField(6)
+      @JsonKey(name: 'codVariedade')
+      required final String varietyCode,
+      @HiveField(7)
       @JsonKey(name: 'desVariedade')
       required final String varietyDescription}) = _$FieldImpl;
   _Field._() : super._();
@@ -307,27 +341,35 @@ abstract class _Field extends FieldModel {
   factory _Field.fromJson(Map<String, dynamic> json) = _$FieldImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'desTalhao')
   String get fieldDescription;
   @override
+  @HiveField(1)
   @JsonKey(name: 'codTalhao')
   String get fieldCode;
   @override
+  @HiveField(2)
   @JsonKey(name: 'safraTalhao')
   String get harvestField;
   @override
+  @HiveField(3)
   @JsonKey(name: 'fazendaTalhao')
   String get farmField;
   @override
+  @HiveField(4)
   @JsonKey(name: 'produtoTalhao')
   String get productField;
   @override
+  @HiveField(5)
   @JsonKey(name: 'desProduto')
   String get productDescription;
   @override
+  @HiveField(6)
   @JsonKey(name: 'codVariedade')
   String get varietyCode;
   @override
+  @HiveField(7)
   @JsonKey(name: 'desVariedade')
   String get varietyDescription;
   @override

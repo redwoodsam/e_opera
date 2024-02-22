@@ -12,7 +12,7 @@ part of 'driver_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DriverModel _$DriverModelFromJson(Map<String, dynamic> json) {
   return _DriverModel.fromJson(json);
@@ -20,12 +20,16 @@ DriverModel _$DriverModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DriverModel {
+  @HiveField(0)
   @JsonKey(name: 'codMotorista')
   String get driverCode => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'nomeMotorista')
   String get driverName => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'nreduzMotorista')
   String get driverReducedName => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'cpfMotorista')
   String get driverCpf => throw _privateConstructorUsedError;
 
@@ -42,10 +46,10 @@ abstract class $DriverModelCopyWith<$Res> {
       _$DriverModelCopyWithImpl<$Res, DriverModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'codMotorista') String driverCode,
-      @JsonKey(name: 'nomeMotorista') String driverName,
-      @JsonKey(name: 'nreduzMotorista') String driverReducedName,
-      @JsonKey(name: 'cpfMotorista') String driverCpf});
+      {@HiveField(0) @JsonKey(name: 'codMotorista') String driverCode,
+      @HiveField(1) @JsonKey(name: 'nomeMotorista') String driverName,
+      @HiveField(2) @JsonKey(name: 'nreduzMotorista') String driverReducedName,
+      @HiveField(3) @JsonKey(name: 'cpfMotorista') String driverCpf});
 }
 
 /// @nodoc
@@ -96,10 +100,10 @@ abstract class _$$DriverModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'codMotorista') String driverCode,
-      @JsonKey(name: 'nomeMotorista') String driverName,
-      @JsonKey(name: 'nreduzMotorista') String driverReducedName,
-      @JsonKey(name: 'cpfMotorista') String driverCpf});
+      {@HiveField(0) @JsonKey(name: 'codMotorista') String driverCode,
+      @HiveField(1) @JsonKey(name: 'nomeMotorista') String driverName,
+      @HiveField(2) @JsonKey(name: 'nreduzMotorista') String driverReducedName,
+      @HiveField(3) @JsonKey(name: 'cpfMotorista') String driverCpf});
 }
 
 /// @nodoc
@@ -141,27 +145,34 @@ class __$$DriverModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: driverModelAdapterTypeId, adapterName: 'DriverModelAdapter')
 class _$DriverModelImpl extends _DriverModel {
   const _$DriverModelImpl(
-      {@JsonKey(name: 'codMotorista') required this.driverCode,
-      @JsonKey(name: 'nomeMotorista') required this.driverName,
-      @JsonKey(name: 'nreduzMotorista') required this.driverReducedName,
-      @JsonKey(name: 'cpfMotorista') required this.driverCpf})
+      {@HiveField(0) @JsonKey(name: 'codMotorista') required this.driverCode,
+      @HiveField(1) @JsonKey(name: 'nomeMotorista') required this.driverName,
+      @HiveField(2)
+      @JsonKey(name: 'nreduzMotorista')
+      required this.driverReducedName,
+      @HiveField(3) @JsonKey(name: 'cpfMotorista') required this.driverCpf})
       : super._();
 
   factory _$DriverModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$DriverModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codMotorista')
   final String driverCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeMotorista')
   final String driverName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'nreduzMotorista')
   final String driverReducedName;
   @override
+  @HiveField(3)
   @JsonKey(name: 'cpfMotorista')
   final String driverCpf;
 
@@ -206,9 +217,16 @@ class _$DriverModelImpl extends _DriverModel {
 
 abstract class _DriverModel extends DriverModel {
   const factory _DriverModel(
-      {@JsonKey(name: 'codMotorista') required final String driverCode,
-      @JsonKey(name: 'nomeMotorista') required final String driverName,
-      @JsonKey(name: 'nreduzMotorista') required final String driverReducedName,
+      {@HiveField(0)
+      @JsonKey(name: 'codMotorista')
+      required final String driverCode,
+      @HiveField(1)
+      @JsonKey(name: 'nomeMotorista')
+      required final String driverName,
+      @HiveField(2)
+      @JsonKey(name: 'nreduzMotorista')
+      required final String driverReducedName,
+      @HiveField(3)
       @JsonKey(name: 'cpfMotorista')
       required final String driverCpf}) = _$DriverModelImpl;
   const _DriverModel._() : super._();
@@ -217,15 +235,19 @@ abstract class _DriverModel extends DriverModel {
       _$DriverModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codMotorista')
   String get driverCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeMotorista')
   String get driverName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'nreduzMotorista')
   String get driverReducedName;
   @override
+  @HiveField(3)
   @JsonKey(name: 'cpfMotorista')
   String get driverCpf;
   @override

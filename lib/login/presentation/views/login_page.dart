@@ -28,6 +28,9 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     viewModel = DM.get<LoginViewModel>();
+    // if (viewModel.isInitialized) {
+    //   viewModel.retrieveLoggedInUser();
+    // }
     _userController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -56,14 +59,14 @@ class _LoginPageState extends State<LoginPage> {
         viewModel: viewModel,
         listener: (context, state) => switch (state) {
           // SuccessLogin() => Nav.pushNamed(MainModule.operatorModule),
-          SuccessLogin(:final id, :final nome, :final perfil) => Nav.pushNamed(
-              _getPath(perfil!),
-              arguments: {id: id, nome: nome, perfil: perfil}),
+          SuccessLogin(:final id, :final nome, :final perfil) =>
+            Nav.pushReplacementNamed(_getPath(perfil!),
+                arguments: {id: id, nome: nome, perfil: perfil}),
           _ => null,
         },
         builder: (context, state) {
           return switch (state) {
-            InitialLogin() || LoadingLogin() || ErrorLogin() => Container(
+            InitialLogin() || ErrorLogin() => Container(
                 width: context.screenWidth,
                 height: context.screenHeight,
                 clipBehavior: Clip.antiAlias,

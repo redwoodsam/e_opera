@@ -56,6 +56,8 @@ dependencies:
   flutter_masked_text2: ^0.9.1
   dropdown_button2: ^2.3.9
   qr_flutter: ^4.1.0
+  uuid: ^4.3.2
+  form_validator: ">=0.1.1 <2.0.0"
 
 dev_dependencies:
   flutter_test:

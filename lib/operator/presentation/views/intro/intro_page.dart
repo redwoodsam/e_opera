@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
 import '../../../domain/entities/farm.dart';
+import '../../../domain/entities/localization_params.dart';
 import '../../../operator.dart';
 import '../../../operator_module.dart';
 
@@ -24,7 +25,16 @@ class _OperatorIntroPageState
   }
 
   @override
+  void dispose() {
+    viewModel.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    viewModel.loadSavedLocation().then((loaded) => {
+          if (loaded) {viewModel.navigateToHomePage()}
+        });
     return Scaffold(
         body: ViewModelConsumer<IntroViewModel, IntroState>(
       viewModel: viewModel,
@@ -195,6 +205,7 @@ class _CustomItemSearch extends StatelessWidget {
   final String hintText;
   final TextEditingController textEditingController;
   final FocusNode focusNode;
+  final _formKey = GlobalKey<FormState>();
 
   _CustomItemSearch(
       {required this.title,
@@ -217,57 +228,60 @@ class _CustomItemSearch extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: Dimension.xs.height),
-            child: Container(
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                    width: 1,
-                    color: Color(0xFFF0F3F4),
+          Form(
+            key: _formKey,
+            child: Padding(
+              padding: EdgeInsets.only(top: Dimension.xs.height),
+              child: Container(
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(
+                      width: 1,
+                      color: Color(0xFFF0F3F4),
+                    ),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  borderRadius: BorderRadius.circular(8),
                 ),
-              ),
-              child: Row(
-                children: [
-                  Flexible(
-                    child: TextFormField(
-                      controller: textEditingController,
-                      focusNode: focusNode,
-                      style: TextStyle(
-                        color: context.foreground.active,
-                        fontSize: 16.fontSize,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w400,
-                      ),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: Dimension.sm.width,
-                          vertical: Dimension.sm.height,
-                        ),
-                        focusedBorder: InputBorder.none,
-                        hintText: hintText,
-                        hintStyle: TextStyle(
-                          color: const Color(0xFF8391A1),
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: TextFormField(
+                        controller: textEditingController,
+                        focusNode: focusNode,
+                        style: TextStyle(
+                          color: context.foreground.active,
                           fontSize: 16.fontSize,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                         ),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: Dimension.sm.width,
+                            vertical: Dimension.sm.height,
+                          ),
+                          focusedBorder: InputBorder.none,
+                          hintText: hintText,
+                          hintStyle: TextStyle(
+                            color: const Color(0xFF8391A1),
+                            fontSize: 16.fontSize,
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: Dimension.xs.width,
-                      right: Dimension.sm.width,
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: Dimension.xs.width,
+                        right: Dimension.sm.width,
+                      ),
+                      child: Image.asset(
+                        'assets/icons/search.png',
+                      ),
                     ),
-                    child: Image.asset(
-                      'assets/icons/search.png',
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

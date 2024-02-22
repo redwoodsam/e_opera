@@ -2,6 +2,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../domain/entities/shipping_company.dart';
 
@@ -11,6 +12,8 @@ part 'shipping_company_model.g.dart';
 ///
 /// Model params to farm
 ///
+const int shippingCompanyModelAdapterTypeId = 7;
+
 @freezed
 class ShippingCompanyModel with _$ShippingCompanyModel {
   const ShippingCompanyModel._();
@@ -18,11 +21,19 @@ class ShippingCompanyModel with _$ShippingCompanyModel {
   ///
   /// [ShippingCompanyModel] default constructor
   ///
+  @HiveType(
+      typeId: shippingCompanyModelAdapterTypeId,
+      adapterName: 'ShippingCompanyModelAdapter')
   factory ShippingCompanyModel({
-    @JsonKey(name: 'codTransportadora') required String shippingCompanyCode,
+    @HiveField(0)
+    @JsonKey(name: 'codTransportadora')
+    required String shippingCompanyCode,
+    @HiveField(1)
     @JsonKey(name: 'nreduzTransportadora')
     required String shippingCompanyReducedName,
-    @JsonKey(name: 'nomeTransportadora') required String shippingCompanyName,
+    @HiveField(2)
+    @JsonKey(name: 'nomeTransportadora')
+    required String shippingCompanyName,
   }) = _ShippingCompanyModel;
 
   factory ShippingCompanyModel.fromJson(Map<String, dynamic> json) =>

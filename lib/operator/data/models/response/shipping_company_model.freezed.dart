@@ -12,7 +12,7 @@ part of 'shipping_company_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ShippingCompanyModel _$ShippingCompanyModelFromJson(Map<String, dynamic> json) {
   return _ShippingCompanyModel.fromJson(json);
@@ -20,10 +20,13 @@ ShippingCompanyModel _$ShippingCompanyModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ShippingCompanyModel {
+  @HiveField(0)
   @JsonKey(name: 'codTransportadora')
   String get shippingCompanyCode => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'nreduzTransportadora')
   String get shippingCompanyReducedName => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'nomeTransportadora')
   String get shippingCompanyName => throw _privateConstructorUsedError;
 
@@ -40,9 +43,15 @@ abstract class $ShippingCompanyModelCopyWith<$Res> {
       _$ShippingCompanyModelCopyWithImpl<$Res, ShippingCompanyModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'codTransportadora') String shippingCompanyCode,
-      @JsonKey(name: 'nreduzTransportadora') String shippingCompanyReducedName,
-      @JsonKey(name: 'nomeTransportadora') String shippingCompanyName});
+      {@HiveField(0)
+      @JsonKey(name: 'codTransportadora')
+      String shippingCompanyCode,
+      @HiveField(1)
+      @JsonKey(name: 'nreduzTransportadora')
+      String shippingCompanyReducedName,
+      @HiveField(2)
+      @JsonKey(name: 'nomeTransportadora')
+      String shippingCompanyName});
 }
 
 /// @nodoc
@@ -89,9 +98,15 @@ abstract class _$$ShippingCompanyModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'codTransportadora') String shippingCompanyCode,
-      @JsonKey(name: 'nreduzTransportadora') String shippingCompanyReducedName,
-      @JsonKey(name: 'nomeTransportadora') String shippingCompanyName});
+      {@HiveField(0)
+      @JsonKey(name: 'codTransportadora')
+      String shippingCompanyCode,
+      @HiveField(1)
+      @JsonKey(name: 'nreduzTransportadora')
+      String shippingCompanyReducedName,
+      @HiveField(2)
+      @JsonKey(name: 'nomeTransportadora')
+      String shippingCompanyName});
 }
 
 /// @nodoc
@@ -128,24 +143,35 @@ class __$$ShippingCompanyModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(
+    typeId: shippingCompanyModelAdapterTypeId,
+    adapterName: 'ShippingCompanyModelAdapter')
 class _$ShippingCompanyModelImpl extends _ShippingCompanyModel {
   _$ShippingCompanyModelImpl(
-      {@JsonKey(name: 'codTransportadora') required this.shippingCompanyCode,
+      {@HiveField(0)
+      @JsonKey(name: 'codTransportadora')
+      required this.shippingCompanyCode,
+      @HiveField(1)
       @JsonKey(name: 'nreduzTransportadora')
       required this.shippingCompanyReducedName,
-      @JsonKey(name: 'nomeTransportadora') required this.shippingCompanyName})
+      @HiveField(2)
+      @JsonKey(name: 'nomeTransportadora')
+      required this.shippingCompanyName})
       : super._();
 
   factory _$ShippingCompanyModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShippingCompanyModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codTransportadora')
   final String shippingCompanyCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nreduzTransportadora')
   final String shippingCompanyReducedName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'nomeTransportadora')
   final String shippingCompanyName;
 
@@ -192,10 +218,13 @@ class _$ShippingCompanyModelImpl extends _ShippingCompanyModel {
 
 abstract class _ShippingCompanyModel extends ShippingCompanyModel {
   factory _ShippingCompanyModel(
-      {@JsonKey(name: 'codTransportadora')
+      {@HiveField(0)
+      @JsonKey(name: 'codTransportadora')
       required final String shippingCompanyCode,
+      @HiveField(1)
       @JsonKey(name: 'nreduzTransportadora')
       required final String shippingCompanyReducedName,
+      @HiveField(2)
       @JsonKey(name: 'nomeTransportadora')
       required final String shippingCompanyName}) = _$ShippingCompanyModelImpl;
   _ShippingCompanyModel._() : super._();
@@ -204,12 +233,15 @@ abstract class _ShippingCompanyModel extends ShippingCompanyModel {
       _$ShippingCompanyModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codTransportadora')
   String get shippingCompanyCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nreduzTransportadora')
   String get shippingCompanyReducedName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'nomeTransportadora')
   String get shippingCompanyName;
   @override

@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../domain/entities/field.dart';
 
@@ -10,6 +11,8 @@ part 'field_model.g.dart';
 ///
 /// Model params to field
 ///
+const int fieldModelAdapterTypeId = 4;
+
 @freezed
 class FieldModel with _$FieldModel {
   const FieldModel._();
@@ -17,15 +20,20 @@ class FieldModel with _$FieldModel {
   ///
   /// [FieldModel] default constructor
   ///
+  @HiveType(typeId: fieldModelAdapterTypeId, adapterName: 'FieldModelAdapter')
   factory FieldModel({
-    @JsonKey(name: 'desTalhao') required String fieldDescription,
-    @JsonKey(name: 'codTalhao') required String fieldCode,
-    @JsonKey(name: 'safraTalhao') required String harvestField,
-    @JsonKey(name: 'fazendaTalhao') required String farmField,
-    @JsonKey(name: 'produtoTalhao') required String productField,
-    @JsonKey(name: 'desProduto') required String productDescription,
-    @JsonKey(name: 'codVariedade') required String varietyCode,
-    @JsonKey(name: 'desVariedade') required String varietyDescription,
+    @HiveField(0) @JsonKey(name: 'desTalhao') required String fieldDescription,
+    @HiveField(1) @JsonKey(name: 'codTalhao') required String fieldCode,
+    @HiveField(2) @JsonKey(name: 'safraTalhao') required String harvestField,
+    @HiveField(3) @JsonKey(name: 'fazendaTalhao') required String farmField,
+    @HiveField(4) @JsonKey(name: 'produtoTalhao') required String productField,
+    @HiveField(5)
+    @JsonKey(name: 'desProduto')
+    required String productDescription,
+    @HiveField(6) @JsonKey(name: 'codVariedade') required String varietyCode,
+    @HiveField(7)
+    @JsonKey(name: 'desVariedade')
+    required String varietyDescription,
   }) = _Field;
 
   factory FieldModel.fromJson(Map<String, dynamic> json) =>

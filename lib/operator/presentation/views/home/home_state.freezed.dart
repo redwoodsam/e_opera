@@ -12,34 +12,38 @@ part of 'home_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(LocationParams? locationParams) loaded,
+    required TResult Function(
+            LocationParams? locationParams, Login? loggedInUser)
+        loaded,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams)? loaded,
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams)? loaded,
+    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -130,9 +134,11 @@ class _$InitialHomeImpl implements InitialHome {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(LocationParams? locationParams) loaded,
+    required TResult Function(
+            LocationParams? locationParams, Login? loggedInUser)
+        loaded,
     required TResult Function() success,
   }) {
     return initial();
@@ -142,9 +148,10 @@ class _$InitialHomeImpl implements InitialHome {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams)? loaded,
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -154,9 +161,10 @@ class _$InitialHomeImpl implements InitialHome {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams)? loaded,
+    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -216,6 +224,8 @@ abstract class _$$ErrorHomeImplCopyWith<$Res> {
   factory _$$ErrorHomeImplCopyWith(
           _$ErrorHomeImpl value, $Res Function(_$ErrorHomeImpl) then) =
       __$$ErrorHomeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -225,63 +235,92 @@ class __$$ErrorHomeImplCopyWithImpl<$Res>
   __$$ErrorHomeImplCopyWithImpl(
       _$ErrorHomeImpl _value, $Res Function(_$ErrorHomeImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorHomeImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ErrorHomeImpl implements ErrorHome {
-  _$ErrorHomeImpl();
+  _$ErrorHomeImpl({this.message = ''});
+
+  @override
+  @JsonKey()
+  final String message;
 
   @override
   String toString() {
-    return 'HomeState.error()';
+    return 'HomeState.error(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ErrorHomeImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorHomeImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorHomeImplCopyWith<_$ErrorHomeImpl> get copyWith =>
+      __$$ErrorHomeImplCopyWithImpl<_$ErrorHomeImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(LocationParams? locationParams) loaded,
+    required TResult Function(
+            LocationParams? locationParams, Login? loggedInUser)
+        loaded,
     required TResult Function() success,
   }) {
-    return error();
+    return error(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams)? loaded,
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult? Function()? success,
   }) {
-    return error?.call();
+    return error?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams)? loaded,
+    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(message);
     }
     return orElse();
   }
@@ -328,7 +367,12 @@ class _$ErrorHomeImpl implements ErrorHome {
 }
 
 abstract class ErrorHome implements HomeState {
-  factory ErrorHome() = _$ErrorHomeImpl;
+  factory ErrorHome({final String message}) = _$ErrorHomeImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$ErrorHomeImplCopyWith<_$ErrorHomeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -370,9 +414,11 @@ class _$LoadingHomeImpl implements LoadingHome {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(LocationParams? locationParams) loaded,
+    required TResult Function(
+            LocationParams? locationParams, Login? loggedInUser)
+        loaded,
     required TResult Function() success,
   }) {
     return loading();
@@ -382,9 +428,10 @@ class _$LoadingHomeImpl implements LoadingHome {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams)? loaded,
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult? Function()? success,
   }) {
     return loading?.call();
@@ -394,9 +441,10 @@ class _$LoadingHomeImpl implements LoadingHome {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams)? loaded,
+    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -457,9 +505,10 @@ abstract class _$$LoadedHomeImplCopyWith<$Res> {
           _$LoadedHomeImpl value, $Res Function(_$LoadedHomeImpl) then) =
       __$$LoadedHomeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LocationParams? locationParams});
+  $Res call({LocationParams? locationParams, Login? loggedInUser});
 
   $LocationParamsCopyWith<$Res>? get locationParams;
+  $LoginCopyWith<$Res>? get loggedInUser;
 }
 
 /// @nodoc
@@ -474,12 +523,17 @@ class __$$LoadedHomeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? locationParams = freezed,
+    Object? loggedInUser = freezed,
   }) {
     return _then(_$LoadedHomeImpl(
       locationParams: freezed == locationParams
           ? _value.locationParams
           : locationParams // ignore: cast_nullable_to_non_nullable
               as LocationParams?,
+      loggedInUser: freezed == loggedInUser
+          ? _value.loggedInUser
+          : loggedInUser // ignore: cast_nullable_to_non_nullable
+              as Login?,
     ));
   }
 
@@ -494,19 +548,33 @@ class __$$LoadedHomeImplCopyWithImpl<$Res>
       return _then(_value.copyWith(locationParams: value));
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginCopyWith<$Res>? get loggedInUser {
+    if (_value.loggedInUser == null) {
+      return null;
+    }
+
+    return $LoginCopyWith<$Res>(_value.loggedInUser!, (value) {
+      return _then(_value.copyWith(loggedInUser: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$LoadedHomeImpl implements LoadedHome {
-  _$LoadedHomeImpl({this.locationParams});
+  _$LoadedHomeImpl({this.locationParams, this.loggedInUser});
 
   @override
   final LocationParams? locationParams;
+  @override
+  final Login? loggedInUser;
 
   @override
   String toString() {
-    return 'HomeState.loaded(locationParams: $locationParams)';
+    return 'HomeState.loaded(locationParams: $locationParams, loggedInUser: $loggedInUser)';
   }
 
   @override
@@ -515,11 +583,13 @@ class _$LoadedHomeImpl implements LoadedHome {
         (other.runtimeType == runtimeType &&
             other is _$LoadedHomeImpl &&
             (identical(other.locationParams, locationParams) ||
-                other.locationParams == locationParams));
+                other.locationParams == locationParams) &&
+            (identical(other.loggedInUser, loggedInUser) ||
+                other.loggedInUser == loggedInUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, locationParams);
+  int get hashCode => Object.hash(runtimeType, locationParams, loggedInUser);
 
   @JsonKey(ignore: true)
   @override
@@ -531,38 +601,42 @@ class _$LoadedHomeImpl implements LoadedHome {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(LocationParams? locationParams) loaded,
+    required TResult Function(
+            LocationParams? locationParams, Login? loggedInUser)
+        loaded,
     required TResult Function() success,
   }) {
-    return loaded(locationParams);
+    return loaded(locationParams, loggedInUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams)? loaded,
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult? Function()? success,
   }) {
-    return loaded?.call(locationParams);
+    return loaded?.call(locationParams, loggedInUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams)? loaded,
+    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(locationParams);
+      return loaded(locationParams, loggedInUser);
     }
     return orElse();
   }
@@ -609,9 +683,12 @@ class _$LoadedHomeImpl implements LoadedHome {
 }
 
 abstract class LoadedHome implements HomeState {
-  factory LoadedHome({final LocationParams? locationParams}) = _$LoadedHomeImpl;
+  factory LoadedHome(
+      {final LocationParams? locationParams,
+      final Login? loggedInUser}) = _$LoadedHomeImpl;
 
   LocationParams? get locationParams;
+  Login? get loggedInUser;
   @JsonKey(ignore: true)
   _$$LoadedHomeImplCopyWith<_$LoadedHomeImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -656,9 +733,11 @@ class _$SuccessHomeImpl implements SuccessHome {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() error,
+    required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(LocationParams? locationParams) loaded,
+    required TResult Function(
+            LocationParams? locationParams, Login? loggedInUser)
+        loaded,
     required TResult Function() success,
   }) {
     return success();
@@ -668,9 +747,10 @@ class _$SuccessHomeImpl implements SuccessHome {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? error,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams)? loaded,
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -680,9 +760,10 @@ class _$SuccessHomeImpl implements SuccessHome {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? error,
+    TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams)? loaded,
+    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+        loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {

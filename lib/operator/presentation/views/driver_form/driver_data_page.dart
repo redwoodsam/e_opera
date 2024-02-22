@@ -2,8 +2,11 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:form_validator/form_validator.dart';
 
 import '../../../../../../core/core.dart';
+import '../../../domain/entities/form_data/driver_form.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
 import '../../../operator_module.dart';
 import '../product_form/product_data_state.dart';
 import 'driver_data_state.dart';
@@ -50,16 +53,11 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
     viewModel.getDataOptions();
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    final routeArgs =
-        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
-
-    codigo = routeArgs['codigo'] ?? "";
-    descricao = routeArgs['descricao'] ?? "";
-    variedade = routeArgs['variedade'] ?? "";
-    quantidadeColetada = routeArgs['quantidadeColetada'] ?? "";
-    unidade = routeArgs['unidade'] ?? '';
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as HarvestForm;
 
     return Scaffold(
       appBar: AppBar(
@@ -94,48 +92,59 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
                 :final selectedShippingCompany,
                 :final selectedVehicle
               ) =>
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildTextFormField(
-                        controller: _nomeMotoristaController,
-                        labelText: 'Nome do Motorista',
-                      ),
-                      SizedBox(height: 16.0),
-                      _buildTextFormField(
-                        controller: _cpfController,
-                        labelText: 'CPF',
-                        keyboardType: TextInputType.number,
-                      ),
-                      SizedBox(height: 16.0),
-                      _buildDropdown(
-                        value: selectedVehicle?.vehiclePlate,
-                        items:
-                            vehicles.map((e) => e.vehiclePlate.value).toList(),
-                        onChanged: (value) {
-                          viewModel.onSelectVehicle(value!);
-                        },
-                        labelText: 'Placa do Caminhão',
-                      ),
-                      SizedBox(height: 16.0),
-                      _buildDropdown(
-                        value: selectedShippingCompany?.shippingCompanyName,
-                        items: shippingCompanies
-                            .map((e) => e.shippingCompanyName)
-                            .toList(),
-                        onChanged: (value) {
-                          viewModel.onSelectShippingCompany(value!);
-                        },
-                        labelText: 'Transportadora',
-                      ),
-                      SizedBox(height: 16.0),
-                      _buildSubmitButton(
-                        selectedVehicle?.vehiclePlate ?? '',
-                        selectedShippingCompany?.shippingCompanyName ?? '',
-                      ),
-                    ],
+                Form(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildTextFormField(
+                          validator:
+                              ValidationBuilder().required('Digite um valor'),
+                          controller: _nomeMotoristaController,
+                          labelText: 'Nome do Motorista',
+                        ),
+                        SizedBox(height: 16.0),
+                        _buildTextFormField(
+                          validator:
+                              ValidationBuilder().required('Digite um valor'),
+                          controller: _cpfController,
+                          labelText: 'CPF',
+                          keyboardType: TextInputType.number,
+                        ),
+                        SizedBox(height: 16.0),
+                        _buildDropdown(
+                          value: selectedVehicle?.vehiclePlate,
+                          items: vehicles
+                              .map((e) => e.vehiclePlate.value)
+                              .toList(),
+                          onChanged: (value) {
+                            viewModel.onSelectVehicle(value!);
+                          },
+                          labelText: 'Placa do Caminhão',
+                        ),
+                        SizedBox(height: 16.0),
+                        _buildDropdown(
+                          value: selectedShippingCompany?.shippingCompanyName,
+                          items: shippingCompanies
+                              .map((e) => e.shippingCompanyName)
+                              .toList(),
+                          onChanged: (value) {
+                            viewModel.onSelectShippingCompany(value!);
+                          },
+                          labelText: 'Transportadora',
+                        ),
+                        SizedBox(height: 16.0),
+                        _buildSubmitButton(
+                          _formKey,
+                          routeArgs,
+                          selectedVehicle?.vehiclePlate ?? '',
+                          selectedShippingCompany?.shippingCompanyName ?? '',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               LoadingProductData() => Scaffold(
@@ -171,6 +180,10 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
         ),
         SizedBox(height: 8.0),
         DropdownButtonFormField2<String?>(
+          validator: ValidationBuilder()
+              .required('Um valor precisa ser informado')
+              .minLength(1, 'Um valor precisa ser informado')
+              .build(),
           value: value,
           items: items.map((String item) {
             return DropdownMenuItem<String>(
@@ -187,17 +200,20 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
           }).toList(),
           onChanged: onChanged,
           decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white70,
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          ),
+              filled: true,
+              fillColor: Colors.white70,
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color.fromARGB(255, 244, 0, 0)),
+                borderRadius: BorderRadius.circular(10.0),
+              )),
           onSaved: (value) {
             // Faça algo com o valor selecionado
           },
@@ -228,27 +244,34 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
   Widget _buildTextFormField({
     required TextEditingController controller,
     required String labelText,
+    required ValidationBuilder validator,
     TextInputType keyboardType = TextInputType.text,
   }) {
     return TextFormField(
+      validator: validator.build(),
       controller: controller,
       decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: TextStyle(color: Colors.green),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
+          labelText: labelText,
+          labelStyle: TextStyle(color: Colors.green),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color.fromARGB(255, 244, 0, 0)),
+            borderRadius: BorderRadius.circular(10.0),
+          )),
       keyboardType: keyboardType,
     );
   }
 
   Widget _buildSubmitButton(
+    GlobalKey<FormState> _formKey,
+    HarvestForm harvestForm,
     String selectedPlacaCaminhao,
     String selectedTransportadora,
   ) {
@@ -256,33 +279,25 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
       width: double.infinity, // Ocupa a largura total da tela
       child: ElevatedButton(
         onPressed: () {
-          Nav.pushNamed(OperatorModule.destinationForm, arguments: {
-            'codigo': codigo,
-            'descricao': descricao,
-            'variedade': variedade,
-            'quantidadeColetada': quantidadeColetada,
-            'unidade': unidade,
-            'nomeMotorista': _nomeMotoristaController.text,
-            'cpfMotorista': _cpfController.text,
-            'placaCaminhao': selectedPlacaCaminhao,
-            'nomeTransportadora': selectedTransportadora,
-          });
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => DestinationDataPage(
-          //       codigo: widget.codigo,
-          //       descricao: widget.descricao,
-          //       variedade: widget.variedade,
-          //       quantidadeColetada: widget.quantidadeColetada,
-          //       unidade: widget.unidade,
-          //       nomeMotorista: _nomeMotoristaController.text,
-          //       cpfMotorista: _cpfController.text,
-          //       placaCaminhao: _selectedPlacaCaminhao,
-          //       nomeTransportadora: _selectedTransportadora,
-          //     ),
-          //   ),
-          // );
+          if (_formKey.currentState != null) {
+            if (!_formKey.currentState!.validate()) {
+              return null;
+            }
+          }
+
+          harvestForm = harvestForm.copyWith(
+            driver: DriverForm(
+              driverName: _nomeMotoristaController.text,
+              driverCpf: _cpfController.text,
+              truckPlate: selectedPlacaCaminhao,
+              shippingCompanyName: selectedTransportadora,
+            ),
+          );
+
+          Nav.pushNamed(
+            OperatorModule.destinationForm,
+            arguments: harvestForm,
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,

@@ -6,5 +6,7 @@ import '../entities/farm.dart';
 /// Interface to [IFarmRepository]
 abstract class IFarmRepository {
   /// Method to get login
-  Future<Either<Failure, List<Farm>>> getFarms();
+  Future<Either<Failure, List<Farm>>> getFarms({bool forceUpdate = false});
+  Future<Either<Failure, List<Farm>>> getFarmsRemote();
+  Future<Either<Failure, List<Farm>>> getFarmsLocal();
 }

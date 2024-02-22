@@ -12,7 +12,7 @@ part of 'qrcode_read_driver_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DriverQrCodeReadState {
@@ -21,7 +21,7 @@ mixin _$DriverQrCodeReadState {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect collect) success,
+    required TResult Function(HarvestForm collect) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$DriverQrCodeReadState {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect collect)? success,
+    TResult? Function(HarvestForm collect)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$DriverQrCodeReadState {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect collect)? success,
+    TResult Function(HarvestForm collect)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +132,7 @@ class _$DriverInitialQrCodeReadImpl implements DriverInitialQrCodeRead {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect collect) success,
+    required TResult Function(HarvestForm collect) success,
   }) {
     return initial();
   }
@@ -143,7 +143,7 @@ class _$DriverInitialQrCodeReadImpl implements DriverInitialQrCodeRead {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect collect)? success,
+    TResult? Function(HarvestForm collect)? success,
   }) {
     return initial?.call();
   }
@@ -154,7 +154,7 @@ class _$DriverInitialQrCodeReadImpl implements DriverInitialQrCodeRead {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect collect)? success,
+    TResult Function(HarvestForm collect)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -249,7 +249,7 @@ class _$DriverErrorQrCodeReadImpl implements DriverErrorQrCodeRead {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect collect) success,
+    required TResult Function(HarvestForm collect) success,
   }) {
     return error();
   }
@@ -260,7 +260,7 @@ class _$DriverErrorQrCodeReadImpl implements DriverErrorQrCodeRead {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect collect)? success,
+    TResult? Function(HarvestForm collect)? success,
   }) {
     return error?.call();
   }
@@ -271,7 +271,7 @@ class _$DriverErrorQrCodeReadImpl implements DriverErrorQrCodeRead {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect collect)? success,
+    TResult Function(HarvestForm collect)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -367,7 +367,7 @@ class _$DriverLoadingQrCodeReadImpl implements DriverLoadingQrCodeRead {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect collect) success,
+    required TResult Function(HarvestForm collect) success,
   }) {
     return loading();
   }
@@ -378,7 +378,7 @@ class _$DriverLoadingQrCodeReadImpl implements DriverLoadingQrCodeRead {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect collect)? success,
+    TResult? Function(HarvestForm collect)? success,
   }) {
     return loading?.call();
   }
@@ -389,7 +389,7 @@ class _$DriverLoadingQrCodeReadImpl implements DriverLoadingQrCodeRead {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect collect)? success,
+    TResult Function(HarvestForm collect)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -447,9 +447,9 @@ abstract class _$$DriverSuccessQrCodeReadImplCopyWith<$Res> {
           $Res Function(_$DriverSuccessQrCodeReadImpl) then) =
       __$$DriverSuccessQrCodeReadImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Collect collect});
+  $Res call({HarvestForm collect});
 
-  $CollectCopyWith<$Res> get collect;
+  $HarvestFormCopyWith<$Res> get collect;
 }
 
 /// @nodoc
@@ -471,14 +471,14 @@ class __$$DriverSuccessQrCodeReadImplCopyWithImpl<$Res>
       null == collect
           ? _value.collect
           : collect // ignore: cast_nullable_to_non_nullable
-              as Collect,
+              as HarvestForm,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CollectCopyWith<$Res> get collect {
-    return $CollectCopyWith<$Res>(_value.collect, (value) {
+  $HarvestFormCopyWith<$Res> get collect {
+    return $HarvestFormCopyWith<$Res>(_value.collect, (value) {
       return _then(_value.copyWith(collect: value));
     });
   }
@@ -490,7 +490,7 @@ class _$DriverSuccessQrCodeReadImpl implements DriverSuccessQrCodeRead {
   _$DriverSuccessQrCodeReadImpl(this.collect);
 
   @override
-  final Collect collect;
+  final HarvestForm collect;
 
   @override
   String toString() {
@@ -521,7 +521,7 @@ class _$DriverSuccessQrCodeReadImpl implements DriverSuccessQrCodeRead {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect collect) success,
+    required TResult Function(HarvestForm collect) success,
   }) {
     return success(collect);
   }
@@ -532,7 +532,7 @@ class _$DriverSuccessQrCodeReadImpl implements DriverSuccessQrCodeRead {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect collect)? success,
+    TResult? Function(HarvestForm collect)? success,
   }) {
     return success?.call(collect);
   }
@@ -543,7 +543,7 @@ class _$DriverSuccessQrCodeReadImpl implements DriverSuccessQrCodeRead {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect collect)? success,
+    TResult Function(HarvestForm collect)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -591,10 +591,10 @@ class _$DriverSuccessQrCodeReadImpl implements DriverSuccessQrCodeRead {
 }
 
 abstract class DriverSuccessQrCodeRead implements DriverQrCodeReadState {
-  factory DriverSuccessQrCodeRead(final Collect collect) =
+  factory DriverSuccessQrCodeRead(final HarvestForm collect) =
       _$DriverSuccessQrCodeReadImpl;
 
-  Collect get collect;
+  HarvestForm get collect;
   @JsonKey(ignore: true)
   _$$DriverSuccessQrCodeReadImplCopyWith<_$DriverSuccessQrCodeReadImpl>
       get copyWith => throw _privateConstructorUsedError;

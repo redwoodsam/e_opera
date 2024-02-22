@@ -9,9 +9,8 @@ abstract class ILoginUsecase {
   Future<Either<Failure, Login>> call(LoginParams params);
 }
 
-
 /// Implementation of [ILoginUsecase]
-class LoginUsecase implements ILoginUsecase{
+class LoginUsecase implements ILoginUsecase {
   final ILoginRepository _repository;
 
   /// Constructor of [LoginUsecase]
@@ -20,5 +19,4 @@ class LoginUsecase implements ILoginUsecase{
   Future<Either<Failure, Login>> call(LoginParams params) async {
     return await _repository.login(params);
   }
-
 }

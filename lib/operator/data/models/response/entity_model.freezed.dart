@@ -12,7 +12,7 @@ part of 'entity_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 EntityModel _$EntityModelFromJson(Map<String, dynamic> json) {
   return _EntityModel.fromJson(json);
@@ -20,12 +20,16 @@ EntityModel _$EntityModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EntityModel {
+  @HiveField(0)
   @JsonKey(name: 'codEntidade')
   String get entityCode => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'nomeEntidade')
   String get entityName => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'lojEntidade')
   String? get entityStore => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'nomeLojEntidade')
   String? get entityStoreName => throw _privateConstructorUsedError;
 
@@ -42,10 +46,10 @@ abstract class $EntityModelCopyWith<$Res> {
       _$EntityModelCopyWithImpl<$Res, EntityModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'codEntidade') String entityCode,
-      @JsonKey(name: 'nomeEntidade') String entityName,
-      @JsonKey(name: 'lojEntidade') String? entityStore,
-      @JsonKey(name: 'nomeLojEntidade') String? entityStoreName});
+      {@HiveField(0) @JsonKey(name: 'codEntidade') String entityCode,
+      @HiveField(1) @JsonKey(name: 'nomeEntidade') String entityName,
+      @HiveField(2) @JsonKey(name: 'lojEntidade') String? entityStore,
+      @HiveField(3) @JsonKey(name: 'nomeLojEntidade') String? entityStoreName});
 }
 
 /// @nodoc
@@ -96,10 +100,10 @@ abstract class _$$EntityModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'codEntidade') String entityCode,
-      @JsonKey(name: 'nomeEntidade') String entityName,
-      @JsonKey(name: 'lojEntidade') String? entityStore,
-      @JsonKey(name: 'nomeLojEntidade') String? entityStoreName});
+      {@HiveField(0) @JsonKey(name: 'codEntidade') String entityCode,
+      @HiveField(1) @JsonKey(name: 'nomeEntidade') String entityName,
+      @HiveField(2) @JsonKey(name: 'lojEntidade') String? entityStore,
+      @HiveField(3) @JsonKey(name: 'nomeLojEntidade') String? entityStoreName});
 }
 
 /// @nodoc
@@ -141,27 +145,32 @@ class __$$EntityModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: entityModelAdapterTypeId, adapterName: 'EntityModelAdapter')
 class _$EntityModelImpl extends _EntityModel {
   _$EntityModelImpl(
-      {@JsonKey(name: 'codEntidade') required this.entityCode,
-      @JsonKey(name: 'nomeEntidade') required this.entityName,
-      @JsonKey(name: 'lojEntidade') this.entityStore,
-      @JsonKey(name: 'nomeLojEntidade') this.entityStoreName})
+      {@HiveField(0) @JsonKey(name: 'codEntidade') required this.entityCode,
+      @HiveField(1) @JsonKey(name: 'nomeEntidade') required this.entityName,
+      @HiveField(2) @JsonKey(name: 'lojEntidade') this.entityStore,
+      @HiveField(3) @JsonKey(name: 'nomeLojEntidade') this.entityStoreName})
       : super._();
 
   factory _$EntityModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EntityModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codEntidade')
   final String entityCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeEntidade')
   final String entityName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'lojEntidade')
   final String? entityStore;
   @override
+  @HiveField(3)
   @JsonKey(name: 'nomeLojEntidade')
   final String? entityStoreName;
 
@@ -206,26 +215,35 @@ class _$EntityModelImpl extends _EntityModel {
 
 abstract class _EntityModel extends EntityModel {
   factory _EntityModel(
-          {@JsonKey(name: 'codEntidade') required final String entityCode,
-          @JsonKey(name: 'nomeEntidade') required final String entityName,
-          @JsonKey(name: 'lojEntidade') final String? entityStore,
-          @JsonKey(name: 'nomeLojEntidade') final String? entityStoreName}) =
-      _$EntityModelImpl;
+      {@HiveField(0)
+      @JsonKey(name: 'codEntidade')
+      required final String entityCode,
+      @HiveField(1)
+      @JsonKey(name: 'nomeEntidade')
+      required final String entityName,
+      @HiveField(2) @JsonKey(name: 'lojEntidade') final String? entityStore,
+      @HiveField(3)
+      @JsonKey(name: 'nomeLojEntidade')
+      final String? entityStoreName}) = _$EntityModelImpl;
   _EntityModel._() : super._();
 
   factory _EntityModel.fromJson(Map<String, dynamic> json) =
       _$EntityModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codEntidade')
   String get entityCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeEntidade')
   String get entityName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'lojEntidade')
   String? get entityStore;
   @override
+  @HiveField(3)
   @JsonKey(name: 'nomeLojEntidade')
   String? get entityStoreName;
   @override

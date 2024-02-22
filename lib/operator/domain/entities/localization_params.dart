@@ -5,6 +5,7 @@ import 'field.dart';
 import 'harvest.dart';
 
 part 'localization_params.freezed.dart';
+part 'localization_params.g.dart';
 
 @freezed
 
@@ -17,4 +18,7 @@ sealed class LocationParams with _$LocationParams {
     required Harvest harvest,
     required Field field,
   }) = _LocationParams;
+
+  factory LocationParams.fromJson(Map<String, dynamic> json) =>
+      _$LocationParamsFromJson(json);
 }

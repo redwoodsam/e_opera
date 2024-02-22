@@ -12,7 +12,7 @@ part of 'product_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
   return _Product.fromJson(json);
@@ -20,8 +20,10 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductModel {
+  @HiveField(0)
   @JsonKey(name: 'desProduto')
   String get productDescription => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'codProduto')
   String get productCode => throw _privateConstructorUsedError;
 
@@ -38,8 +40,8 @@ abstract class $ProductModelCopyWith<$Res> {
       _$ProductModelCopyWithImpl<$Res, ProductModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'desProduto') String productDescription,
-      @JsonKey(name: 'codProduto') String productCode});
+      {@HiveField(0) @JsonKey(name: 'desProduto') String productDescription,
+      @HiveField(1) @JsonKey(name: 'codProduto') String productCode});
 }
 
 /// @nodoc
@@ -80,8 +82,8 @@ abstract class _$$ProductImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'desProduto') String productDescription,
-      @JsonKey(name: 'codProduto') String productCode});
+      {@HiveField(0) @JsonKey(name: 'desProduto') String productDescription,
+      @HiveField(1) @JsonKey(name: 'codProduto') String productCode});
 }
 
 /// @nodoc
@@ -113,19 +115,24 @@ class __$$ProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: productModelAdapterTypeId, adapterName: 'ProductModelAdapter')
 class _$ProductImpl extends _Product {
   _$ProductImpl(
-      {@JsonKey(name: 'desProduto') required this.productDescription,
-      @JsonKey(name: 'codProduto') required this.productCode})
+      {@HiveField(0)
+      @JsonKey(name: 'desProduto')
+      required this.productDescription,
+      @HiveField(1) @JsonKey(name: 'codProduto') required this.productCode})
       : super._();
 
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'desProduto')
   final String productDescription;
   @override
+  @HiveField(1)
   @JsonKey(name: 'codProduto')
   final String productCode;
 
@@ -165,7 +172,10 @@ class _$ProductImpl extends _Product {
 
 abstract class _Product extends ProductModel {
   factory _Product(
-      {@JsonKey(name: 'desProduto') required final String productDescription,
+      {@HiveField(0)
+      @JsonKey(name: 'desProduto')
+      required final String productDescription,
+      @HiveField(1)
       @JsonKey(name: 'codProduto')
       required final String productCode}) = _$ProductImpl;
   _Product._() : super._();
@@ -173,9 +183,11 @@ abstract class _Product extends ProductModel {
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'desProduto')
   String get productDescription;
   @override
+  @HiveField(1)
   @JsonKey(name: 'codProduto')
   String get productCode;
   @override

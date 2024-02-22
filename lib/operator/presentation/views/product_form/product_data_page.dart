@@ -1,7 +1,12 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 
 import '../../../../../../core/core.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
+import '../../../domain/entities/form_data/product_form.dart';
+import '../../../domain/entities/localization_params.dart';
+import '../../../domain/entities/product.dart';
 import '../../../operator_module.dart';
 import 'product_data_state.dart';
 import 'product_data_viewmodel.dart';
@@ -35,7 +40,23 @@ class _ProductDataPageState
   }
 
   @override
+  void dispose() {
+    viewModel.dispose();
+    super.dispose();
+  }
+
+  final _formKey = GlobalKey<FormState>();
+
+  bool isNumeric(String s) {
+    if (s == null) {
+      return false;
+    }
+    return double.parse(s) != null;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var form = ModalRoute.of(context)?.settings.arguments as HarvestForm;
     return Scaffold(
         appBar: AppBar(
           title: Text('Formulário de Dados do Produto'),
@@ -63,62 +84,75 @@ class _ProductDataPageState
                   :final selectedProduct,
                   :final selectedVariety,
                 ) =>
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Form(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          _buildDropdown(
-                            labelText: 'Código',
-                            value: selectedProduct?.productCode,
-                            items: codeOptions,
-                            onChanged: (String? value) {
-                              viewModel.onSelectProduct(value!);
-                            },
-                          ),
-                          SizedBox(height: 16.0),
-                          _buildTextFormField(
-                            labelText: 'Descrição',
-                            onChanged: (value) {
-                              setState(() {
-                                descricao = value;
-                              });
-                            },
-                          ),
-                          SizedBox(height: 16.0),
-                          _buildDropdown(
-                            labelText: 'Variedade',
-                            value: selectedVariety?.varietyDescription,
-                            items: varietyOptions,
-                            onChanged: (String? value) {
-                              viewModel.onSelectVariety(value!);
-                            },
-                          ),
-                          SizedBox(height: 16.0),
-                          _buildTextFormField(
-                            labelText: 'Quantidade Coletada',
-                            onChanged: (value) {
-                              setState(() {
-                                quantidadeColetada = value;
-                              });
-                            },
-                            keyboardType: TextInputType.number,
-                          ),
-                          SizedBox(height: 16.0),
-                          _buildDropdown(
-                            labelText: 'Unidade',
-                            value: selectedUnidade,
-                            items: unidadeList,
-                            onChanged: (String? value) {
-                              setState(() {
-                                selectedUnidade = value;
-                              });
-                            },
-                          ),
-                          SizedBox(height: 32.0),
-                          _buildSubmitButton(),
-                        ],
+                  Form(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            _buildDropdown(
+                              labelText: 'Código',
+                              value: selectedProduct?.productCode,
+                              items: codeOptions,
+                              onChanged: (String? value) {
+                                viewModel.onSelectProduct(value!);
+                              },
+                            ),
+                            SizedBox(height: 16.0),
+                            _buildTextFormField(
+                              labelText: 'Descrição',
+                              onChanged: (value) {
+                                setState(() {
+                                  descricao = value;
+                                });
+                              },
+                            ),
+                            SizedBox(height: 16.0),
+                            _buildDropdown(
+                              labelText: 'Variedade',
+                              value: selectedVariety?.varietyDescription,
+                              items: varietyOptions,
+                              onChanged: (String? value) {
+                                viewModel.onSelectVariety(value!);
+                              },
+                            ),
+                            SizedBox(height: 16.0),
+                            _buildTextFormField(
+                              labelText: 'Quantidade Coletada',
+                              validator: ValidationBuilder()
+                                  .required('Um valor precisa ser escolhido')
+                                  .minLength(1)
+                                  .add((value) => value != null
+                                      ? value.canBeDouble
+                                          ? int.parse(value) > 0
+                                              ? null
+                                              : 'O valor precisa ser maior que zero'
+                                          : 'Número inválido'
+                                      : 'Digite um valor'),
+                              onChanged: (value) {
+                                setState(() {
+                                  quantidadeColetada = value;
+                                });
+                              },
+                              keyboardType: TextInputType.number,
+                            ),
+                            SizedBox(height: 16.0),
+                            _buildDropdown(
+                              labelText: 'Unidade',
+                              value: selectedUnidade,
+                              items: unidadeList,
+                              onChanged: (String? value) {
+                                setState(() {
+                                  selectedUnidade = value;
+                                });
+                              },
+                            ),
+                            SizedBox(height: 32.0),
+                            _buildSubmitButton(_formKey, form),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -154,6 +188,10 @@ class _ProductDataPageState
         ),
         SizedBox(height: 8.0),
         DropdownButtonFormField2<String?>(
+          validator: ValidationBuilder()
+              .required()
+              .minLength(1, 'Um produto precisa ser escolhido')
+              .build(),
           value: value,
           items: items.map((String item) {
             return DropdownMenuItem<String>(
@@ -169,17 +207,20 @@ class _ProductDataPageState
           }).toList(),
           onChanged: onChanged,
           decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white70,
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          ),
+              filled: true,
+              fillColor: Colors.white70,
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color.fromARGB(255, 244, 0, 0)),
+                borderRadius: BorderRadius.circular(10.0),
+              )),
           onSaved: (value) {
             // Faça algo com o valor selecionado
           },
@@ -210,9 +251,11 @@ class _ProductDataPageState
   Widget _buildTextFormField({
     required String labelText,
     required void Function(String) onChanged,
+    ValidationBuilder? validator,
     TextInputType keyboardType = TextInputType.text,
   }) {
     return TextFormField(
+      validator: validator?.build(),
       onChanged: onChanged,
       keyboardType: keyboardType,
       decoration: InputDecoration(
@@ -226,38 +269,43 @@ class _ProductDataPageState
           borderSide: BorderSide(color: Colors.green),
           borderRadius: BorderRadius.circular(10.0),
         ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 244, 0, 0)),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
       ),
     );
   }
 
-  Widget _buildSubmitButton() {
+  Widget _buildSubmitButton(GlobalKey<FormState> _formKey, HarvestForm form) {
     return ElevatedButton(
       onPressed: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => DriverDataPage(
-        //       codigo: selectedCodigo!,
-        //       descricao: descricao,
-        //       variedade: selectedVariedade!,
-        //       quantidadeColetada: quantidadeColetada,
-        //       unidade: selectedUnidade!,
-        //     ),
-        //   ),
-        // );
+        if (_formKey.currentState != null) {
+          if (_formKey.currentState!.validate()) {
+            form = form.copyWith(
+              product: ProductForm(
+                productCode: selectedCodigo!,
+                productDescription: descricao,
+                productVariety: selectedVariedade!,
+                quantity: quantidadeColetada,
+                unit: selectedUnidade!,
+              ),
+            );
 
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //       builder: (context) => ProductDataPage()),
-        // );
-        Nav.pushNamed(OperatorModule.driverForm, arguments: {
-          'codigo': selectedCodigo!,
-          'descricao': descricao,
-          'variedade': selectedVariedade!,
-          'quantidadeColetada': quantidadeColetada,
-          'unidade': selectedUnidade!
-        });
+            Nav.pushNamed(
+              OperatorModule.driverForm,
+              arguments: form,
+            );
+          }
+        }
+
+        // Navigator.pushNamed(context, './driver', arguments: {
+        //   'codigo': selectedCodigo!,
+        //   'descricao': descricao,
+        //   'variedade': selectedVariedade!,
+        //   'quantidadeColetada': quantidadeColetada,
+        //   'unidade': selectedUnidade!
+        // });
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,

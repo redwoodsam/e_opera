@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../core/core.dart';
 import 'domain/usecases/login_usecase.dart';
+import 'domain/usecases/retrieve_logged_in_user_usecase.dart';
 import 'login.dart';
 import 'presentation/views/login_viewmodel.dart';
 
@@ -63,11 +64,17 @@ class LoginModule extends Module {
         Bind.factory<ILoginUsecase>(
           (i) => LoginUsecase(i.get<ILoginRepository>()),
         ),
+        Bind.factory<IRetrieveLoggedInUserUsecase>(
+          (i) => RetrieveLoggedInUserUsecase(i.get<ILoginRepository>()),
+        ),
       ];
 
   static List<Bind> get _viewmodel => [
         Bind.lazySingleton<LoginViewModel>(
-          (i) => LoginViewModel(i.get<ILoginUsecase>()),
+          (i) => LoginViewModel(
+            i.get<ILoginUsecase>(),
+            i.get<IRetrieveLoggedInUserUsecase>(),
+          ),
         ),
       ];
 }

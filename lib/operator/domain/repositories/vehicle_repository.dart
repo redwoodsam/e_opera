@@ -6,5 +6,8 @@ import '../entities/vehicle.dart';
 /// Interface to [IVehicleRepository]
 abstract class IVehicleRepository {
   /// Method to get login
-  Future<Either<Failure, List<Vehicle>>> getVehicles();
+  Future<Either<Failure, List<Vehicle>>> getVehicles(
+      {bool forceUpdate = false});
+  Future<Either<Failure, List<Vehicle>>> getVehiclesLocal();
+  Future<Either<Failure, List<Vehicle>>> getVehiclesRemote();
 }

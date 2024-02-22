@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../domain/entities/driver.dart';
 
@@ -10,6 +11,8 @@ part 'driver_model.g.dart';
 ///
 /// Model params to farm
 ///
+const int driverModelAdapterTypeId = 1;
+
 @freezed
 class DriverModel with _$DriverModel {
   const DriverModel._();
@@ -17,11 +20,14 @@ class DriverModel with _$DriverModel {
   ///
   /// [DriverModel] default constructor
   ///
+  @HiveType(typeId: driverModelAdapterTypeId, adapterName: 'DriverModelAdapter')
   const factory DriverModel({
-    @JsonKey(name: 'codMotorista') required String driverCode,
-    @JsonKey(name: 'nomeMotorista') required String driverName,
-    @JsonKey(name: 'nreduzMotorista') required String driverReducedName,
-    @JsonKey(name: 'cpfMotorista') required String driverCpf,
+    @HiveField(0) @JsonKey(name: 'codMotorista') required String driverCode,
+    @HiveField(1) @JsonKey(name: 'nomeMotorista') required String driverName,
+    @HiveField(2)
+    @JsonKey(name: 'nreduzMotorista')
+    required String driverReducedName,
+    @HiveField(3) @JsonKey(name: 'cpfMotorista') required String driverCpf,
   }) = _DriverModel;
 
   factory DriverModel.fromJson(Map<String, dynamic> json) =>

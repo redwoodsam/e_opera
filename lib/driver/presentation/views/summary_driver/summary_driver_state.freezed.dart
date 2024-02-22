@@ -12,7 +12,7 @@ part of 'summary_driver_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SummaryDriverState {
@@ -21,7 +21,7 @@ mixin _$SummaryDriverState {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect? collectedData) loaded,
+    required TResult Function(HarvestForm? collectedData) loaded,
     required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$SummaryDriverState {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect? collectedData)? loaded,
+    TResult? Function(HarvestForm? collectedData)? loaded,
     TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ mixin _$SummaryDriverState {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect? collectedData)? loaded,
+    TResult Function(HarvestForm? collectedData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) =>
@@ -134,7 +134,7 @@ class _$SummaryDriverInitialImpl implements SummaryDriverInitial {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect? collectedData) loaded,
+    required TResult Function(HarvestForm? collectedData) loaded,
     required TResult Function() success,
   }) {
     return initial();
@@ -146,7 +146,7 @@ class _$SummaryDriverInitialImpl implements SummaryDriverInitial {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect? collectedData)? loaded,
+    TResult? Function(HarvestForm? collectedData)? loaded,
     TResult? Function()? success,
   }) {
     return initial?.call();
@@ -158,7 +158,7 @@ class _$SummaryDriverInitialImpl implements SummaryDriverInitial {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect? collectedData)? loaded,
+    TResult Function(HarvestForm? collectedData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -254,7 +254,7 @@ class _$SummaryDriverErrorImpl implements SummaryDriverError {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect? collectedData) loaded,
+    required TResult Function(HarvestForm? collectedData) loaded,
     required TResult Function() success,
   }) {
     return error();
@@ -266,7 +266,7 @@ class _$SummaryDriverErrorImpl implements SummaryDriverError {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect? collectedData)? loaded,
+    TResult? Function(HarvestForm? collectedData)? loaded,
     TResult? Function()? success,
   }) {
     return error?.call();
@@ -278,7 +278,7 @@ class _$SummaryDriverErrorImpl implements SummaryDriverError {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect? collectedData)? loaded,
+    TResult Function(HarvestForm? collectedData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -375,7 +375,7 @@ class _$SummaryDriverLoadingImpl implements SummaryDriverLoading {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect? collectedData) loaded,
+    required TResult Function(HarvestForm? collectedData) loaded,
     required TResult Function() success,
   }) {
     return loading();
@@ -387,7 +387,7 @@ class _$SummaryDriverLoadingImpl implements SummaryDriverLoading {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect? collectedData)? loaded,
+    TResult? Function(HarvestForm? collectedData)? loaded,
     TResult? Function()? success,
   }) {
     return loading?.call();
@@ -399,7 +399,7 @@ class _$SummaryDriverLoadingImpl implements SummaryDriverLoading {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect? collectedData)? loaded,
+    TResult Function(HarvestForm? collectedData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -461,9 +461,9 @@ abstract class _$$LoadedSummaryDriverStateImplCopyWith<$Res> {
           $Res Function(_$LoadedSummaryDriverStateImpl) then) =
       __$$LoadedSummaryDriverStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Collect? collectedData});
+  $Res call({HarvestForm? collectedData});
 
-  $CollectCopyWith<$Res>? get collectedData;
+  $HarvestFormCopyWith<$Res>? get collectedData;
 }
 
 /// @nodoc
@@ -485,18 +485,18 @@ class __$$LoadedSummaryDriverStateImplCopyWithImpl<$Res>
       collectedData: freezed == collectedData
           ? _value.collectedData
           : collectedData // ignore: cast_nullable_to_non_nullable
-              as Collect?,
+              as HarvestForm?,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CollectCopyWith<$Res>? get collectedData {
+  $HarvestFormCopyWith<$Res>? get collectedData {
     if (_value.collectedData == null) {
       return null;
     }
 
-    return $CollectCopyWith<$Res>(_value.collectedData!, (value) {
+    return $HarvestFormCopyWith<$Res>(_value.collectedData!, (value) {
       return _then(_value.copyWith(collectedData: value));
     });
   }
@@ -508,7 +508,7 @@ class _$LoadedSummaryDriverStateImpl implements LoadedSummaryDriverState {
   _$LoadedSummaryDriverStateImpl({this.collectedData});
 
   @override
-  final Collect? collectedData;
+  final HarvestForm? collectedData;
 
   @override
   String toString() {
@@ -540,7 +540,7 @@ class _$LoadedSummaryDriverStateImpl implements LoadedSummaryDriverState {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect? collectedData) loaded,
+    required TResult Function(HarvestForm? collectedData) loaded,
     required TResult Function() success,
   }) {
     return loaded(collectedData);
@@ -552,7 +552,7 @@ class _$LoadedSummaryDriverStateImpl implements LoadedSummaryDriverState {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect? collectedData)? loaded,
+    TResult? Function(HarvestForm? collectedData)? loaded,
     TResult? Function()? success,
   }) {
     return loaded?.call(collectedData);
@@ -564,7 +564,7 @@ class _$LoadedSummaryDriverStateImpl implements LoadedSummaryDriverState {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect? collectedData)? loaded,
+    TResult Function(HarvestForm? collectedData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
@@ -616,10 +616,10 @@ class _$LoadedSummaryDriverStateImpl implements LoadedSummaryDriverState {
 }
 
 abstract class LoadedSummaryDriverState implements SummaryDriverState {
-  factory LoadedSummaryDriverState({final Collect? collectedData}) =
+  factory LoadedSummaryDriverState({final HarvestForm? collectedData}) =
       _$LoadedSummaryDriverStateImpl;
 
-  Collect? get collectedData;
+  HarvestForm? get collectedData;
   @JsonKey(ignore: true)
   _$$LoadedSummaryDriverStateImplCopyWith<_$LoadedSummaryDriverStateImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -667,7 +667,7 @@ class _$SummaryDriverSuccessImpl implements SummaryDriverSuccess {
     required TResult Function() initial,
     required TResult Function() error,
     required TResult Function() loading,
-    required TResult Function(Collect? collectedData) loaded,
+    required TResult Function(HarvestForm? collectedData) loaded,
     required TResult Function() success,
   }) {
     return success();
@@ -679,7 +679,7 @@ class _$SummaryDriverSuccessImpl implements SummaryDriverSuccess {
     TResult? Function()? initial,
     TResult? Function()? error,
     TResult? Function()? loading,
-    TResult? Function(Collect? collectedData)? loaded,
+    TResult? Function(HarvestForm? collectedData)? loaded,
     TResult? Function()? success,
   }) {
     return success?.call();
@@ -691,7 +691,7 @@ class _$SummaryDriverSuccessImpl implements SummaryDriverSuccess {
     TResult Function()? initial,
     TResult Function()? error,
     TResult Function()? loading,
-    TResult Function(Collect? collectedData)? loaded,
+    TResult Function(HarvestForm? collectedData)? loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {

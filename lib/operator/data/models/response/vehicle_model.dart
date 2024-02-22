@@ -2,6 +2,7 @@
 
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../domain/entities/vehicle.dart';
 
@@ -11,6 +12,8 @@ part 'vehicle_model.g.dart';
 ///
 /// Model params to farm
 ///
+const int vehicleModelAdapterTypeId = 10;
+
 @freezed
 class VehicleModel with _$VehicleModel {
   const VehicleModel._();
@@ -18,11 +21,15 @@ class VehicleModel with _$VehicleModel {
   ///
   /// [VehicleModel] default constructor
   ///
+  @HiveType(
+      typeId: vehicleModelAdapterTypeId, adapterName: 'VehicleModelAdapter')
   factory VehicleModel({
-    @JsonKey(name: 'codVeiculo') required String vehicleCode,
-    @JsonKey(name: 'motoristaVeiculo') required String driverVehicle,
-    @JsonKey(name: 'nomeVeiculo') required String vehicleName,
-    @JsonKey(name: 'placaVeiculo') required String vehiclePlate,
+    @HiveField(0) @JsonKey(name: 'codVeiculo') required String vehicleCode,
+    @HiveField(1)
+    @JsonKey(name: 'motoristaVeiculo')
+    required String driverVehicle,
+    @HiveField(2) @JsonKey(name: 'nomeVeiculo') required String vehicleName,
+    @HiveField(3) @JsonKey(name: 'placaVeiculo') required String vehiclePlate,
   }) = _VehicleModel;
 
   factory VehicleModel.fromJson(Map<String, dynamic> json) =>

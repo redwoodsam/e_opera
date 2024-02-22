@@ -12,7 +12,7 @@ part of 'farm_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 FarmModel _$FarmModelFromJson(Map<String, dynamic> json) {
   return _FarmModel.fromJson(json);
@@ -20,12 +20,16 @@ FarmModel _$FarmModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FarmModel {
+  @HiveField(0)
   @JsonKey(name: 'codFazenda')
   String get farmCode => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'nomeFazenda')
   String get farmName => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'codFilial')
   String get branchCode => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'nomeFilial')
   String get branchName => throw _privateConstructorUsedError;
 
@@ -41,10 +45,10 @@ abstract class $FarmModelCopyWith<$Res> {
       _$FarmModelCopyWithImpl<$Res, FarmModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'codFazenda') String farmCode,
-      @JsonKey(name: 'nomeFazenda') String farmName,
-      @JsonKey(name: 'codFilial') String branchCode,
-      @JsonKey(name: 'nomeFilial') String branchName});
+      {@HiveField(0) @JsonKey(name: 'codFazenda') String farmCode,
+      @HiveField(1) @JsonKey(name: 'nomeFazenda') String farmName,
+      @HiveField(2) @JsonKey(name: 'codFilial') String branchCode,
+      @HiveField(3) @JsonKey(name: 'nomeFilial') String branchName});
 }
 
 /// @nodoc
@@ -95,10 +99,10 @@ abstract class _$$FarmModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'codFazenda') String farmCode,
-      @JsonKey(name: 'nomeFazenda') String farmName,
-      @JsonKey(name: 'codFilial') String branchCode,
-      @JsonKey(name: 'nomeFilial') String branchName});
+      {@HiveField(0) @JsonKey(name: 'codFazenda') String farmCode,
+      @HiveField(1) @JsonKey(name: 'nomeFazenda') String farmName,
+      @HiveField(2) @JsonKey(name: 'codFilial') String branchCode,
+      @HiveField(3) @JsonKey(name: 'nomeFilial') String branchName});
 }
 
 /// @nodoc
@@ -140,27 +144,32 @@ class __$$FarmModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: farmModelAdapterTypeId, adapterName: 'FarmModelAdapter')
 class _$FarmModelImpl extends _FarmModel {
   const _$FarmModelImpl(
-      {@JsonKey(name: 'codFazenda') required this.farmCode,
-      @JsonKey(name: 'nomeFazenda') required this.farmName,
-      @JsonKey(name: 'codFilial') required this.branchCode,
-      @JsonKey(name: 'nomeFilial') required this.branchName})
+      {@HiveField(0) @JsonKey(name: 'codFazenda') required this.farmCode,
+      @HiveField(1) @JsonKey(name: 'nomeFazenda') required this.farmName,
+      @HiveField(2) @JsonKey(name: 'codFilial') required this.branchCode,
+      @HiveField(3) @JsonKey(name: 'nomeFilial') required this.branchName})
       : super._();
 
   factory _$FarmModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FarmModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codFazenda')
   final String farmCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeFazenda')
   final String farmName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'codFilial')
   final String branchCode;
   @override
+  @HiveField(3)
   @JsonKey(name: 'nomeFilial')
   final String branchName;
 
@@ -205,26 +214,37 @@ class _$FarmModelImpl extends _FarmModel {
 
 abstract class _FarmModel extends FarmModel {
   const factory _FarmModel(
-          {@JsonKey(name: 'codFazenda') required final String farmCode,
-          @JsonKey(name: 'nomeFazenda') required final String farmName,
-          @JsonKey(name: 'codFilial') required final String branchCode,
-          @JsonKey(name: 'nomeFilial') required final String branchName}) =
-      _$FarmModelImpl;
+      {@HiveField(0)
+      @JsonKey(name: 'codFazenda')
+      required final String farmCode,
+      @HiveField(1)
+      @JsonKey(name: 'nomeFazenda')
+      required final String farmName,
+      @HiveField(2)
+      @JsonKey(name: 'codFilial')
+      required final String branchCode,
+      @HiveField(3)
+      @JsonKey(name: 'nomeFilial')
+      required final String branchName}) = _$FarmModelImpl;
   const _FarmModel._() : super._();
 
   factory _FarmModel.fromJson(Map<String, dynamic> json) =
       _$FarmModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'codFazenda')
   String get farmCode;
   @override
+  @HiveField(1)
   @JsonKey(name: 'nomeFazenda')
   String get farmName;
   @override
+  @HiveField(2)
   @JsonKey(name: 'codFilial')
   String get branchCode;
   @override
+  @HiveField(3)
   @JsonKey(name: 'nomeFilial')
   String get branchName;
   @override

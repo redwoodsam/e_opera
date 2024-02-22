@@ -1,7 +1,11 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 
 import '../../../../../../core/core.dart';
+import '../../../domain/entities/destination.dart';
+import '../../../domain/entities/form_data/destination_form.dart';
+import '../../../domain/entities/form_data/harvest_form.dart';
 import '../../../operator_module.dart';
 import '../summary/summary_page.dart';
 import 'destination_data_state.dart';
@@ -117,19 +121,11 @@ class _DestinationFormState
     viewModel.getDataOptions();
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context)?.settings.arguments as Map;
-
-    codigo = routeArgs['codigo'] ?? "";
-    descricao = routeArgs['descricao'] ?? "";
-    variedade = routeArgs['variedade'] ?? "";
-    quantidadeColetada = routeArgs['quantidadeColetada'] ?? "";
-    unidade = routeArgs['unidade'] ?? '';
-    nomeMotorista = routeArgs['nomeMotorista'] ?? '';
-    cpfMotorista = routeArgs['cpfMotorista'] ?? '';
-    placaCaminhao = routeArgs['placaCaminhao'] ?? '';
-    nomeTransportadora = routeArgs['nomeTransportadora'] ?? '';
+    final routeArgs = ModalRoute.of(context)?.settings.arguments as HarvestForm;
 
     return Scaffold(
       appBar: AppBar(
@@ -157,33 +153,38 @@ class _DestinationFormState
               :final destinations,
               :final selectedDestination
             ) =>
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildDropdown(
-                      value: selectedDestination?.destinationName,
-                      items:
-                          destinations.map((e) => e.destinationName).toList(),
-                      onChanged: (value) {
-                        setState(() {
-                          viewModel.onSelectDestination(value!);
-                        });
-                      },
-                      labelText: 'Destino da Colheita',
-                    ),
-                    SizedBox(height: 16.0),
-                    _buildTextFormField(
-                      controller: _observacoesController,
-                      labelText: 'Observações',
-                      maxLines: 3,
-                    ),
-                    SizedBox(height: 16.0),
-                    _buildSubmitButton(
-                      selectedDestination?.destinationName ?? "",
-                    ),
-                  ],
+              Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildDropdown(
+                        value: selectedDestination?.destinationName,
+                        items:
+                            destinations.map((e) => e.destinationName).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            viewModel.onSelectDestination(value!);
+                          });
+                        },
+                        labelText: 'Destino da Colheita',
+                      ),
+                      SizedBox(height: 16.0),
+                      _buildTextFormField(
+                        controller: _observacoesController,
+                        labelText: 'Observações',
+                        maxLines: 3,
+                      ),
+                      SizedBox(height: 16.0),
+                      _buildSubmitButton(
+                        _formKey,
+                        routeArgs,
+                        selectedDestination,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             LoadingDestinationData() => Scaffold(
@@ -218,6 +219,10 @@ class _DestinationFormState
         ),
         SizedBox(height: 8.0),
         DropdownButtonFormField2<String?>(
+          validator: ValidationBuilder()
+              .required('Um valor precisa ser selecionado')
+              .minLength(1, 'Um valor precisa ser informado')
+              .build(),
           value: value,
           items: items.map((String item) {
             return DropdownMenuItem<String>(
@@ -233,17 +238,20 @@ class _DestinationFormState
           }).toList(),
           onChanged: onChanged,
           decoration: InputDecoration(
-            filled: true,
-            fillColor: Colors.white70,
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          ),
+              filled: true,
+              fillColor: Colors.white70,
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green),
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Color.fromARGB(255, 244, 0, 0)),
+                borderRadius: BorderRadius.circular(10.0),
+              )),
           onSaved: (value) {
             // Faça algo com o valor selecionado
           },
@@ -280,40 +288,45 @@ class _DestinationFormState
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: TextStyle(color: Colors.green),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
+          labelText: labelText,
+          labelStyle: TextStyle(color: Colors.green),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green),
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color.fromARGB(255, 244, 0, 0)),
+            borderRadius: BorderRadius.circular(10.0),
+          )),
       keyboardType: keyboardType,
       maxLines: maxLines,
     );
   }
 
-  Widget _buildSubmitButton(String selectedDestination) {
+  Widget _buildSubmitButton(GlobalKey<FormState> _formKey,
+      HarvestForm harvestForm, Destination? selectedDestination) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-          Nav.pushNamed(OperatorModule.summaryPage, arguments: {
-            'codigo': codigo ?? "" as String,
-            'descricao': descricao ?? "" as String,
-            'variedade': variedade ?? "" as String,
-            'quantidadeColetada': quantidadeColetada ?? "" as String,
-            'unidade': unidade ?? "" as String,
-            'nomeMotorista': nomeMotorista ?? "" as String,
-            'cpfMotorista': cpfMotorista ?? "" as String,
-            'placaCaminhao': placaCaminhao ?? "" as String,
-            'nomeTransportadora': nomeTransportadora ?? "" as String,
-            'destinoColheita': selectedDestination ?? "" as String,
-            'observacoes': _observacoesController.text ?? "" as String,
-          });
+          if (_formKey.currentState != null) {
+            if (!_formKey.currentState!.validate()) {
+              return null;
+            }
+          }
+
+          harvestForm = harvestForm.copyWith(
+            destination: DestinationForm(
+              entityCode: selectedDestination?.destinationCode,
+              entityName: selectedDestination?.destinationName,
+              details: _observacoesController.text,
+            ),
+          );
+          Nav.pushNamed(OperatorModule.summaryPage, arguments: harvestForm);
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,

@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../domain/entities/harvest.dart';
 
@@ -10,6 +11,8 @@ part 'harvest_model.g.dart';
 ///
 /// Model params to farm
 ///
+const int harvestModelAdapterTypeId = 5;
+
 @freezed
 class HarvestModel with _$HarvestModel {
   const HarvestModel._();
@@ -17,9 +20,11 @@ class HarvestModel with _$HarvestModel {
   ///
   /// [HarvestModel] default constructor
   ///
+  @HiveType(
+      typeId: harvestModelAdapterTypeId, adapterName: 'HarvestModelAdapter')
   factory HarvestModel({
-    @JsonKey(name: 'desSafra') required String desSafra,
-    @JsonKey(name: 'codigoSafra') required String codigoSafra,
+    @HiveField(0) @JsonKey(name: 'desSafra') required String desSafra,
+    @HiveField(1) @JsonKey(name: 'codigoSafra') required String codigoSafra,
   }) = _HarvestModel;
 
   factory HarvestModel.fromJson(Map<String, dynamic> json) =>

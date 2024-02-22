@@ -12,7 +12,7 @@ part of 'harvest_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 HarvestModel _$HarvestModelFromJson(Map<String, dynamic> json) {
   return _HarvestModel.fromJson(json);
@@ -20,8 +20,10 @@ HarvestModel _$HarvestModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HarvestModel {
+  @HiveField(0)
   @JsonKey(name: 'desSafra')
   String get desSafra => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'codigoSafra')
   String get codigoSafra => throw _privateConstructorUsedError;
 
@@ -38,8 +40,8 @@ abstract class $HarvestModelCopyWith<$Res> {
       _$HarvestModelCopyWithImpl<$Res, HarvestModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'desSafra') String desSafra,
-      @JsonKey(name: 'codigoSafra') String codigoSafra});
+      {@HiveField(0) @JsonKey(name: 'desSafra') String desSafra,
+      @HiveField(1) @JsonKey(name: 'codigoSafra') String codigoSafra});
 }
 
 /// @nodoc
@@ -80,8 +82,8 @@ abstract class _$$HarvestModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'desSafra') String desSafra,
-      @JsonKey(name: 'codigoSafra') String codigoSafra});
+      {@HiveField(0) @JsonKey(name: 'desSafra') String desSafra,
+      @HiveField(1) @JsonKey(name: 'codigoSafra') String codigoSafra});
 }
 
 /// @nodoc
@@ -113,19 +115,22 @@ class __$$HarvestModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: harvestModelAdapterTypeId, adapterName: 'HarvestModelAdapter')
 class _$HarvestModelImpl extends _HarvestModel {
   _$HarvestModelImpl(
-      {@JsonKey(name: 'desSafra') required this.desSafra,
-      @JsonKey(name: 'codigoSafra') required this.codigoSafra})
+      {@HiveField(0) @JsonKey(name: 'desSafra') required this.desSafra,
+      @HiveField(1) @JsonKey(name: 'codigoSafra') required this.codigoSafra})
       : super._();
 
   factory _$HarvestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$HarvestModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'desSafra')
   final String desSafra;
   @override
+  @HiveField(1)
   @JsonKey(name: 'codigoSafra')
   final String codigoSafra;
 
@@ -165,18 +170,21 @@ class _$HarvestModelImpl extends _HarvestModel {
 
 abstract class _HarvestModel extends HarvestModel {
   factory _HarvestModel(
-          {@JsonKey(name: 'desSafra') required final String desSafra,
-          @JsonKey(name: 'codigoSafra') required final String codigoSafra}) =
-      _$HarvestModelImpl;
+      {@HiveField(0) @JsonKey(name: 'desSafra') required final String desSafra,
+      @HiveField(1)
+      @JsonKey(name: 'codigoSafra')
+      required final String codigoSafra}) = _$HarvestModelImpl;
   _HarvestModel._() : super._();
 
   factory _HarvestModel.fromJson(Map<String, dynamic> json) =
       _$HarvestModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'desSafra')
   String get desSafra;
   @override
+  @HiveField(1)
   @JsonKey(name: 'codigoSafra')
   String get codigoSafra;
   @override
