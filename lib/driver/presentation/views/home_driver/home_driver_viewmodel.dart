@@ -3,6 +3,7 @@ import '../../../../login/domain/domain.dart';
 import '../../../../login/presentation/views/login_state.dart';
 import '../../../domain/domain.dart';
 import '../../../domain/usecases/get_loggedIn_user_usecase.dart';
+import '../../../domain/usecases/get_pending_collects_usecase.dart';
 import '../../../domain/usecases/synchronize_local_database_usecase.dart';
 import '../../../driver_module.dart';
 import 'home_driver_state.dart';
@@ -10,11 +11,13 @@ import 'home_driver_state.dart';
 /// ViewModel of [LoginPage]
 class DriverHomeViewModel extends ViewModel<DriverHomeState> {
   final IGetLoggedInUserUsecase _getLoggedInUserUsecase;
+  final IGetPendingCollectsUserUsecase _getPendingCollectsUserUsecase;
   final ISynchronizeLocalDatabaseUsecase _synchronizeLocalDatabaseUsecase;
 
   /// Constructor of [DriverHomeViewModel]
   DriverHomeViewModel(
     this._getLoggedInUserUsecase,
+    this._getPendingCollectsUserUsecase,
     this._synchronizeLocalDatabaseUsecase,
   ) : super(DriverHomeState.initial());
 
@@ -32,16 +35,27 @@ class DriverHomeViewModel extends ViewModel<DriverHomeState> {
     );
   }
 
+  Future<int> getPendingCollects() async {
+    emit(DriverLoadingHome());
+    var eitherPendingCollects = await _getPendingCollectsUserUsecase.call();
+    emit(DriverLoadedHome());
+    return eitherPendingCollects.toRight().length;
+  }
+
   Future<void> getCredentials() async {
     emit(DriverLoadingHome());
 
-    var either = await _getLoggedInUserUsecase();
-    // final loginParams = LoginParams(user: user, password: password);
-    // final usecase = await _loginUsecase(loginParams);
+    var eitherLoggedInUser = await _getLoggedInUserUsecase();
+    var eitherPendingCollects = await _getPendingCollectsUserUsecase();
 
-    // final newState = usecase.fold((l) => ErrorLogin(), (r) => SuccessLogin());
+    if (eitherPendingCollects.isLeft()) {
+      emit(DriverErrorHome());
+      return;
+    }
 
-    // emit(newState);
-    emit(DriverLoadedHome(loggedInUser: either.toRight()));
+    emit(DriverLoadedHome(
+      loggedInUser: eitherLoggedInUser.toRight(),
+      numberOfPendingCollects: eitherPendingCollects.toRight().length,
+    ));
   }
 }

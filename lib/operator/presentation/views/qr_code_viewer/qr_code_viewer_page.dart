@@ -56,12 +56,10 @@ class _QrCodeViewerPageState extends State<QrCodeViewerPage> {
   Widget _buildSubmitButton(HarvestForm formData) {
     return ElevatedButton(
       onPressed: () {
-        // Nav.pushNamed(OperatorModule.home);
-        Nav.popAndPushNamed(
+        Nav.navigate(
           OperatorModule.home,
           arguments: _resetFormData(formData),
         );
-        // Nav.navigate(OperatorModule.home);
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,

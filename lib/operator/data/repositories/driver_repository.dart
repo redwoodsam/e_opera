@@ -31,6 +31,7 @@ class DriverRepository implements IDriverRepository {
       return Right(DriverList);
     } catch (error) {
       Log.e(error);
+      _localDatasource.clear();
       return const Left(Failure.badRequest());
     }
   }

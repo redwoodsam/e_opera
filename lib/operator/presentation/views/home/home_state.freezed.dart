@@ -21,8 +21,8 @@ mixin _$HomeState {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(
-            LocationParams? locationParams, Login? loggedInUser)
+    required TResult Function(LocationParams? locationParams,
+            Login? loggedInUser, bool syncronizing, bool syncError)
         loaded,
     required TResult Function() success,
   }) =>
@@ -32,7 +32,8 @@ mixin _$HomeState {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult? Function()? success,
   }) =>
@@ -42,7 +43,8 @@ mixin _$HomeState {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult Function()? success,
     required TResult orElse(),
@@ -136,8 +138,8 @@ class _$InitialHomeImpl implements InitialHome {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(
-            LocationParams? locationParams, Login? loggedInUser)
+    required TResult Function(LocationParams? locationParams,
+            Login? loggedInUser, bool syncronizing, bool syncError)
         loaded,
     required TResult Function() success,
   }) {
@@ -150,7 +152,8 @@ class _$InitialHomeImpl implements InitialHome {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult? Function()? success,
   }) {
@@ -163,7 +166,8 @@ class _$InitialHomeImpl implements InitialHome {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult Function()? success,
     required TResult orElse(),
@@ -287,8 +291,8 @@ class _$ErrorHomeImpl implements ErrorHome {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(
-            LocationParams? locationParams, Login? loggedInUser)
+    required TResult Function(LocationParams? locationParams,
+            Login? loggedInUser, bool syncronizing, bool syncError)
         loaded,
     required TResult Function() success,
   }) {
@@ -301,7 +305,8 @@ class _$ErrorHomeImpl implements ErrorHome {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult? Function()? success,
   }) {
@@ -314,7 +319,8 @@ class _$ErrorHomeImpl implements ErrorHome {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult Function()? success,
     required TResult orElse(),
@@ -416,8 +422,8 @@ class _$LoadingHomeImpl implements LoadingHome {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(
-            LocationParams? locationParams, Login? loggedInUser)
+    required TResult Function(LocationParams? locationParams,
+            Login? loggedInUser, bool syncronizing, bool syncError)
         loaded,
     required TResult Function() success,
   }) {
@@ -430,7 +436,8 @@ class _$LoadingHomeImpl implements LoadingHome {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult? Function()? success,
   }) {
@@ -443,7 +450,8 @@ class _$LoadingHomeImpl implements LoadingHome {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult Function()? success,
     required TResult orElse(),
@@ -505,7 +513,11 @@ abstract class _$$LoadedHomeImplCopyWith<$Res> {
           _$LoadedHomeImpl value, $Res Function(_$LoadedHomeImpl) then) =
       __$$LoadedHomeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LocationParams? locationParams, Login? loggedInUser});
+  $Res call(
+      {LocationParams? locationParams,
+      Login? loggedInUser,
+      bool syncronizing,
+      bool syncError});
 
   $LocationParamsCopyWith<$Res>? get locationParams;
   $LoginCopyWith<$Res>? get loggedInUser;
@@ -524,6 +536,8 @@ class __$$LoadedHomeImplCopyWithImpl<$Res>
   $Res call({
     Object? locationParams = freezed,
     Object? loggedInUser = freezed,
+    Object? syncronizing = null,
+    Object? syncError = null,
   }) {
     return _then(_$LoadedHomeImpl(
       locationParams: freezed == locationParams
@@ -534,6 +548,14 @@ class __$$LoadedHomeImplCopyWithImpl<$Res>
           ? _value.loggedInUser
           : loggedInUser // ignore: cast_nullable_to_non_nullable
               as Login?,
+      syncronizing: null == syncronizing
+          ? _value.syncronizing
+          : syncronizing // ignore: cast_nullable_to_non_nullable
+              as bool,
+      syncError: null == syncError
+          ? _value.syncError
+          : syncError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -565,16 +587,26 @@ class __$$LoadedHomeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedHomeImpl implements LoadedHome {
-  _$LoadedHomeImpl({this.locationParams, this.loggedInUser});
+  _$LoadedHomeImpl(
+      {this.locationParams,
+      this.loggedInUser,
+      this.syncronizing = false,
+      this.syncError = false});
 
   @override
   final LocationParams? locationParams;
   @override
   final Login? loggedInUser;
+  @override
+  @JsonKey()
+  final bool syncronizing;
+  @override
+  @JsonKey()
+  final bool syncError;
 
   @override
   String toString() {
-    return 'HomeState.loaded(locationParams: $locationParams, loggedInUser: $loggedInUser)';
+    return 'HomeState.loaded(locationParams: $locationParams, loggedInUser: $loggedInUser, syncronizing: $syncronizing, syncError: $syncError)';
   }
 
   @override
@@ -585,11 +617,16 @@ class _$LoadedHomeImpl implements LoadedHome {
             (identical(other.locationParams, locationParams) ||
                 other.locationParams == locationParams) &&
             (identical(other.loggedInUser, loggedInUser) ||
-                other.loggedInUser == loggedInUser));
+                other.loggedInUser == loggedInUser) &&
+            (identical(other.syncronizing, syncronizing) ||
+                other.syncronizing == syncronizing) &&
+            (identical(other.syncError, syncError) ||
+                other.syncError == syncError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, locationParams, loggedInUser);
+  int get hashCode => Object.hash(
+      runtimeType, locationParams, loggedInUser, syncronizing, syncError);
 
   @JsonKey(ignore: true)
   @override
@@ -603,12 +640,12 @@ class _$LoadedHomeImpl implements LoadedHome {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(
-            LocationParams? locationParams, Login? loggedInUser)
+    required TResult Function(LocationParams? locationParams,
+            Login? loggedInUser, bool syncronizing, bool syncError)
         loaded,
     required TResult Function() success,
   }) {
-    return loaded(locationParams, loggedInUser);
+    return loaded(locationParams, loggedInUser, syncronizing, syncError);
   }
 
   @override
@@ -617,11 +654,12 @@ class _$LoadedHomeImpl implements LoadedHome {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult? Function()? success,
   }) {
-    return loaded?.call(locationParams, loggedInUser);
+    return loaded?.call(locationParams, loggedInUser, syncronizing, syncError);
   }
 
   @override
@@ -630,13 +668,14 @@ class _$LoadedHomeImpl implements LoadedHome {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult Function()? success,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(locationParams, loggedInUser);
+      return loaded(locationParams, loggedInUser, syncronizing, syncError);
     }
     return orElse();
   }
@@ -685,10 +724,14 @@ class _$LoadedHomeImpl implements LoadedHome {
 abstract class LoadedHome implements HomeState {
   factory LoadedHome(
       {final LocationParams? locationParams,
-      final Login? loggedInUser}) = _$LoadedHomeImpl;
+      final Login? loggedInUser,
+      final bool syncronizing,
+      final bool syncError}) = _$LoadedHomeImpl;
 
   LocationParams? get locationParams;
   Login? get loggedInUser;
+  bool get syncronizing;
+  bool get syncError;
   @JsonKey(ignore: true)
   _$$LoadedHomeImplCopyWith<_$LoadedHomeImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -735,8 +778,8 @@ class _$SuccessHomeImpl implements SuccessHome {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() loading,
-    required TResult Function(
-            LocationParams? locationParams, Login? loggedInUser)
+    required TResult Function(LocationParams? locationParams,
+            Login? loggedInUser, bool syncronizing, bool syncError)
         loaded,
     required TResult Function() success,
   }) {
@@ -749,7 +792,8 @@ class _$SuccessHomeImpl implements SuccessHome {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? loading,
-    TResult? Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult? Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult? Function()? success,
   }) {
@@ -762,7 +806,8 @@ class _$SuccessHomeImpl implements SuccessHome {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? loading,
-    TResult Function(LocationParams? locationParams, Login? loggedInUser)?
+    TResult Function(LocationParams? locationParams, Login? loggedInUser,
+            bool syncronizing, bool syncError)?
         loaded,
     TResult Function()? success,
     required TResult orElse(),

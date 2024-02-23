@@ -39,6 +39,11 @@ class AuthorizationInterceptor extends HttpInterceptor {
 
   @override
   void onError(HttpOptions request, IHttpException exception) async {
+    // if (exception.status?.code == 401) {
+    //   await _loginService.logout();
+    // }
+    await _loginService.logout();
+
     Logger().e(
       'Message: ${exception.message}\nStatus: ${exception.status}\nData: ${exception.data}',
     );

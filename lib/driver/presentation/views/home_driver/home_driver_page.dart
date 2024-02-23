@@ -26,9 +26,7 @@ class _DriverHomePageState
 
   @override
   Widget build(BuildContext context) {
-    // final routeArgs =
-    //     ModalRoute.of(context)?.settings.arguments as Map<String, String>;
-
+    var numberOfPendingCollects = viewModel.getPendingCollects();
     return Scaffold(
       key: _scaffoldKey,
       body: Container(
@@ -63,7 +61,10 @@ class _DriverHomePageState
           builder: (context, state) {
             return switch (state) {
               DriverInitialHome() => const Center(),
-              DriverLoadedHome(:final loggedInUser) => Scaffold(
+              DriverLoadedHome(
+                :final loggedInUser,
+              ) =>
+                Scaffold(
                   backgroundColor: Colors.transparent,
                   appBar: AppBar(
                     elevation: 0,
@@ -91,9 +92,14 @@ class _DriverHomePageState
                           GestureDetector(
                             onTap: () => viewModel
                                 .synchronizeLocalDatabaseUsecase(loggedInUser!),
-                            child: Icon(
-                              Icons.refresh_rounded,
-                              size: 24.fontSize,
+                            child: Badge(
+                              label: Text(numberOfPendingCollects.toString()),
+                              textColor: Colors.white,
+                              backgroundColor: Colors.red,
+                              child: Icon(
+                                Icons.refresh_rounded,
+                                size: 24.fontSize,
+                              ),
                             ),
                           )
                         ],

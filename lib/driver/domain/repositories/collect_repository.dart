@@ -8,5 +8,7 @@ abstract class ICollectRepository {
   /// Method to get login
   Future<Either<Failure, CollectModel>> collect(CollectModel model);
   Future<Either<Failure, void>> collectLocal();
-  Future<Either<Failure, List<CollectModel>>> getDestinationsRemote();
+  Future<Either<Failure, CollectModel>> saveToLocalStorage(CollectModel model);
+  Future<Either<Failure, List<CollectModel>>> getPendingCollects();
+  Future<Either<Failure, List<CollectModel>>> getAllCollects();
 }

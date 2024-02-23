@@ -28,9 +28,9 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     viewModel = DM.get<LoginViewModel>();
-    // if (viewModel.isInitialized) {
-    //   viewModel.retrieveLoggedInUser();
-    // }
+    if (viewModel.isInitialized) {
+      viewModel.retrieveLoggedInUser();
+    }
     _userController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -58,6 +58,12 @@ class _LoginPageState extends State<LoginPage> {
       body: ViewModelConsumer<LoginViewModel, LoginState>(
         viewModel: viewModel,
         listener: (context, state) => switch (state) {
+          ErrorLogin() => {
+              {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Falha ao realizar login")))
+              },
+            },
           // SuccessLogin() => Nav.pushNamed(MainModule.operatorModule),
           SuccessLogin(:final id, :final nome, :final perfil) =>
             Nav.pushReplacementNamed(_getPath(perfil!),

@@ -37,4 +37,15 @@ class LoginRepository implements ILoginRepository {
     if (logins.isNotEmpty) return Right(logins.first.toEntity());
     return const Left(unit);
   }
+
+  @override
+  Future<Either<Unit, void>> logout() async {
+    try {
+      await this._localDatasource.clear();
+      Nav.navigate(LoginModule.root);
+      return Right(null);
+    } catch (error) {
+      return const Left(unit);
+    }
+  }
 }

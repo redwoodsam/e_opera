@@ -32,6 +32,7 @@ class HarvestRepository implements IHarvestRepository {
       return Right(harvestList);
     } catch (error) {
       Log.e(error);
+      _localDatasource.clear();
       return const Left(Failure.badRequest());
     }
   }

@@ -6,5 +6,5 @@ abstract class ICollectLocalDatasource {
   Future<List<CollectModel>> get();
   FutureOr<void> clear();
   FutureOr<void> save(List<CollectModel> items);
-  FutureOr<void> delete(int id);
+  FutureOr<void> delete(String id);
 }

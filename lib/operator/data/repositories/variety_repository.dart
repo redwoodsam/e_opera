@@ -31,6 +31,7 @@ class VarietyRepository implements IVarietyRepository {
       return Right(VarietyList);
     } catch (error) {
       Log.e(error);
+      _localDatasource.clear();
       return const Left(Failure.badRequest());
     }
   }

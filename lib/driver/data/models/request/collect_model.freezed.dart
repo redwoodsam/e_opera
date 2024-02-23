@@ -20,36 +20,53 @@ CollectModel _$CollectModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CollectModel {
+  @HiveField(0)
   @JsonKey(name: 'ZF1_ID')
   String get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'ZF1_DATA')
   String get data => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'ZF1_SAFRA')
   String get harvest => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'ZF1_FAZ')
   String get farm => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: 'ZF1_TALHAO')
   String get field => throw _privateConstructorUsedError;
+  @HiveField(5)
   @JsonKey(name: 'ZF1_COD')
   String get productCode => throw _privateConstructorUsedError;
+  @HiveField(6)
   @JsonKey(name: 'ZF1_CODVAR')
   String get varietyCode => throw _privateConstructorUsedError;
+  @HiveField(7)
   @JsonKey(name: 'ZF1_ORDCOL')
   String get order => throw _privateConstructorUsedError;
+  @HiveField(8)
   @JsonKey(name: 'ZF1_PLACA')
   String get vehiclePlate => throw _privateConstructorUsedError;
+  @HiveField(9)
   @JsonKey(name: 'ZF1_TRANSP')
   String get shippingCompany => throw _privateConstructorUsedError;
+  @HiveField(10)
   @JsonKey(name: 'ZF1_CODMOT')
   String get driverCode => throw _privateConstructorUsedError;
+  @HiveField(11)
   @JsonKey(name: 'ZF1_FILORI')
   String get subsidiaryOrigin => throw _privateConstructorUsedError;
+  @HiveField(12)
   @JsonKey(name: 'ZF1_ENTDES')
   String get entityDescription => throw _privateConstructorUsedError;
+  @HiveField(13)
   @JsonKey(name: 'ZF1_LOJDES')
   String get storeDescription => throw _privateConstructorUsedError;
+  @HiveField(14)
   @JsonKey(name: 'ZF1_QTDE')
   int get quantity => throw _privateConstructorUsedError;
+  @HiveField(15)
+  dynamic get alreadySent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,21 +81,22 @@ abstract class $CollectModelCopyWith<$Res> {
       _$CollectModelCopyWithImpl<$Res, CollectModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ZF1_ID') String id,
-      @JsonKey(name: 'ZF1_DATA') String data,
-      @JsonKey(name: 'ZF1_SAFRA') String harvest,
-      @JsonKey(name: 'ZF1_FAZ') String farm,
-      @JsonKey(name: 'ZF1_TALHAO') String field,
-      @JsonKey(name: 'ZF1_COD') String productCode,
-      @JsonKey(name: 'ZF1_CODVAR') String varietyCode,
-      @JsonKey(name: 'ZF1_ORDCOL') String order,
-      @JsonKey(name: 'ZF1_PLACA') String vehiclePlate,
-      @JsonKey(name: 'ZF1_TRANSP') String shippingCompany,
-      @JsonKey(name: 'ZF1_CODMOT') String driverCode,
-      @JsonKey(name: 'ZF1_FILORI') String subsidiaryOrigin,
-      @JsonKey(name: 'ZF1_ENTDES') String entityDescription,
-      @JsonKey(name: 'ZF1_LOJDES') String storeDescription,
-      @JsonKey(name: 'ZF1_QTDE') int quantity});
+      {@HiveField(0) @JsonKey(name: 'ZF1_ID') String id,
+      @HiveField(1) @JsonKey(name: 'ZF1_DATA') String data,
+      @HiveField(2) @JsonKey(name: 'ZF1_SAFRA') String harvest,
+      @HiveField(3) @JsonKey(name: 'ZF1_FAZ') String farm,
+      @HiveField(4) @JsonKey(name: 'ZF1_TALHAO') String field,
+      @HiveField(5) @JsonKey(name: 'ZF1_COD') String productCode,
+      @HiveField(6) @JsonKey(name: 'ZF1_CODVAR') String varietyCode,
+      @HiveField(7) @JsonKey(name: 'ZF1_ORDCOL') String order,
+      @HiveField(8) @JsonKey(name: 'ZF1_PLACA') String vehiclePlate,
+      @HiveField(9) @JsonKey(name: 'ZF1_TRANSP') String shippingCompany,
+      @HiveField(10) @JsonKey(name: 'ZF1_CODMOT') String driverCode,
+      @HiveField(11) @JsonKey(name: 'ZF1_FILORI') String subsidiaryOrigin,
+      @HiveField(12) @JsonKey(name: 'ZF1_ENTDES') String entityDescription,
+      @HiveField(13) @JsonKey(name: 'ZF1_LOJDES') String storeDescription,
+      @HiveField(14) @JsonKey(name: 'ZF1_QTDE') int quantity,
+      @HiveField(15) dynamic alreadySent});
 }
 
 /// @nodoc
@@ -109,6 +127,7 @@ class _$CollectModelCopyWithImpl<$Res, $Val extends CollectModel>
     Object? entityDescription = null,
     Object? storeDescription = null,
     Object? quantity = null,
+    Object? alreadySent = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -171,6 +190,10 @@ class _$CollectModelCopyWithImpl<$Res, $Val extends CollectModel>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      alreadySent: freezed == alreadySent
+          ? _value.alreadySent
+          : alreadySent // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -184,21 +207,22 @@ abstract class _$$CollectModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ZF1_ID') String id,
-      @JsonKey(name: 'ZF1_DATA') String data,
-      @JsonKey(name: 'ZF1_SAFRA') String harvest,
-      @JsonKey(name: 'ZF1_FAZ') String farm,
-      @JsonKey(name: 'ZF1_TALHAO') String field,
-      @JsonKey(name: 'ZF1_COD') String productCode,
-      @JsonKey(name: 'ZF1_CODVAR') String varietyCode,
-      @JsonKey(name: 'ZF1_ORDCOL') String order,
-      @JsonKey(name: 'ZF1_PLACA') String vehiclePlate,
-      @JsonKey(name: 'ZF1_TRANSP') String shippingCompany,
-      @JsonKey(name: 'ZF1_CODMOT') String driverCode,
-      @JsonKey(name: 'ZF1_FILORI') String subsidiaryOrigin,
-      @JsonKey(name: 'ZF1_ENTDES') String entityDescription,
-      @JsonKey(name: 'ZF1_LOJDES') String storeDescription,
-      @JsonKey(name: 'ZF1_QTDE') int quantity});
+      {@HiveField(0) @JsonKey(name: 'ZF1_ID') String id,
+      @HiveField(1) @JsonKey(name: 'ZF1_DATA') String data,
+      @HiveField(2) @JsonKey(name: 'ZF1_SAFRA') String harvest,
+      @HiveField(3) @JsonKey(name: 'ZF1_FAZ') String farm,
+      @HiveField(4) @JsonKey(name: 'ZF1_TALHAO') String field,
+      @HiveField(5) @JsonKey(name: 'ZF1_COD') String productCode,
+      @HiveField(6) @JsonKey(name: 'ZF1_CODVAR') String varietyCode,
+      @HiveField(7) @JsonKey(name: 'ZF1_ORDCOL') String order,
+      @HiveField(8) @JsonKey(name: 'ZF1_PLACA') String vehiclePlate,
+      @HiveField(9) @JsonKey(name: 'ZF1_TRANSP') String shippingCompany,
+      @HiveField(10) @JsonKey(name: 'ZF1_CODMOT') String driverCode,
+      @HiveField(11) @JsonKey(name: 'ZF1_FILORI') String subsidiaryOrigin,
+      @HiveField(12) @JsonKey(name: 'ZF1_ENTDES') String entityDescription,
+      @HiveField(13) @JsonKey(name: 'ZF1_LOJDES') String storeDescription,
+      @HiveField(14) @JsonKey(name: 'ZF1_QTDE') int quantity,
+      @HiveField(15) dynamic alreadySent});
 }
 
 /// @nodoc
@@ -227,6 +251,7 @@ class __$$CollectModelImplCopyWithImpl<$Res>
     Object? entityDescription = null,
     Object? storeDescription = null,
     Object? quantity = null,
+    Object? alreadySent = freezed,
   }) {
     return _then(_$CollectModelImpl(
       id: null == id
@@ -289,83 +314,111 @@ class __$$CollectModelImplCopyWithImpl<$Res>
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
               as int,
+      alreadySent: freezed == alreadySent ? _value.alreadySent! : alreadySent,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: collectModelAdapterTypeId, adapterName: 'CollectModelAdapter')
 class _$CollectModelImpl extends _CollectModel {
   const _$CollectModelImpl(
-      {@JsonKey(name: 'ZF1_ID') required this.id,
-      @JsonKey(name: 'ZF1_DATA') required this.data,
-      @JsonKey(name: 'ZF1_SAFRA') required this.harvest,
-      @JsonKey(name: 'ZF1_FAZ') required this.farm,
-      @JsonKey(name: 'ZF1_TALHAO') required this.field,
-      @JsonKey(name: 'ZF1_COD') required this.productCode,
-      @JsonKey(name: 'ZF1_CODVAR') required this.varietyCode,
-      @JsonKey(name: 'ZF1_ORDCOL') this.order = '',
-      @JsonKey(name: 'ZF1_PLACA') required this.vehiclePlate,
-      @JsonKey(name: 'ZF1_TRANSP') required this.shippingCompany,
-      @JsonKey(name: 'ZF1_CODMOT') required this.driverCode,
-      @JsonKey(name: 'ZF1_FILORI') required this.subsidiaryOrigin,
-      @JsonKey(name: 'ZF1_ENTDES') required this.entityDescription,
-      @JsonKey(name: 'ZF1_LOJDES') required this.storeDescription,
-      @JsonKey(name: 'ZF1_QTDE') required this.quantity})
+      {@HiveField(0) @JsonKey(name: 'ZF1_ID') required this.id,
+      @HiveField(1) @JsonKey(name: 'ZF1_DATA') required this.data,
+      @HiveField(2) @JsonKey(name: 'ZF1_SAFRA') required this.harvest,
+      @HiveField(3) @JsonKey(name: 'ZF1_FAZ') required this.farm,
+      @HiveField(4) @JsonKey(name: 'ZF1_TALHAO') required this.field,
+      @HiveField(5) @JsonKey(name: 'ZF1_COD') required this.productCode,
+      @HiveField(6) @JsonKey(name: 'ZF1_CODVAR') required this.varietyCode,
+      @HiveField(7) @JsonKey(name: 'ZF1_ORDCOL') this.order = '',
+      @HiveField(8) @JsonKey(name: 'ZF1_PLACA') required this.vehiclePlate,
+      @HiveField(9) @JsonKey(name: 'ZF1_TRANSP') required this.shippingCompany,
+      @HiveField(10) @JsonKey(name: 'ZF1_CODMOT') required this.driverCode,
+      @HiveField(11)
+      @JsonKey(name: 'ZF1_FILORI')
+      required this.subsidiaryOrigin,
+      @HiveField(12)
+      @JsonKey(name: 'ZF1_ENTDES')
+      required this.entityDescription,
+      @HiveField(13)
+      @JsonKey(name: 'ZF1_LOJDES')
+      required this.storeDescription,
+      @HiveField(14) @JsonKey(name: 'ZF1_QTDE') required this.quantity,
+      @HiveField(15) this.alreadySent = false})
       : super._();
 
   factory _$CollectModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'ZF1_ID')
   final String id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'ZF1_DATA')
   final String data;
   @override
+  @HiveField(2)
   @JsonKey(name: 'ZF1_SAFRA')
   final String harvest;
   @override
+  @HiveField(3)
   @JsonKey(name: 'ZF1_FAZ')
   final String farm;
   @override
+  @HiveField(4)
   @JsonKey(name: 'ZF1_TALHAO')
   final String field;
   @override
+  @HiveField(5)
   @JsonKey(name: 'ZF1_COD')
   final String productCode;
   @override
+  @HiveField(6)
   @JsonKey(name: 'ZF1_CODVAR')
   final String varietyCode;
   @override
+  @HiveField(7)
   @JsonKey(name: 'ZF1_ORDCOL')
   final String order;
   @override
+  @HiveField(8)
   @JsonKey(name: 'ZF1_PLACA')
   final String vehiclePlate;
   @override
+  @HiveField(9)
   @JsonKey(name: 'ZF1_TRANSP')
   final String shippingCompany;
   @override
+  @HiveField(10)
   @JsonKey(name: 'ZF1_CODMOT')
   final String driverCode;
   @override
+  @HiveField(11)
   @JsonKey(name: 'ZF1_FILORI')
   final String subsidiaryOrigin;
   @override
+  @HiveField(12)
   @JsonKey(name: 'ZF1_ENTDES')
   final String entityDescription;
   @override
+  @HiveField(13)
   @JsonKey(name: 'ZF1_LOJDES')
   final String storeDescription;
   @override
+  @HiveField(14)
   @JsonKey(name: 'ZF1_QTDE')
   final int quantity;
+  @override
+  @JsonKey()
+  @HiveField(15)
+  final dynamic alreadySent;
 
   @override
   String toString() {
-    return 'CollectModel(id: $id, data: $data, harvest: $harvest, farm: $farm, field: $field, productCode: $productCode, varietyCode: $varietyCode, order: $order, vehiclePlate: $vehiclePlate, shippingCompany: $shippingCompany, driverCode: $driverCode, subsidiaryOrigin: $subsidiaryOrigin, entityDescription: $entityDescription, storeDescription: $storeDescription, quantity: $quantity)';
+    return 'CollectModel(id: $id, data: $data, harvest: $harvest, farm: $farm, field: $field, productCode: $productCode, varietyCode: $varietyCode, order: $order, vehiclePlate: $vehiclePlate, shippingCompany: $shippingCompany, driverCode: $driverCode, subsidiaryOrigin: $subsidiaryOrigin, entityDescription: $entityDescription, storeDescription: $storeDescription, quantity: $quantity, alreadySent: $alreadySent)';
   }
 
   @override
@@ -396,7 +449,9 @@ class _$CollectModelImpl extends _CollectModel {
             (identical(other.storeDescription, storeDescription) ||
                 other.storeDescription == storeDescription) &&
             (identical(other.quantity, quantity) ||
-                other.quantity == quantity));
+                other.quantity == quantity) &&
+            const DeepCollectionEquality()
+                .equals(other.alreadySent, alreadySent));
   }
 
   @JsonKey(ignore: true)
@@ -417,7 +472,8 @@ class _$CollectModelImpl extends _CollectModel {
       subsidiaryOrigin,
       entityDescription,
       storeDescription,
-      quantity);
+      quantity,
+      const DeepCollectionEquality().hash(alreadySent));
 
   @JsonKey(ignore: true)
   @override
@@ -435,72 +491,104 @@ class _$CollectModelImpl extends _CollectModel {
 
 abstract class _CollectModel extends CollectModel {
   const factory _CollectModel(
-          {@JsonKey(name: 'ZF1_ID') required final String id,
-          @JsonKey(name: 'ZF1_DATA') required final String data,
-          @JsonKey(name: 'ZF1_SAFRA') required final String harvest,
-          @JsonKey(name: 'ZF1_FAZ') required final String farm,
-          @JsonKey(name: 'ZF1_TALHAO') required final String field,
-          @JsonKey(name: 'ZF1_COD') required final String productCode,
-          @JsonKey(name: 'ZF1_CODVAR') required final String varietyCode,
-          @JsonKey(name: 'ZF1_ORDCOL') final String order,
-          @JsonKey(name: 'ZF1_PLACA') required final String vehiclePlate,
-          @JsonKey(name: 'ZF1_TRANSP') required final String shippingCompany,
-          @JsonKey(name: 'ZF1_CODMOT') required final String driverCode,
-          @JsonKey(name: 'ZF1_FILORI') required final String subsidiaryOrigin,
-          @JsonKey(name: 'ZF1_ENTDES') required final String entityDescription,
-          @JsonKey(name: 'ZF1_LOJDES') required final String storeDescription,
-          @JsonKey(name: 'ZF1_QTDE') required final int quantity}) =
-      _$CollectModelImpl;
+      {@HiveField(0) @JsonKey(name: 'ZF1_ID') required final String id,
+      @HiveField(1) @JsonKey(name: 'ZF1_DATA') required final String data,
+      @HiveField(2) @JsonKey(name: 'ZF1_SAFRA') required final String harvest,
+      @HiveField(3) @JsonKey(name: 'ZF1_FAZ') required final String farm,
+      @HiveField(4) @JsonKey(name: 'ZF1_TALHAO') required final String field,
+      @HiveField(5) @JsonKey(name: 'ZF1_COD') required final String productCode,
+      @HiveField(6)
+      @JsonKey(name: 'ZF1_CODVAR')
+      required final String varietyCode,
+      @HiveField(7) @JsonKey(name: 'ZF1_ORDCOL') final String order,
+      @HiveField(8)
+      @JsonKey(name: 'ZF1_PLACA')
+      required final String vehiclePlate,
+      @HiveField(9)
+      @JsonKey(name: 'ZF1_TRANSP')
+      required final String shippingCompany,
+      @HiveField(10)
+      @JsonKey(name: 'ZF1_CODMOT')
+      required final String driverCode,
+      @HiveField(11)
+      @JsonKey(name: 'ZF1_FILORI')
+      required final String subsidiaryOrigin,
+      @HiveField(12)
+      @JsonKey(name: 'ZF1_ENTDES')
+      required final String entityDescription,
+      @HiveField(13)
+      @JsonKey(name: 'ZF1_LOJDES')
+      required final String storeDescription,
+      @HiveField(14) @JsonKey(name: 'ZF1_QTDE') required final int quantity,
+      @HiveField(15) final dynamic alreadySent}) = _$CollectModelImpl;
   const _CollectModel._() : super._();
 
   factory _CollectModel.fromJson(Map<String, dynamic> json) =
       _$CollectModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'ZF1_ID')
   String get id;
   @override
+  @HiveField(1)
   @JsonKey(name: 'ZF1_DATA')
   String get data;
   @override
+  @HiveField(2)
   @JsonKey(name: 'ZF1_SAFRA')
   String get harvest;
   @override
+  @HiveField(3)
   @JsonKey(name: 'ZF1_FAZ')
   String get farm;
   @override
+  @HiveField(4)
   @JsonKey(name: 'ZF1_TALHAO')
   String get field;
   @override
+  @HiveField(5)
   @JsonKey(name: 'ZF1_COD')
   String get productCode;
   @override
+  @HiveField(6)
   @JsonKey(name: 'ZF1_CODVAR')
   String get varietyCode;
   @override
+  @HiveField(7)
   @JsonKey(name: 'ZF1_ORDCOL')
   String get order;
   @override
+  @HiveField(8)
   @JsonKey(name: 'ZF1_PLACA')
   String get vehiclePlate;
   @override
+  @HiveField(9)
   @JsonKey(name: 'ZF1_TRANSP')
   String get shippingCompany;
   @override
+  @HiveField(10)
   @JsonKey(name: 'ZF1_CODMOT')
   String get driverCode;
   @override
+  @HiveField(11)
   @JsonKey(name: 'ZF1_FILORI')
   String get subsidiaryOrigin;
   @override
+  @HiveField(12)
   @JsonKey(name: 'ZF1_ENTDES')
   String get entityDescription;
   @override
+  @HiveField(13)
   @JsonKey(name: 'ZF1_LOJDES')
   String get storeDescription;
   @override
+  @HiveField(14)
   @JsonKey(name: 'ZF1_QTDE')
   int get quantity;
+  @override
+  @HiveField(15)
+  dynamic get alreadySent;
   @override
   @JsonKey(ignore: true)
   _$$CollectModelImplCopyWith<_$CollectModelImpl> get copyWith =>

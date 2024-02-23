@@ -14,6 +14,8 @@ import 'data/datasource/remote/collect_datasource.dart';
 import 'data/models/request/collect_model.dart';
 import 'data/repositories/collect_repository.dart';
 import 'domain/domain.dart';
+import 'domain/usecases/get_pending_collects_usecase.dart';
+import 'domain/usecases/save_collect_to_localstorage.dart';
 import 'domain/usecases/send_collect_usecase.dart';
 import 'domain/usecases/synchronize_local_database_usecase.dart';
 import 'presentation/views/home_driver/home_driver_page.dart';
@@ -77,6 +79,7 @@ class DriverModule extends Module {
           (di) => HiveStorageAdapter('@Collect'),
         ),
       ];
+
   static List<Bind> get _datasources => [
         Bind.lazySingleton<ICollectDatasource>(
           (i) => CollectDatasource(
@@ -127,6 +130,11 @@ class DriverModule extends Module {
             i.get<ICollectRepository>(),
           ),
         ),
+        Bind.factory<ISaveCollectToLocalStorageUsecase>(
+          (i) => SaveCollectToLocalStorageUsecase(
+            i.get<ICollectRepository>(),
+          ),
+        ),
         Bind.factory<ISynchronizeLocalDatabaseUsecase>(
           (i) => SynchronizeLocalDatabaseUsecase(
             i.get<ICollectRepository>(),
@@ -136,6 +144,11 @@ class DriverModule extends Module {
         Bind.factory<IGetLoggedInUserUsecase>(
           (i) => GetLoggedInUserUsecase(
             i.get<ILoginRepository>(),
+          ),
+        ),
+        Bind.factory<IGetPendingCollectsUserUsecase>(
+          (i) => GetPendingCollectsUserUsecase(
+            i.get<ICollectRepository>(),
           ),
         ),
         // Bind.factory<IGetFieldsUsecase>(
@@ -152,6 +165,7 @@ class DriverModule extends Module {
         Bind.lazySingleton<DriverHomeViewModel>(
           (i) => DriverHomeViewModel(
             i.get<IGetLoggedInUserUsecase>(),
+            i.get<IGetPendingCollectsUserUsecase>(),
             i.get<ISynchronizeLocalDatabaseUsecase>(),
           ),
         ),
@@ -161,6 +175,7 @@ class DriverModule extends Module {
         Bind.lazySingleton<SummaryDriverViewModel>(
           (i) => SummaryDriverViewModel(
             i.get<ISendCollectUsecase>(),
+            i.get<ISaveCollectToLocalStorageUsecase>(),
           ),
         ),
       ];

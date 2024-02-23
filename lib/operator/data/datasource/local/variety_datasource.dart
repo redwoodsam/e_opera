@@ -15,9 +15,9 @@ class VarietyLocalDatasource extends IVarietyDatasource {
   VarietyLocalDatasource(this._storageClient);
 
   @override
-  FutureOr<void> clear() {
+  FutureOr<void> clear() async {
     // TODO: implement clear
-    throw UnimplementedError();
+    await _storageClient.clear();
   }
 
   @override

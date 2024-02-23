@@ -32,6 +32,7 @@ class FieldRepository implements IFieldRepository {
       return Right(fieldList);
     } catch (error) {
       Log.e(error);
+      _localDatasource.clear();
       return const Left(Failure.badRequest());
     }
   }

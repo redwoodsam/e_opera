@@ -50,15 +50,15 @@ class CollectLocalDatasource extends ICollectLocalDatasource {
   }
 
   @override
-  FutureOr<void> delete(int id) {
+  FutureOr<void> delete(String id) async {
     // TODO: implement delete
-    throw UnimplementedError();
+    await _storageClient.delete(id);
   }
 
   @override
-  FutureOr<void> clear() {
+  FutureOr<void> clear() async {
     // TODO: implement clear
-    throw UnimplementedError();
+    await _storageClient.clear();
   }
 
   @override

@@ -27,6 +27,7 @@ class LocationParamsRepository implements ILocationParamsRepository {
       return Right(locationParamsList);
     } catch (error) {
       Log.e(error);
+      _localDatasource.clear();
       return const Left(Failure.badRequest());
     }
   }

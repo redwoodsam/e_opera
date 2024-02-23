@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../core/core.dart';
+import '../../../../login/domain/entities/login.dart';
 import '../../../domain/entities/form_data/harvest_form.dart';
 import '../../../domain/entities/localization_params.dart';
 import '../../../operator_module.dart';
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
   var uuid = Uuid();
+  Login? loggedUser = null;
 
   @override
   void initState() {
@@ -39,8 +41,6 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
     scaffold.showSnackBar(
       SnackBar(
         content: Text(message),
-        action: SnackBarAction(
-            label: 'OK', onPressed: scaffold.hideCurrentSnackBar),
       ),
     );
   }
@@ -109,7 +109,25 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
         body: ViewModelConsumer<HomeViewModel, HomeState>(
           viewModel: viewModel,
           listener: (context, state) => switch (state) {
-            LoadedHome() => {},
+            LoadedHome(
+              :final loggedInUser,
+              :final syncError,
+              :final syncronizing
+            ) =>
+              {
+                loggedUser = loggedInUser,
+                if (syncronizing && !syncError)
+                  {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Banco de dados atualizado com sucesso")))
+                  },
+                if (syncError)
+                  {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            "Falha ao sincronizar banco de dados. Verifique sua conexão e tente novamente.")))
+                  }
+              },
             ErrorHome(:final message) => {_showToast(context, message)},
             SuccessHome() => {},
             _ => null,
@@ -211,7 +229,7 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
                           children: [
                             Dimension.xl.vertical,
                             Text(
-                              'Olá, ${loggedInUser?.nome}',
+                              'Olá, ${loggedInUser?.nome ?? loggedUser?.nome}',
                               style: TextStyle(
                                 color: const Color(0xFF121517),
                                 fontSize: 30.fontSize,

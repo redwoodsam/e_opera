@@ -53,8 +53,8 @@ class DriverLocalDatasource extends IDriverDatasource {
   }
 
   @override
-  FutureOr<void> clear() {
+  FutureOr<void> clear() async {
     // TODO: implement clear
-    throw UnimplementedError();
+    await _storageClient.clear();
   }
 }

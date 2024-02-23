@@ -31,6 +31,7 @@ class ProductRepository implements IProductRepository {
       return Right(harvesProducttList);
     } catch (error) {
       Log.e(error);
+      _localDatasource.clear();
       return const Left(Failure.badRequest());
     }
   }

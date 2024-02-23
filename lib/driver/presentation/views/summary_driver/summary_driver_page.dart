@@ -30,6 +30,10 @@ class _SummaryDriverPageState
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Nav.navigate(DriverModule.home),
+        ),
         title: Text('Resumo'),
         backgroundColor: Colors.green,
         centerTitle: true,
@@ -39,27 +43,16 @@ class _SummaryDriverPageState
           viewModel: viewModel,
           listener: (context, state) => switch (state) {
             SummaryDriverInitial() => {viewModel.onInitData(harvestForm)},
-            // LoadedSummaryDriverState(
-            //   :final collectedData,
-            // ) =>
-            //   {
-            //     codigo = collectedData?.codigo ?? codigo,
-            //     destinoColheita =
-            //         collectedData?.destinoColheita ?? destinoColheita,
-            //     observacoes = collectedData?.observacoes ?? observacoes,
-            //     descricao = collectedData?.descricao ?? descricao,
-            //     variedade = collectedData?.variedade ?? variedade,
-            //     quantidadeColetada =
-            //         collectedData?.quantidadeColetada ?? quantidadeColetada,
-            //     unidade = collectedData?.unidade ?? unidade,
-            //     nomeMotorista = collectedData?.nomeMotorista ?? nomeMotorista,
-            //     cpfMotorista = collectedData?.cpfMotorista ?? cpfMotorista,
-            //     placaCaminhao = collectedData?.placaCaminhao ?? placaCaminhao,
-            //     nomeTransportadora =
-            //         collectedData?.nomeTransportadora ?? nomeTransportadora,
-            //   },
             SummaryDriverSuccess() => {
-                Nav.popAndPushNamed(DriverModule.home, arguments: harvestForm)
+                Nav.navigate(
+                  DriverModule.home,
+                  arguments: harvestForm,
+                ),
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Coleta agendada para sincronia com sucesso'),
+                  ),
+                ),
               },
             _ => null,
           },
@@ -148,43 +141,9 @@ class _SummaryDriverPageState
                     ),
                   ),
                 )),
-              SummarySuccess() => _buildSuccessPage(),
               _ => const SizedBox.shrink(),
             };
           },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSuccessPage() {
-    Timer(Duration(seconds: 5), () {
-      Nav.pushReplacementNamed(DriverModule.home);
-    });
-
-    return Scaffold(
-      body: Center(
-        /// TODO: tela de erro
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Icon(
-                  Icons.check_circle,
-                  color: Colors.green,
-                )
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.check),
-                Text(
-                  'Romaneio enviado com sucesso!',
-                  style: TextStyle(color: Colors.lightGreen),
-                )
-              ],
-            )
-          ],
         ),
       ),
     );
@@ -195,8 +154,8 @@ class _SummaryDriverPageState
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () {
-          viewModel.sendData(formData);
+        onPressed: () async {
+          await viewModel.saveToLocalStorage(formData);
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.green,

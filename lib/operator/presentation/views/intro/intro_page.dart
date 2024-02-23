@@ -32,9 +32,9 @@ class _OperatorIntroPageState
 
   @override
   Widget build(BuildContext context) {
-    viewModel.loadSavedLocation().then((loaded) => {
-          if (loaded) {viewModel.navigateToHomePage()}
-        });
+    // viewModel.loadSavedLocation().then((loaded) => {
+    //       if (loaded) {viewModel.navigateToHomePage()}
+    //     });
     return Scaffold(
         body: ViewModelConsumer<IntroViewModel, IntroState>(
       viewModel: viewModel,

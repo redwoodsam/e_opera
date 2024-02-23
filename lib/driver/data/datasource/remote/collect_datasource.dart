@@ -28,6 +28,7 @@ class CollectDatasource implements ICollectDatasource {
       );
     } catch (error) {
       Log.e(error);
+
       return const Left(Failure.badRequest());
     }
   }

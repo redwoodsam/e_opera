@@ -10,4 +10,6 @@ abstract class ILoginRepository {
 
   /// Retrieve last loggedIn user data
   Future<Either<Unit, Login>> getCredentials();
+
+  Future<Either<Unit, void>> logout();
 }

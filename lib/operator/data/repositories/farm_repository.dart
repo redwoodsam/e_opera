@@ -30,6 +30,7 @@ class FarmRepository implements IFarmRepository {
       return Right(farmList);
     } catch (error) {
       Log.e(error);
+      _localDatasource.clear();
       return const Left(Failure.badRequest());
     }
   }

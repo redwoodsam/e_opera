@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/core.dart';
+import 'driver/data/models/request/collect_model.dart';
 import 'driver/driver_module.dart';
 import 'login/login.dart';
 import 'operator/data/data.dart';
@@ -29,6 +30,7 @@ class MainModule extends Module {
     final varietyModelAdapter = VarietyModelAdapter();
     final vehicleModelAdapter = VehicleModelAdapter();
     final locationParamsModelAdapter = LocationParamsModelAdapter();
+    final collectModelAdapter = CollectModelAdapter();
 
     if (!(_hive?.isAdapterRegistered(loginModelAdapter.typeId) ?? false)) {
       _hive?.registerAdapter(loginModelAdapter);
@@ -78,6 +80,10 @@ class MainModule extends Module {
     if (!(_hive?.isAdapterRegistered(locationParamsModelAdapter.typeId) ??
         false)) {
       _hive?.registerAdapter(locationParamsModelAdapter);
+    }
+
+    if (!(_hive?.isAdapterRegistered(collectModelAdapter.typeId) ?? false)) {
+      _hive?.registerAdapter(collectModelAdapter);
     }
   }
 

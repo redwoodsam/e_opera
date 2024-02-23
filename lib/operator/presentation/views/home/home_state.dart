@@ -23,6 +23,8 @@ sealed class HomeState extends ViewModelState with _$HomeState {
   factory HomeState.loaded({
     LocationParams? locationParams,
     Login? loggedInUser,
+    @Default(false) bool syncronizing,
+    @Default(false) bool syncError,
   }) = LoadedHome;
 
   /// The user [HomeState] state

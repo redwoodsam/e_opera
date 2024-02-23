@@ -15,6 +15,8 @@ class HomeViewModel extends ViewModel<HomeState> {
   final IUpdateLocalDatabaseUsecase _updateLocalDatabaseUsecase;
   final IGetLoggedInUserUsecase _getLoggedInUserUsecase;
 
+  Login? loggedUser;
+
   /// Constructor of [HomeViewModel]
   HomeViewModel(
     this._updateLocalDatabaseUsecase,
@@ -26,6 +28,8 @@ class HomeViewModel extends ViewModel<HomeState> {
     emit(LoadingHome());
 
     Login loggedInUser = await _getLoggedInUser();
+
+    loggedUser = loggedInUser;
 
     emit(LoadedHome(loggedInUser: loggedInUser));
     // final loginParams = LoginParams(user: user, password: password);
@@ -39,13 +43,12 @@ class HomeViewModel extends ViewModel<HomeState> {
   Future<void> updateLocalDatabase() async {
     emit(LoadingHome());
     var future = await _updateLocalDatabaseUsecase();
-    if (future.isLeft()) {
-      emit(ErrorHome(
-          message:
-              'Falha ao sincronizar banco de dados. Verifique sua conexão com a internet e tente novamente'));
-    }
 
-    emit(LoadedHome());
+    emit(LoadedHome(
+      loggedInUser: loggedUser,
+      syncronizing: true,
+      syncError: future.isLeft(),
+    ));
   }
 
   Future<Login> _getLoggedInUser() async {
