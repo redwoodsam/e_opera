@@ -44,6 +44,7 @@ import 'domain/usecases/get_products_usecase.dart';
 import 'domain/usecases/get_shipping_companies_usecase.dart';
 import 'domain/usecases/get_varieties_usecase.dart';
 import 'domain/usecases/get_vehicles_usecase.dart';
+import 'domain/usecases/logout_usecase.dart';
 import 'domain/usecases/save_location_params_usecase.dart';
 import 'operator.dart';
 import 'presentation/views/destination_form/destination_data_viewmodel.dart';
@@ -380,21 +381,28 @@ class OperatorModule extends Module {
             i.get<ILoginRepository>(),
           ),
         ),
+        Bind.factory<ILogoutUsecase>(
+          (i) => LogoutUsecase(
+            i.get<ILoginRepository>(),
+          ),
+        ),
       ];
 
   static List<Bind> get _viewmodel => [
         Bind.lazySingleton<IntroViewModel>(
           (i) => IntroViewModel(
-              i.get<IGetFarmsUsecase>(),
-              i.get<IGetFieldsUsecase>(),
-              i.get<IGetHarvestsUsecase>(),
-              i.get<IGetLocationParamsLocallyUsecase>(),
-              i.get<ISaveLocationParamsLocallyUsecase>()),
+            i.get<IGetFarmsUsecase>(),
+            i.get<IGetFieldsUsecase>(),
+            i.get<IGetHarvestsUsecase>(),
+            i.get<IGetLocationParamsLocallyUsecase>(),
+            i.get<ISaveLocationParamsLocallyUsecase>(),
+          ),
         ),
         Bind.lazySingleton<HomeViewModel>(
           (i) => HomeViewModel(
             i.get<IUpdateLocalDatabaseUsecase>(),
             i.get<IGetLoggedInUserUsecase>(),
+            i.get<ILogoutUsecase>(),
           ),
         ),
         Bind.lazySingleton<ProductDataViewModel>(

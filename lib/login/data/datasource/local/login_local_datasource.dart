@@ -75,4 +75,10 @@ class LoginLocalDatasource extends ILoginLocalDatasource {
 
     await _storageClient.save(_key, itemsToSave);
   }
+
+  @override
+  FutureOr<void> clear() async {
+    // TODO: implement clear
+    await _storageClient.clear();
+  }
 }

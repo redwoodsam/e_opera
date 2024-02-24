@@ -14,6 +14,7 @@ import 'home_state.dart';
 class HomeViewModel extends ViewModel<HomeState> {
   final IUpdateLocalDatabaseUsecase _updateLocalDatabaseUsecase;
   final IGetLoggedInUserUsecase _getLoggedInUserUsecase;
+  final ILogoutUsecase _logoutUsecase;
 
   Login? loggedUser;
 
@@ -21,6 +22,7 @@ class HomeViewModel extends ViewModel<HomeState> {
   HomeViewModel(
     this._updateLocalDatabaseUsecase,
     this._getLoggedInUserUsecase,
+    this._logoutUsecase,
   ) : super(HomeState.initial());
 
   /// Method to realize login
@@ -56,19 +58,8 @@ class HomeViewModel extends ViewModel<HomeState> {
     return future.toRight();
   }
 
-  // void navigateToHomePage() {
-  //   switch (state) {
-  //     case LoadedHome(
-  //       ):
-  //       {
-  //         LocationParams locationParams = LocationParams(
-  //           farm: selectedFarm!,
-  //           harvest: selectedHarvest!,
-  //           field: selectedField!,
-  //         );
-  //         Nav.pushNamed(OperatorModule.home, arguments: locationParams);
-  //       }
-  //     default:
-  //       null;
-  //   }
+  Future<void> logout() async {
+    emit(LoadingHome());
+    var future = await _logoutUsecase();
+  }
 }

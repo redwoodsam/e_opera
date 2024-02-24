@@ -8,3 +8,4 @@ export 'get_shipping_companies_usecase.dart';
 export 'get_varieties_usecase.dart';
 export 'get_vehicles_usecase.dart';
 export 'update_local_database.dart';
+export 'logout_usecase.dart';

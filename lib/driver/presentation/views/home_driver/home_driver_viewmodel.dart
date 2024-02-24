@@ -1,6 +1,9 @@
+import 'package:eopera/driver/domain/usecases/logout_usecase.dart';
+
 import '../../../../core/core.dart';
 import '../../../../login/domain/domain.dart';
 import '../../../../login/presentation/views/login_state.dart';
+import '../../../../operator/presentation/views/home/home_state.dart';
 import '../../../domain/domain.dart';
 import '../../../domain/usecases/get_loggedIn_user_usecase.dart';
 import '../../../domain/usecases/get_pending_collects_usecase.dart';
@@ -13,12 +16,14 @@ class DriverHomeViewModel extends ViewModel<DriverHomeState> {
   final IGetLoggedInUserUsecase _getLoggedInUserUsecase;
   final IGetPendingCollectsUserUsecase _getPendingCollectsUserUsecase;
   final ISynchronizeLocalDatabaseUsecase _synchronizeLocalDatabaseUsecase;
+  final ILogoutUsecase _logoutUsecase;
 
   /// Constructor of [DriverHomeViewModel]
   DriverHomeViewModel(
     this._getLoggedInUserUsecase,
     this._getPendingCollectsUserUsecase,
     this._synchronizeLocalDatabaseUsecase,
+    this._logoutUsecase,
   ) : super(DriverHomeState.initial());
 
   /// Method to realize login
@@ -31,6 +36,7 @@ class DriverHomeViewModel extends ViewModel<DriverHomeState> {
         loggedInUser: loggedInUser,
         syncronizing: true,
         syncError: usecase.isLeft(),
+        numberOfPendingCollects: 0,
       ),
     );
   }
@@ -57,5 +63,10 @@ class DriverHomeViewModel extends ViewModel<DriverHomeState> {
       loggedInUser: eitherLoggedInUser.toRight(),
       numberOfPendingCollects: eitherPendingCollects.toRight().length,
     ));
+  }
+
+  Future<void> logout() async {
+    emit(DriverLoadingHome());
+    var future = await _logoutUsecase();
   }
 }

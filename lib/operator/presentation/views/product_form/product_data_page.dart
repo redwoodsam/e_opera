@@ -164,7 +164,17 @@ class _ProductDataPageState
                 ErrorProductData() => Scaffold(
                       body: Center(
                     /// TODO: tela de erro
-                    child: Text('Erro'),
+                    child: Column(
+                      children: [
+                        Text(
+                            'Sem conexão com a internet. Primeira sincronia ainda não realizada.'),
+                        ElevatedButton(
+                            onPressed: () => {
+                                  viewModel.getProductOptions(),
+                                },
+                            child: Text('Tentar novamente'))
+                      ],
+                    ),
                   )),
                 _ => const SizedBox.shrink()
               };

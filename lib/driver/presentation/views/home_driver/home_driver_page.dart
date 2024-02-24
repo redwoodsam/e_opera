@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/core.dart';
+import '../../../../login/login.dart';
 import '../../../driver_module.dart';
 import 'home_driver_state.dart';
 import 'home_driver_viewmodel.dart';
@@ -16,6 +17,8 @@ class DriverHomePage extends StatefulWidget {
 
 class _DriverHomePageState
     extends ViewState<DriverHomePage, DriverHomeViewModel> {
+  var numberOfPendingCollects = 0;
+
   @override
   void initState() {
     super.initState();
@@ -26,7 +29,9 @@ class _DriverHomePageState
 
   @override
   Widget build(BuildContext context) {
-    var numberOfPendingCollects = viewModel.getPendingCollects();
+    viewModel
+        .getPendingCollects()
+        .then((value) => numberOfPendingCollects = value);
     return Scaffold(
       key: _scaffoldKey,
       body: Container(
@@ -42,7 +47,13 @@ class _DriverHomePageState
           // Eventos que não precisam rebuildar a tela
           // Eg. Success que vai para a próxima tela
           listener: (context, state) => switch (state) {
-            DriverLoadedHome(:final syncronizing, :final syncError) => {
+            DriverLoadedHome(
+              :final syncronizing,
+              :final syncError,
+              :final numberOfPendingCollects
+            ) =>
+              {
+                this.numberOfPendingCollects = numberOfPendingCollects,
                 if (syncronizing && !syncError)
                   {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -101,7 +112,20 @@ class _DriverHomePageState
                                 size: 24.fontSize,
                               ),
                             ),
-                          )
+                          ),
+                          SizedBox.fromSize(
+                            size: Size(20, 1),
+                          ),
+                          GestureDetector(
+                            onTap: () async => {
+                              await viewModel.logout(),
+                              Nav.navigate(LoginModule.root)
+                            },
+                            child: Icon(
+                              Icons.logout,
+                              size: 20.fontSize,
+                            ),
+                          ),
                         ],
                       ),
                     ),

@@ -6,6 +6,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../../../core/core.dart';
 import '../../../../login/domain/entities/login.dart';
+import '../../../../login/login.dart';
 import '../../../domain/entities/form_data/harvest_form.dart';
 import '../../../domain/entities/localization_params.dart';
 import '../../../operator_module.dart';
@@ -100,6 +101,19 @@ class _OperatorHomePageState extends ViewState<HomePage, HomeViewModel> {
                   child: Icon(
                     Icons.refresh_rounded,
                     size: 24.fontSize,
+                  ),
+                ),
+                SizedBox.fromSize(
+                  size: Size(20, 1),
+                ),
+                GestureDetector(
+                  onTap: () async => {
+                    await viewModel.logout(),
+                    Nav.navigate(LoginModule.root)
+                  },
+                  child: Icon(
+                    Icons.logout,
+                    size: 20.fontSize,
                   ),
                 ),
               ],

@@ -152,11 +152,19 @@ class _DriverFormState extends ViewState<DriverDataPage, DriverDataViewModel> {
                     child: CircularProgressIndicator(),
                   ),
                 ),
-              ErrorProductData() => Scaffold(
-                    body: Center(
-                  /// TODO: tela de erro
-                  child: Text('Erro'),
-                )),
+              ErrorDriverData() => Center(
+                  child: Column(
+                    children: [
+                      Text(
+                          'Sem conexão com a internet. Primeira sincronia ainda não realizada'),
+                      ElevatedButton(
+                          onPressed: () => {
+                                viewModel.getDataOptions(),
+                              },
+                          child: Text('Tentar novamente'))
+                    ],
+                  ),
+                ),
               _ => const SizedBox.shrink(),
             };
           },

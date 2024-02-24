@@ -15,6 +15,7 @@ import 'data/models/request/collect_model.dart';
 import 'data/repositories/collect_repository.dart';
 import 'domain/domain.dart';
 import 'domain/usecases/get_pending_collects_usecase.dart';
+import 'domain/usecases/logout_usecase.dart';
 import 'domain/usecases/save_collect_to_localstorage.dart';
 import 'domain/usecases/send_collect_usecase.dart';
 import 'domain/usecases/synchronize_local_database_usecase.dart';
@@ -151,6 +152,11 @@ class DriverModule extends Module {
             i.get<ICollectRepository>(),
           ),
         ),
+        Bind.factory<ILogoutUsecase>(
+          (i) => LogoutUsecase(
+            i.get<ILoginRepository>(),
+          ),
+        ),
         // Bind.factory<IGetFieldsUsecase>(
         //     (i) => GetFieldsUsecase(i.get<IFieldRepository>())),
         // Bind.factory<IGetHarvestsUsecase>(
@@ -167,6 +173,7 @@ class DriverModule extends Module {
             i.get<IGetLoggedInUserUsecase>(),
             i.get<IGetPendingCollectsUserUsecase>(),
             i.get<ISynchronizeLocalDatabaseUsecase>(),
+            i.get<ILogoutUsecase>(),
           ),
         ),
         Bind.lazySingleton<DriverQrCodeReadViewModel>(
