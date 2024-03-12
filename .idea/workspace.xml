@@ -10,120 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4591619a-7696-43e6-aeb7-9a6b3bd54b2f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/kotlin/br/com/sgttec/e_opera/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/kotlin/br/com/sgttec/lunaar/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/icons/caminhao_entrega.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/driver/background_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_file.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_file.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_options.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_multipart_options.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_options.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/data/interfaces/http/http_options.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/domain/validations/failure.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/domain/validations/failure.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/driver/domain/entities/collect.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/driver/domain/entities/collect.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/driver/domain/entities/collect.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/driver/domain/entities/collect.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/driver/presentation/views/home_driver/home_driver_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/driver/presentation/views/home_driver/home_driver_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/driver/presentation/views/qrcode_read/qrcode_read_driver_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/driver/presentation/views/qrcode_read/qrcode_read_driver_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/driver/presentation/views/summary_driver/summary_driver_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/driver/presentation/views/summary_driver/summary_driver_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/request/login_params_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/data/models/response/login_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/response/login_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/data/models/response/login_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/data/models/response/login_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/domain/entities/login.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/entities/login.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/domain/entities/login_params.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/entities/login_params.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/domain/repositories/login_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/repositories/login_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/domain/usecases/login_usecase.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/domain/usecases/login_usecase.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/login_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/login_module.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/presentation/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/presentation/views/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/presentation/views/login_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/presentation/views/login_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/login/presentation/views/login_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/login/presentation/views/login_viewmodel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main_module.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/datasource/datasource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/datasource/datasource.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/datasource/local/harvest_datasource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/datasource/local/harvest_datasource.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/datasource/local/local.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/datasource/local/local.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/driver_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/driver_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/driver_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/driver_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/driver_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/driver_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/entity_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/entity_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/entity_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/entity_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/entity_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/entity_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/farm_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/field_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/field_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/field_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/field_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/field_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/field_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/harvest_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/harvest_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/harvest_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/harvest_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/harvest_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/harvest_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/product_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/product_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/product_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/product_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/product_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/product_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/shipping_company_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/shipping_company_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/shipping_company_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/shipping_company_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/shipping_company_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/shipping_company_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/subsidiary_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/subsidiary_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/subsidiary_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/subsidiary_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/subsidiary_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/subsidiary_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/variety_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/variety_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/variety_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/variety_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/variety_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/variety_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/vehicle_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/vehicle_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/vehicle_model.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/vehicle_model.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/models/response/vehicle_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/models/response/vehicle_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/destination_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/destination_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/driver_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/driver_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/farm_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/farm_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/field_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/field_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/harvest_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/harvest_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/product_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/product_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/shipping_company_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/shipping_company_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/variety_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/variety_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/data/repositories/vehicle_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/data/repositories/vehicle_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/destination.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/destination.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/driver.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/driver.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/farm.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/farm.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/field.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/field.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/harvest.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/harvest.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/harvest_params.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/harvest_params.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/harvest_params.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/harvest_params.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/localization_params.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/localization_params.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/product.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/product.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/shipping_company.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/shipping_company.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/variety.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/variety.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/entities/vehicle.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/entities/vehicle.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/destination_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/destination_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/driver_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/driver_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/farm_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/farm_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/field_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/field_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/harvest_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/harvest_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/product_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/product_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/repositories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/repositories.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/shipping_company_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/shipping_company_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/variety_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/variety_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/repositories/vehicle_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/repositories/vehicle_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/domain/usecases/usecases.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/domain/usecases/usecases.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/operator_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/operator_module.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/destination_form/destination_data_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/destination_form/destination_data_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/driver_form/driver_data_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/driver_form/driver_data_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/home/home_viewmodel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_viewmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/intro/intro_viewmodel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/product_form/product_data_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/product_form/product_data_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/product_form/product_data_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/product_form/product_data_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/summary/summary_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/summary/summary_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/operator/presentation/views/summary/summary_state.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/operator/presentation/views/summary/summary_state.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/com/example/e_opera/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/com/example/lunaar/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/driver/presentation/views/home_driver/home_driver_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/driver/presentation/views/home_driver/home_driver_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +60,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2aur3oR0vpqMopyLPf9f60cxEzr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" />
     <panes>
@@ -172,25 +79,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Development/Freelancing/e_opera&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "C:/Development/Freelancing/e_opera",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -207,5 +115,8 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

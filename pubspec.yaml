@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_modular: ^5.0.3
   equatable: ^2.0.5
-  flutter_localization: ^0.1.14
+  flutter_localization: ^0.2.0
   freezed_annotation: ^2.4.1
   collection: ^1.17.2
   http: ^1.1.0
@@ -57,7 +57,11 @@ dependencies:
   dropdown_button2: ^2.3.9
   qr_flutter: ^4.1.0
   uuid: ^4.3.2
-  form_validator: ">=0.1.1 <2.0.0"
+  form_validator: ^2.1.1
+  flutter_local_notifications: ^16.3.3
+  permission_handler: ^11.3.0
+
+  # timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_test:

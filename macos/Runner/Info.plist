@@ -29,4 +29,8 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>
+<key>BGTaskSchedulerPermittedIdentifiers</key>
+<array>
+    <string>dev.flutter.background.refresh</string>
+</array>
 </plist>
