@@ -7,18 +7,17 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../core/core.dart';
 import '../login/data/data.dart';
 import '../login/domain/domain.dart';
-import 'data/data.dart';
 import 'data/datasource/interfaces/collect_datasource.dart';
 import 'data/datasource/local/collect_datasource.dart';
 import 'data/datasource/remote/collect_datasource.dart';
 import 'data/models/request/collect_model.dart';
 import 'data/repositories/collect_repository.dart';
-import 'domain/domain.dart';
 import 'domain/usecases/get_pending_collects_usecase.dart';
 import 'domain/usecases/logout_usecase.dart';
 import 'domain/usecases/save_collect_to_localstorage.dart';
 import 'domain/usecases/send_collect_usecase.dart';
 import 'domain/usecases/synchronize_local_database_usecase.dart';
+import 'enable_background_sync_guard.dart';
 import 'presentation/views/home_driver/home_driver_page.dart';
 import 'presentation/views/home_driver/home_driver_viewmodel.dart';
 import 'presentation/views/qrcode_read/qrcode_read_driver_page.dart';
@@ -42,6 +41,9 @@ class DriverModule extends Module {
         ChildRoute(
           home.path,
           child: (context, _) => const DriverHomePage(),
+          guards: [
+            EnableBackgroundSyncGuard(),
+          ],
         ),
         ChildRoute(
           qrCodeScanner.path,
@@ -116,7 +118,7 @@ class DriverModule extends Module {
             i.get<ILoginDatasource>(),
             i.get<ILoginLocalDatasource>(),
           ),
-        )
+        ),
         // Bind.lazySingleton<IFieldRepository>(
         //   (i) => FieldRepository(i.get<IIntroDatasource>()),
         // ),
