@@ -18,7 +18,6 @@ class SynchronizeLocalDatabaseUsecase
 
   @override
   Future<Either<Failure, void>> call() async {
-    print('Estou chamando mesmo');
     return _collectRepository.collectLocal();
   }
 }
